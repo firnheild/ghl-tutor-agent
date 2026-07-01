@@ -24,6 +24,22 @@ function shuffleChoices(choices: string[]) {
   return shuffled;
 }
 
+function answersMatch(
+  currentAnswers: Record<string, string>,
+  submittedAnswers?: Record<string, string>,
+) {
+  if (!submittedAnswers) {
+    return false;
+  }
+
+  const currentEntries = Object.entries(currentAnswers);
+
+  return (
+    currentEntries.length === Object.keys(submittedAnswers).length &&
+    currentEntries.every(([questionId, answer]) => submittedAnswers[questionId] === answer)
+  );
+}
+
 export function QuizRunner({
   modules,
   questions,
@@ -70,10 +86,11 @@ export function QuizRunner({
       : 0;
   const passed = percent >= PASSING_PERCENT;
   const result = results[activeModuleId];
+  const isSubmitted = answersMatch(answers, result?.answers);
   const isActiveLocked =
     !isModuleUnlocked(modules, activeModuleId, results);
 
-  function recordResult() {
+  function submitQuiz() {
     if (isActiveLocked) {
       return;
     }
@@ -141,9 +158,13 @@ export function QuizRunner({
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             <div className="rounded-md border bg-background p-3">
-              <p className="text-xs text-muted-foreground">Current score</p>
+              <p className="text-xs text-muted-foreground">
+                {isSubmitted ? "Submitted score" : "Answered"}
+              </p>
               <p className="text-2xl font-semibold">
-                {score}/{activeQuestions.length}
+                {isSubmitted
+                  ? `${score}/${activeQuestions.length}`
+                  : `${answeredCount}/${activeQuestions.length}`}
               </p>
             </div>
             <div className="rounded-md border bg-background p-3">
@@ -159,9 +180,11 @@ export function QuizRunner({
           </div>
           {result ? (
             <p className="mt-4 rounded-md border bg-muted/40 p-3 text-sm">
-              {result.passed
-                ? "Passed. This level is automatically marked complete in Progress."
-                : "Recorded, but not passed yet. Retake this quiz when ready."}
+              {isSubmitted
+                ? result.passed
+                  ? "Submitted and passed. This level is automatically marked complete in Progress."
+                  : "Submitted, but not passed yet. Review the feedback and retake this quiz when ready."
+                : "You changed an answer after the last submission. Submit again to check this attempt."}
             </p>
           ) : null}
           {isActiveLocked ? (
@@ -178,12 +201,19 @@ export function QuizRunner({
             <div className="mt-4 grid gap-2">
               {(choicesByQuestion[question.id] ?? question.choices).map((choice) => {
                 const selected = answers[question.id] === choice;
+                const correct = question.answer === choice;
+                const wrongSubmittedSelection =
+                  isSubmitted && selected && !correct;
                 return (
                   <button
                     key={choice}
                     className={`rounded-md border px-3 py-2 text-left text-sm ${
-                      selected
-                        ? "border-emerald-600 bg-emerald-50"
+                      isSubmitted && correct
+                        ? "border-emerald-600 bg-emerald-100 text-emerald-950 dark:bg-emerald-900/60 dark:text-emerald-50"
+                        : wrongSubmittedSelection
+                          ? "border-red-500 bg-red-50 text-red-950 dark:bg-red-950/50 dark:text-red-50"
+                        : selected
+                          ? "border-emerald-600 bg-emerald-100 text-emerald-950 dark:bg-emerald-900/60 dark:text-emerald-50"
                         : isActiveLocked
                           ? "cursor-not-allowed bg-muted/60 opacity-60"
                         : "bg-background"
@@ -204,7 +234,7 @@ export function QuizRunner({
                 );
               })}
             </div>
-            {answers[question.id] ? (
+            {isSubmitted ? (
               <p className="mt-4 text-sm leading-6 text-muted-foreground">
                 <span className="font-medium text-foreground">
                   {answers[question.id] === question.answer
@@ -219,12 +249,14 @@ export function QuizRunner({
 
         <button
           disabled={isActiveLocked || answeredCount !== activeQuestions.length}
-          onClick={recordResult}
+          onClick={submitQuiz}
           className="w-full rounded-md bg-primary px-4 py-3 text-sm font-medium text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50"
         >
           {answeredCount === activeQuestions.length
-            ? `Record result: ${percent}% ${passed ? "pass" : "not passed"}`
-            : `Answer ${activeQuestions.length - answeredCount} more to record`}
+            ? isSubmitted
+              ? `Submitted: ${percent}% ${passed ? "pass" : "not passed"}`
+              : "Submit quiz"
+            : `Answer ${activeQuestions.length - answeredCount} more to submit`}
         </button>
       </section>
     </div>

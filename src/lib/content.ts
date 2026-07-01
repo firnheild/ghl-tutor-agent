@@ -166,17 +166,26 @@ function buildGlossaryReviewQuestions(
       const distractors = allTerms
         .filter((candidate) => candidate !== term)
         .slice(index, index + 3);
+      const definition = sanitizeDefinition(glossaryTerm.definition, term);
 
       return {
         id: `${moduleId}-term-${index + 1}`,
         moduleId,
-        question: `Which term means: ${glossaryTerm.definition}`,
+        question: `Which glossary term matches this definition: ${definition}`,
         choices: [term, ...distractors],
         answer: term,
         explanation: `${term}: ${glossaryTerm.example}`,
       };
     })
     .filter((question): question is QuizQuestion => Boolean(question));
+}
+
+function sanitizeDefinition(definition: string, term: string) {
+  const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const maybePlural = /^[A-Za-z]+$/.test(term) && !term.endsWith("s") ? "s?" : "";
+  const termPattern = new RegExp(`\\b${escapedTerm}${maybePlural}\\b`, "gi");
+
+  return definition.replace(termPattern, "this concept");
 }
 
 async function readJson<T>(relativePath: string): Promise<T> {
