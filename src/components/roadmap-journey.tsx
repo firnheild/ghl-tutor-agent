@@ -10,6 +10,7 @@ import {
   ClipboardCheck,
   ClipboardList,
   Compass,
+  LockKeyhole,
   type LucideIcon,
   MessageCircle,
   PlayCircle,
@@ -20,6 +21,8 @@ import {
   Workflow,
 } from "lucide-react";
 import type { Module } from "@/lib/content";
+import { isModuleUnlocked } from "@/lib/progress";
+import { useQuizResults } from "@/lib/progress-hooks";
 
 const levelIcons: LucideIcon[] = [
   Compass,
@@ -89,6 +92,7 @@ const levelStyles = [
 
 export function RoadmapJourney({ modules }: { modules: Module[] }) {
   const [activeId, setActiveId] = useState(modules[0]?.id ?? "");
+  const quizResults = useQuizResults();
   const activeModule =
     modules.find((module) => module.id === activeId) ?? modules[0];
   const activeIndex = Math.max(
@@ -156,31 +160,47 @@ export function RoadmapJourney({ modules }: { modules: Module[] }) {
               const style = levelStyles[index % levelStyles.length];
               const isActive = module.id === activeModule?.id;
               const isTop = index % 2 === 0;
+              const unlocked = isModuleUnlocked(modules, module.id, quizResults);
+              const passed = Boolean(quizResults[module.id]?.passed);
 
               return (
                 <button
                   key={module.id}
                   aria-pressed={isActive}
+                  disabled={!unlocked}
                   className={`group relative z-10 flex min-h-40 flex-col items-center justify-center rounded-lg border bg-background/95 p-3 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md md:min-h-44 ${
                     isTop ? "md:mb-28" : "md:mt-28"
                   } ${
                     isActive
                       ? "border-foreground shadow-md"
-                      : "border-border hover:border-foreground/30"
+                      : unlocked
+                        ? "border-border hover:border-foreground/30"
+                        : "cursor-not-allowed border-border opacity-45 grayscale hover:translate-y-0 hover:shadow-sm"
                   }`}
-                  onClick={() => setActiveId(module.id)}
+                  onClick={() => {
+                    if (unlocked) {
+                      setActiveId(module.id);
+                    }
+                  }}
                   type="button"
                 >
                   <span
                     className={`grid size-16 place-items-center rounded-full border-4 ${style.ring}`}
                   >
-                    <Icon className="size-7" />
+                    {unlocked ? (
+                      <Icon className="size-7" />
+                    ) : (
+                      <LockKeyhole className="size-7" />
+                    )}
                   </span>
                   <span className={`mt-3 text-2xl font-semibold ${style.text}`}>
                     {module.level.toString().padStart(2, "0")}
                   </span>
                   <span className="mt-1 text-sm font-semibold leading-5">
                     {module.title}
+                  </span>
+                  <span className="mt-2 text-xs text-muted-foreground">
+                    {passed ? "Done" : unlocked ? "Open" : "Locked"}
                   </span>
                   <span
                     className={`absolute left-1/2 hidden size-4 -translate-x-1/2 rounded-full border-2 border-white ${style.marker} md:block ${

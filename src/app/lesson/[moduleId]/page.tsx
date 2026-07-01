@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Bot, ClipboardCheck } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { CourseSidebar } from "@/components/course-sidebar";
+import { LessonCompletion } from "@/components/lesson-completion";
 import { LessonAccessGate } from "@/components/lesson-access-gate";
 import { MarkdownLesson } from "@/components/markdown-lesson";
 import { VisualSnippets } from "@/components/visual-snippets";
@@ -10,6 +11,8 @@ import {
   getLessonMarkdown,
   getModule,
   getModules,
+  getQuizzes,
+  getScenarios,
   getVisualSnippets,
 } from "@/lib/content";
 
@@ -24,16 +27,21 @@ export default async function LessonPage({
   params: Promise<{ moduleId: string }>;
 }) {
   const { moduleId } = await params;
-  const [module, markdown, modules, snippets] = await Promise.all([
+  const [module, markdown, modules, snippets, questions, scenarios] = await Promise.all([
     getModule(moduleId),
     getLessonMarkdown(moduleId),
     getModules(),
     getVisualSnippets(moduleId),
+    getQuizzes(),
+    getScenarios(),
   ]);
 
   if (!module) {
     notFound();
   }
+
+  const moduleIndex = modules.findIndex((item) => item.id === module.id);
+  const scenario = scenarios[Math.max(0, moduleIndex) % scenarios.length];
 
   return (
     <AppShell fullWidth>
@@ -57,16 +65,10 @@ export default async function LessonPage({
               </div>
               <div className="mt-4 grid gap-2">
                 <Link
-                  href="/practice"
+                  href="#lesson-completion"
                   className="rounded-md border px-3 py-2 text-sm hover:bg-muted"
                 >
-                  Generate practice task
-                </Link>
-                <Link
-                  href="/quiz"
-                  className="rounded-md border px-3 py-2 text-sm hover:bg-muted"
-                >
-                  Take quiz
+                  Practice and quiz
                 </Link>
                 <Link
                   href="/agent"
@@ -104,6 +106,12 @@ export default async function LessonPage({
               )}
             </div>
             <VisualSnippets snippets={snippets} />
+            <LessonCompletion
+              module={module}
+              modules={modules}
+              questions={questions}
+              scenario={scenario}
+            />
           </LessonAccessGate>
         </div>
       </section>

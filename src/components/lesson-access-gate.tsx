@@ -48,10 +48,10 @@ export function LessonAccessGate({
           ) : null}
           <div className="flex flex-col gap-2 sm:flex-row">
             <Link
-              href="/quiz"
+              href={`/lesson/${previousModule?.id ?? modules[0]?.id ?? "orientation"}`}
               className="inline-flex rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
             >
-              Go to quiz
+              Go to previous lesson
             </Link>
             <Link
               href={`/lesson/${modules[0]?.id ?? "orientation"}`}

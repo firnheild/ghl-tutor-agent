@@ -3,6 +3,10 @@ export const MANUAL_PROGRESS_KEY = "ghl-progress";
 export const PROGRESS_CHANGE_EVENT = "ghl-progress-change";
 export const PASSING_PERCENT = 66;
 
+export function practiceProgressKey(moduleId: string) {
+  return `practice-${moduleId}`;
+}
+
 export type QuizResult = {
   moduleId: string;
   score: number;

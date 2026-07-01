@@ -67,7 +67,7 @@ export function CourseSidebar({
                     {module.title}
                   </span>
                   <span className="mt-1 block text-xs text-muted-foreground">
-                    {unlocked ? "Lesson - Quiz - Practice" : "Locked"}
+                    {unlocked ? "Lesson - Practice - Quiz" : "Locked"}
                   </span>
                 </span>
               </>
