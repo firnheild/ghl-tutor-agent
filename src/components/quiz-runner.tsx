@@ -47,8 +47,20 @@ export function QuizRunner({
       : 0;
   const passed = percent >= PASSING_PERCENT;
   const result = results[activeModuleId];
+  const activeModuleIndex = modules.findIndex(
+    (module) => module.id === activeModuleId,
+  );
+  const isActiveLocked =
+    activeModuleIndex > 0 &&
+    modules
+      .slice(0, activeModuleIndex)
+      .some((module) => !results[module.id]?.passed);
 
   function recordResult() {
+    if (isActiveLocked) {
+      return;
+    }
+
     const nextResults = {
       ...results,
       [activeModuleId]: {
@@ -69,14 +81,22 @@ export function QuizRunner({
   return (
     <div className="grid gap-4 lg:grid-cols-[280px_1fr]">
       <aside className="space-y-2">
-        {modules.map((module) => {
+        {modules.map((module, index) => {
           const moduleResult = results[module.id];
+          const locked =
+            index > 0 &&
+            modules
+              .slice(0, index)
+              .some((previousModule) => !results[previousModule.id]?.passed);
           return (
             <button
               key={module.id}
+              disabled={locked}
               className={`w-full rounded-md border px-3 py-3 text-left text-sm ${
                 activeModuleId === module.id
                   ? "border-emerald-600 bg-emerald-50"
+                  : locked
+                    ? "cursor-not-allowed bg-muted/60 opacity-60"
                   : "bg-card"
               }`}
               onClick={() => setActiveModuleId(module.id)}
@@ -87,6 +107,8 @@ export function QuizRunner({
               <span className="mt-1 block text-xs text-muted-foreground">
                 {moduleResult
                   ? `${moduleResult.passed ? "Passed" : "Attempted"} - ${moduleResult.percent}%`
+                  : locked
+                    ? "Locked until previous levels are passed"
                   : "Not taken"}
               </span>
             </button>
@@ -129,6 +151,12 @@ export function QuizRunner({
                 : "Recorded, but not passed yet. Retake this quiz when ready."}
             </p>
           ) : null}
+          {isActiveLocked ? (
+            <p className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+              This level is locked. Pass all earlier level quizzes before
+              taking this quiz.
+            </p>
+          ) : null}
         </div>
 
         {activeQuestions.map((question) => (
@@ -143,8 +171,11 @@ export function QuizRunner({
                     className={`rounded-md border px-3 py-2 text-left text-sm ${
                       selected
                         ? "border-emerald-600 bg-emerald-50"
+                        : isActiveLocked
+                          ? "cursor-not-allowed bg-muted/60 opacity-60"
                         : "bg-background"
                     }`}
+                    disabled={isActiveLocked}
                     onClick={() =>
                       setAnswersByModule((current) => ({
                         ...current,
@@ -174,7 +205,7 @@ export function QuizRunner({
         ))}
 
         <button
-          disabled={answeredCount !== activeQuestions.length}
+          disabled={isActiveLocked || answeredCount !== activeQuestions.length}
           onClick={recordResult}
           className="w-full rounded-md bg-primary px-4 py-3 text-sm font-medium text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50"
         >

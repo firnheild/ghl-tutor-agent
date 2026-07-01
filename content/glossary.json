@@ -138,6 +138,12 @@
     "example": "A GHL form submission sends lead details to a Make webhook."
   },
   {
+    "term": "Integration",
+    "category": "External Automation",
+    "definition": "A connection between two or more tools so data can move between them.",
+    "example": "GHL can integrate with Google Sheets through Make, n8n, or Zapier."
+  },
+  {
     "term": "API",
     "category": "External Automation",
     "definition": "A structured way for software systems to talk to each other. Beginners should understand the concept before trying to code with it.",
@@ -162,6 +168,12 @@
     "example": "Zapier can send a new GHL lead to a spreadsheet or email tool."
   },
   {
+    "term": "Secret",
+    "category": "External Automation",
+    "definition": "A private credential such as an API key, token, password, or private webhook URL.",
+    "example": "Never paste an API key into a public page, screenshot, or browser code."
+  },
+  {
     "term": "Snapshot",
     "category": "Agency Setup",
     "definition": "A reusable package of GHL assets, such as workflows, funnels, fields, calendars, and pipelines, that can help set up new client accounts faster.",
@@ -172,5 +184,233 @@
     "category": "Agency Setup",
     "definition": "A separate client workspace inside an agency HighLevel account.",
     "example": "A marketing agency may have one sub-account for each local business client."
+  },
+  {
+    "term": "Note",
+    "category": "CRM",
+    "definition": "A human-written detail saved on a contact record so the team remembers useful context.",
+    "example": "A note can say: Prefers afternoon calls and asked about financing."
+  },
+  {
+    "term": "Task",
+    "category": "CRM",
+    "definition": "A reminder or assignment for a team member to do something for a contact.",
+    "example": "Create a task for the front desk to call a hot lead today."
+  },
+  {
+    "term": "Stage",
+    "category": "Sales Process",
+    "definition": "One step inside a pipeline that shows where a lead or deal is in the sales process.",
+    "example": "New Lead, Contacted, Booked, Won, and Lost are stages."
+  },
+  {
+    "term": "Lead Status",
+    "category": "Sales Process",
+    "definition": "A simple label that describes the general condition of a lead.",
+    "example": "A lead can be new, active, won, lost, or unqualified."
+  },
+  {
+    "term": "Manual Movement",
+    "category": "Sales Process",
+    "definition": "When a person moves an opportunity to another pipeline stage after checking what happened.",
+    "example": "An agent manually moves a buyer lead to Offer Made after the client submits an offer."
+  },
+  {
+    "term": "Automated Movement",
+    "category": "Sales Process",
+    "definition": "When a workflow moves an opportunity after a clear event happens.",
+    "example": "A workflow moves a lead to Booked after an appointment is scheduled."
+  },
+  {
+    "term": "Sales Process",
+    "category": "Sales Process",
+    "definition": "The steps a business follows to turn a lead into a customer.",
+    "example": "Inquiry, follow-up, appointment, proposal, won, and lost can be a sales process."
+  },
+  {
+    "term": "Appointment",
+    "category": "Booking",
+    "definition": "A scheduled meeting, service, consultation, or call between the business and the lead or customer.",
+    "example": "A dental consultation booked for Friday at 10 AM is an appointment."
+  },
+  {
+    "term": "Availability",
+    "category": "Booking",
+    "definition": "The days and times when a staff member or business can accept bookings.",
+    "example": "A clinic may accept consultations Monday to Friday from 9 AM to 4 PM."
+  },
+  {
+    "term": "Buffer",
+    "category": "Booking",
+    "definition": "Extra time before or after appointments so staff are not overloaded.",
+    "example": "A 15-minute buffer after grooming gives staff cleanup time."
+  },
+  {
+    "term": "Booking Link",
+    "category": "Booking",
+    "definition": "A link a lead can use to choose an available appointment time.",
+    "example": "A clinic sends a booking link after a lead submits a consultation form."
+  },
+  {
+    "term": "Appointment Reminder",
+    "category": "Booking",
+    "definition": "A message sent before an appointment so the lead remembers to attend.",
+    "example": "Send reminders 24 hours and 2 hours before the appointment."
+  },
+  {
+    "term": "No-Show",
+    "category": "Booking",
+    "definition": "When someone books an appointment but does not attend.",
+    "example": "Reminder texts help reduce no-shows."
+  },
+  {
+    "term": "Survey",
+    "category": "Lead Capture",
+    "definition": "A longer form that asks more qualifying questions.",
+    "example": "A real estate survey can ask whether the lead is buying, selling, or investing."
+  },
+  {
+    "term": "Lead Magnet",
+    "category": "Lead Capture",
+    "definition": "Something useful offered in exchange for contact information.",
+    "example": "A buyer guide, checklist, coupon, or free consultation can be a lead magnet."
+  },
+  {
+    "term": "Conversations Inbox",
+    "category": "Communication",
+    "definition": "The place where the team manages messages and replies from leads and customers.",
+    "example": "Staff can answer SMS and email replies from the Conversations inbox."
+  },
+  {
+    "term": "SMS",
+    "category": "Communication",
+    "definition": "A text message sent to a lead or customer.",
+    "example": "Send an SMS after a form submission to invite the lead to book."
+  },
+  {
+    "term": "Email Template",
+    "category": "Communication",
+    "definition": "A reusable email message that can be sent manually or by automation.",
+    "example": "A clinic can use a consultation reminder email template."
+  },
+  {
+    "term": "Follow-Up",
+    "category": "Communication",
+    "definition": "A message or action used to continue the conversation after a lead shows interest.",
+    "example": "A follow-up text asks if the lead wants help booking."
+  },
+  {
+    "term": "Reply Handling",
+    "category": "Communication",
+    "definition": "The process for what happens when a lead replies to an automated message.",
+    "example": "When a lead replies, stop the nurture workflow and notify staff."
+  },
+  {
+    "term": "Lead Nurture",
+    "category": "Communication",
+    "definition": "A sequence of helpful follow-up messages sent over time to move a lead toward action.",
+    "example": "A seven-day dental nurture sequence can explain benefits and invite booking."
+  },
+  {
+    "term": "Opt-Out",
+    "category": "Communication",
+    "definition": "A way for a person to stop receiving marketing messages.",
+    "example": "SMS campaigns should respect opt-out requests."
+  },
+  {
+    "term": "If/Else Branch",
+    "category": "Automation",
+    "definition": "A workflow split where one path runs if a condition is true and another path runs if it is false.",
+    "example": "If the lead booked, stop messages. Else, send a reminder."
+  },
+  {
+    "term": "Stop Rule",
+    "category": "Automation",
+    "definition": "A rule that stops or removes a contact from a workflow when the workflow is no longer appropriate.",
+    "example": "Stop the nurture workflow when the lead books an appointment."
+  },
+  {
+    "term": "Client Requirements",
+    "category": "Implementation",
+    "definition": "The information you collect from a client before building, including goals, tools, process, roles, and rules.",
+    "example": "Ask who follows up, what counts as a hot lead, and what messages should be sent."
+  },
+  {
+    "term": "Process Map",
+    "category": "Implementation",
+    "definition": "A simple outline of what happens from lead source to final outcome.",
+    "example": "Ad click, form submission, SMS, booking, reminder, consultation."
+  },
+  {
+    "term": "Testing Checklist",
+    "category": "Implementation",
+    "definition": "A list used to confirm forms, tags, workflows, reminders, notifications, and pipeline updates work before launch.",
+    "example": "Submit a fake lead and confirm every expected action happens."
+  },
+  {
+    "term": "Launch QA",
+    "category": "Implementation",
+    "definition": "Quality assurance before a system goes live for real users.",
+    "example": "Check links, phone numbers, messages, timezone, and stop rules before launch."
+  },
+  {
+    "term": "Troubleshooting",
+    "category": "Implementation",
+    "definition": "Finding why something failed and fixing the cause.",
+    "example": "Check workflow history when a reminder SMS did not send."
+  },
+  {
+    "term": "Mock Data",
+    "category": "Implementation",
+    "definition": "Fake test information used to check a system without exposing real client or customer data.",
+    "example": "Use Test Lead with a safe test phone number when checking a workflow."
+  },
+  {
+    "term": "Handoff",
+    "category": "Implementation",
+    "definition": "The final transfer of a completed setup to the client or team, including instructions and notes.",
+    "example": "Give the client a launch checklist and explain how to manage new leads."
+  },
+  {
+    "term": "Portfolio Project",
+    "category": "Hire-Ready",
+    "definition": "A practical sample project that shows you can solve a client-style problem.",
+    "example": "A missed-call text-back and review request system can be a portfolio project."
+  },
+  {
+    "term": "Case Study",
+    "category": "Hire-Ready",
+    "definition": "A short explanation of the client problem, your solution, tools used, workflow summary, and result.",
+    "example": "A case study can explain how a grooming shop reduced missed bookings."
+  },
+  {
+    "term": "Resume Bullet",
+    "category": "Hire-Ready",
+    "definition": "A short achievement statement that describes practical work you can do.",
+    "example": "Built mock GHL appointment workflow with reminders, pipeline updates, and staff notifications."
+  },
+  {
+    "term": "Interview Prep",
+    "category": "Hire-Ready",
+    "definition": "Practice answering questions about your skills, process, decisions, and project work.",
+    "example": "Explain how you would test a lead nurture workflow before launch."
+  },
+  {
+    "term": "Scope",
+    "category": "Hire-Ready",
+    "definition": "The agreed boundary of what a project includes and does not include.",
+    "example": "This project includes one funnel and one workflow, but not paid ad management."
+  },
+  {
+    "term": "Deliverable",
+    "category": "Hire-Ready",
+    "definition": "A concrete item you promise to produce for a project.",
+    "example": "A booking calendar, reminder workflow, and testing checklist are deliverables."
+  },
+  {
+    "term": "Self-Issued Certificate",
+    "category": "Hire-Ready",
+    "definition": "A completion document from this training app that is not official HighLevel certification.",
+    "example": "Use it as proof of training completion, not as an official HighLevel credential."
   }
 ]

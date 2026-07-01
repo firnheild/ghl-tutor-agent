@@ -44,6 +44,141 @@ export type GlossaryTerm = {
 
 const contentDir = path.join(process.cwd(), "content");
 
+const moduleGlossaryTerms: Record<string, string[]> = {
+  orientation: [
+    "Lead",
+    "CRM",
+    "Form",
+    "Funnel",
+    "Call",
+    "Ad",
+    "Referral",
+  ],
+  "crm-foundations": [
+    "Contact",
+    "Lead",
+    "Tag",
+    "Custom Field",
+    "Smart List",
+    "Note",
+    "Task",
+  ],
+  "pipeline-sales": [
+    "Pipeline",
+    "Opportunity",
+    "Stage",
+    "Lead Status",
+    "Manual Movement",
+    "Automated Movement",
+    "Sales Process",
+  ],
+  "calendar-booking": [
+    "Calendar",
+    "Appointment",
+    "Availability",
+    "Buffer",
+    "Booking Link",
+    "Appointment Reminder",
+    "No-Show",
+  ],
+  "forms-funnels": [
+    "Form",
+    "Field",
+    "Survey",
+    "Funnel",
+    "Landing Page",
+    "Lead Magnet",
+    "Thank-You Page",
+  ],
+  communication: [
+    "Conversations Inbox",
+    "SMS",
+    "Email Template",
+    "Follow-Up",
+    "Reply Handling",
+    "Lead Nurture",
+    "Opt-Out",
+  ],
+  "workflow-automations": [
+    "Workflow",
+    "Trigger",
+    "Action",
+    "Wait Step",
+    "Condition",
+    "If/Else Branch",
+    "Stop Rule",
+  ],
+  "client-implementation": [
+    "Client Requirements",
+    "Process Map",
+    "Testing Checklist",
+    "Launch QA",
+    "Troubleshooting",
+    "Mock Data",
+    "Handoff",
+  ],
+  "advanced-practical": [
+    "Integration",
+    "Webhook",
+    "API",
+    "Make",
+    "n8n",
+    "Zapier",
+    "Secret",
+  ],
+  "hire-ready-portfolio": [
+    "Portfolio Project",
+    "Case Study",
+    "Resume Bullet",
+    "Interview Prep",
+    "Scope",
+    "Deliverable",
+    "Self-Issued Certificate",
+  ],
+};
+
+function buildGlossaryReviewQuestions(
+  moduleId: string,
+  existingQuestions: QuizQuestion[],
+  glossary: GlossaryTerm[],
+) {
+  const existingCount = existingQuestions.filter(
+    (question) => question.moduleId === moduleId,
+  ).length;
+
+  if (existingCount >= 10) {
+    return [];
+  }
+
+  const terms = moduleGlossaryTerms[moduleId] ?? [];
+  const glossaryByTerm = new Map(glossary.map((item) => [item.term, item]));
+  const allTerms = glossary.map((item) => item.term);
+
+  return terms
+    .slice(0, 10 - existingCount)
+    .map((term, index): QuizQuestion | null => {
+      const glossaryTerm = glossaryByTerm.get(term);
+
+      if (!glossaryTerm) {
+        return null;
+      }
+
+      const distractors = allTerms
+        .filter((candidate) => candidate !== term)
+        .slice(index, index + 3);
+
+      return {
+        id: `${moduleId}-term-${index + 1}`,
+        moduleId,
+        question: `Which term means: ${glossaryTerm.definition}`,
+        choices: [term, ...distractors],
+        answer: term,
+        explanation: `${term}: ${glossaryTerm.example}`,
+      };
+    })
+    .filter((question): question is QuizQuestion => Boolean(question));
+}
+
 async function readJson<T>(relativePath: string): Promise<T> {
   const raw = await fs.readFile(path.join(contentDir, relativePath), "utf8");
   return JSON.parse(raw) as T;
@@ -72,7 +207,16 @@ export async function getLessonMarkdown(moduleId: string) {
 }
 
 export async function getQuizzes() {
-  return readJson<QuizQuestion[]>("quizzes/foundation.json");
+  const [modules, authoredQuestions, glossary] = await Promise.all([
+    getModules(),
+    readJson<QuizQuestion[]>("quizzes/foundation.json"),
+    getGlossary(),
+  ]);
+  const generatedQuestions = modules.flatMap((module) =>
+    buildGlossaryReviewQuestions(module.id, authoredQuestions, glossary),
+  );
+
+  return [...authoredQuestions, ...generatedQuestions];
 }
 
 export async function getScenarios() {

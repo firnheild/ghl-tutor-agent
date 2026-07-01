@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { CheckCircle2, CircleDashed, PlayCircle } from "lucide-react";
+import {
+  BookOpen,
+  CheckCircle2,
+  CircleDashed,
+  PlayCircle,
+} from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { getModules } from "@/lib/content";
 
@@ -16,6 +21,13 @@ export default async function LearnPage() {
           for the core beginner path, native GHL workflows, and external
           automation basics.
         </p>
+        <Link
+          href="/glossary"
+          className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm font-medium hover:bg-muted"
+        >
+          <BookOpen className="size-4 text-emerald-700" />
+          Open beginner glossary
+        </Link>
       </section>
 
       <section className="grid gap-4">

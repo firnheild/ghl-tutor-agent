@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Bot, ClipboardCheck } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
+import { CourseSidebar } from "@/components/course-sidebar";
 import { MarkdownLesson } from "@/components/markdown-lesson";
 import { getLessonMarkdown, getModule, getModules } from "@/lib/content";
 
@@ -16,9 +17,10 @@ export default async function LessonPage({
   params: Promise<{ moduleId: string }>;
 }) {
   const { moduleId } = await params;
-  const [module, markdown] = await Promise.all([
+  const [module, markdown, modules] = await Promise.all([
     getModule(moduleId),
     getLessonMarkdown(moduleId),
+    getModules(),
   ]);
 
   if (!module) {
@@ -35,29 +37,10 @@ export default async function LessonPage({
         Back to roadmap
       </Link>
 
-      <section className="grid gap-6 lg:grid-cols-[1fr_320px]">
-        <div className="rounded-lg border bg-card p-6">
-          {markdown ? (
-            <MarkdownLesson markdown={markdown} />
-          ) : (
-            <div className="space-y-4">
-              <p className="text-sm font-medium text-emerald-700">
-                Level {module.level}
-              </p>
-              <h1 className="text-3xl font-semibold">{module.title}</h1>
-              <p className="leading-7 text-muted-foreground">
-                {module.description}
-              </p>
-              <p className="rounded-md border bg-muted/50 p-4 text-sm">
-                This module is mapped for the full curriculum. Add a markdown
-                file in <code>content/lessons/{module.lesson}</code> to seed
-                the complete lesson.
-              </p>
-            </div>
-          )}
-        </div>
+      <section className="grid gap-6 lg:grid-cols-[320px_1fr]">
+        <CourseSidebar modules={modules} activeModuleId={module.id} />
 
-        <aside className="space-y-4">
+        <div className="space-y-4">
           <div className="rounded-lg border bg-card p-5">
             <div className="flex items-center gap-2">
               <ClipboardCheck className="size-5 text-emerald-700" />
@@ -90,7 +73,28 @@ export default async function LessonPage({
             </p>
             <p className="mt-2 text-sm leading-6">{module.outcome}</p>
           </div>
-        </aside>
+
+          <div className="rounded-lg border bg-card p-6">
+            {markdown ? (
+              <MarkdownLesson markdown={markdown} />
+            ) : (
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-emerald-700">
+                  Level {module.level}
+                </p>
+                <h1 className="text-3xl font-semibold">{module.title}</h1>
+                <p className="leading-7 text-muted-foreground">
+                  {module.description}
+                </p>
+                <p className="rounded-md border bg-muted/50 p-4 text-sm">
+                  This module is mapped for the full curriculum. Add a markdown
+                  file in <code>content/lessons/{module.lesson}</code> to seed
+                  the complete lesson.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       </section>
     </AppShell>
   );

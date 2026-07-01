@@ -9,7 +9,7 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - Local Markdown/JSON curriculum content, no vector database
 - Seed lessons for Levels 0-4, Level 6, and Level 8
 - Quiz mode, practice tasks, scenario simulator, portfolio builder, and progress tracker
-- Recorded quizzes for every skill level, with automatic module completion after passing
+- Recorded quizzes with at least 10 items per skill level, gated by prerequisite level completion
 - Zero-knowledge glossary for core GHL and automation terms
 - Mock client briefs and portfolio projects
 - Settings page documenting model, token, and cost controls
