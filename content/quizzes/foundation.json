@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q1",
+    "moduleId": "orientation",
+    "question": "Before building an automation, what should you map first?",
+    "choices": ["The client business process", "The logo colors", "The most advanced API option", "The social media calendar"],
+    "answer": "The client business process",
+    "explanation": "Automations should follow the actual lead source, next action, owner, and tracking needs."
+  },
+  {
+    "id": "q2",
+    "moduleId": "crm-foundations",
+    "question": "Which item is best stored as a custom field?",
+    "choices": ["Pet type", "New lead", "Booked appointment", "Needs review request"],
+    "answer": "Pet type",
+    "explanation": "A custom field stores a specific value. Tags are better for categories or automation signals."
+  },
+  {
+    "id": "q3",
+    "moduleId": "pipeline-sales",
+    "question": "What does an opportunity track?",
+    "choices": ["A deal or sales process stage", "The user's password", "A website color", "A generic note only"],
+    "answer": "A deal or sales process stage",
+    "explanation": "The contact is the person. The opportunity is the deal record inside a pipeline."
+  },
+  {
+    "id": "q4",
+    "moduleId": "calendar-booking",
+    "question": "Why add calendar buffers?",
+    "choices": ["To prevent back-to-back overload", "To delete old contacts", "To change the domain", "To replace SMS reminders"],
+    "answer": "To prevent back-to-back overload",
+    "explanation": "Buffers protect staff time between appointments."
+  },
+  {
+    "id": "q5",
+    "moduleId": "forms-funnels",
+    "question": "What should a thank-you page do?",
+    "choices": ["Confirm the next step", "Ask for the API key", "Hide the booking link forever", "Replace the CRM"],
+    "answer": "Confirm the next step",
+    "explanation": "A thank-you page should reduce confusion by telling the lead what happens next."
+  }
+]

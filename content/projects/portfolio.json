@@ -1,0 +1,32 @@
+[
+  {
+    "id": "pet-grooming-system",
+    "title": "Appointment booking system for a pet grooming shop",
+    "deliverables": ["Booking calendar plan", "Reminder sequence", "CRM fields and tags", "Testing checklist"],
+    "caseStudyPrompt": "Explain how the system reduces missed bookings and helps staff follow up."
+  },
+  {
+    "id": "dental-lead-funnel",
+    "title": "Lead capture and nurture funnel for a dental clinic",
+    "deliverables": ["Landing page outline", "Form fields", "Pipeline stages", "Seven-day nurture workflow"],
+    "caseStudyPrompt": "Show how the funnel turns ad clicks into booked consultations."
+  },
+  {
+    "id": "real-estate-pipeline",
+    "title": "Real estate buyer/seller pipeline",
+    "deliverables": ["Buyer pipeline", "Seller pipeline", "Smart lists", "Agent task rules"],
+    "caseStudyPrompt": "Describe how agents can prioritize hot leads and track deal stages."
+  },
+  {
+    "id": "missed-call-review",
+    "title": "Missed-call follow-up and review request system",
+    "deliverables": ["Missed-call text-back", "Internal alert", "Review request timing", "Opt-out note"],
+    "caseStudyPrompt": "Explain how response speed and review requests improve local business results."
+  },
+  {
+    "id": "agency-snapshot-plan",
+    "title": "Client onboarding snapshot plan for an agency",
+    "deliverables": ["Sub-account setup checklist", "Reusable workflows", "Required custom fields", "Launch QA list"],
+    "caseStudyPrompt": "Present the snapshot as a repeatable onboarding system for new clients."
+  }
+]

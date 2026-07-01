@@ -1,0 +1,23 @@
+[
+  {
+    "id": "pet-grooming-booking",
+    "business": "Pet grooming shop",
+    "brief": "The owner gets leads from Facebook messages and wants them to book appointments faster. Staff often forget to follow up after missed calls.",
+    "task": "Design the CRM tags, booking flow, and first automation you would build.",
+    "expected": ["Lead source tag", "Booking calendar", "Missed-call or new-lead SMS", "Internal notification", "Appointment reminders"]
+  },
+  {
+    "id": "dental-nurture",
+    "business": "Dental clinic",
+    "brief": "The clinic runs ads for free implant consultations. Leads submit a form but do not always book.",
+    "task": "Create a lead capture and nurture plan for the first seven days.",
+    "expected": ["Funnel form", "Consultation pipeline", "Book-now message", "Wait steps", "Reminder and follow-up sequence"]
+  },
+  {
+    "id": "real-estate-pipeline",
+    "business": "Real estate team",
+    "brief": "The team needs separate buyer and seller tracking. Agents want tasks when hot leads submit a valuation form.",
+    "task": "Map the pipeline stages, tags, and internal notification rules.",
+    "expected": ["Buyer/seller tags", "Pipeline stages", "Hot lead task", "Agent notification", "Lead source field"]
+  }
+]

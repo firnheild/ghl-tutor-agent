@@ -1,0 +1,42 @@
+# Orientation
+
+Skill level: Level 0
+
+Learning objective: Understand what GoHighLevel is, what jobs use it, and how to think like a CRM and automation builder.
+
+## Plain-English Explanation
+
+GoHighLevel is an all-in-one business growth platform. A local business can use it to collect leads, store contact details, book appointments, send follow-up messages, track deals, request reviews, and report results. Your job is not to click random buttons. Your job is to understand the business process and build a clean system around it.
+
+## Step-by-Step Instructions
+
+1. Identify the business type: clinic, agency, real estate team, ecommerce store, or appointment-based service.
+2. Identify the lead source: form, funnel, call, ad, referral, website, or manual import.
+3. Identify the next action: call, text, email, appointment, pipeline update, or internal notification.
+4. Decide what must be tracked: tags, lead status, opportunity stage, custom fields, tasks, and notes.
+5. Build only the simplest system that solves the client problem.
+
+## Example Client Situation
+
+A pet grooming shop wants fewer missed appointments and faster follow-up with new leads. A useful GHL helper would create a booking calendar, add reminder messages, tag new leads, and send an internal notification when a high-value service is requested.
+
+## Common Mistakes
+
+- Learning features without understanding the business process.
+- Creating too many tags before deciding what each tag is used for.
+- Automating follow-up before checking if contact data is clean.
+- Saying yes to advanced API work before the no-code workflow is clear.
+
+## Practice Task
+
+Write a two-sentence explanation of what GoHighLevel does for a dental clinic. Include one lead source and one follow-up action.
+
+## Quick Quiz
+
+Question: What should you understand first before building a GHL automation?
+
+Expected answer: The client business process, including where the lead comes from, what should happen next, and what needs to be tracked.
+
+## Hire-Ready Skill Note
+
+Clients hire beginners who can ask clear questions, document the process, and build simple systems that work. Tool knowledge matters, but process thinking gets you trusted.

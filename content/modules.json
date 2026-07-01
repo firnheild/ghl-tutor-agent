@@ -1,0 +1,92 @@
+[
+  {
+    "id": "orientation",
+    "level": 0,
+    "title": "Orientation",
+    "description": "Understand what GoHighLevel is, what jobs use it, and how CRM builders think.",
+    "outcome": "Explain GHL roles and identify the business process behind a client request.",
+    "lesson": "orientation.md",
+    "seeded": true
+  },
+  {
+    "id": "crm-foundations",
+    "level": 1,
+    "title": "CRM Foundations",
+    "description": "Contacts, tags, smart lists, custom fields, notes, tasks, and cleanup habits.",
+    "outcome": "Organize lead records so follow-up and automation are accurate.",
+    "lesson": "crm-foundations.md",
+    "seeded": true
+  },
+  {
+    "id": "pipeline-sales",
+    "level": 2,
+    "title": "Pipeline and Sales Process",
+    "description": "Build opportunity stages and know when leads should move manually or by automation.",
+    "outcome": "Map a real sales process into a practical GHL pipeline.",
+    "lesson": "pipeline-sales.md",
+    "seeded": true
+  },
+  {
+    "id": "calendar-booking",
+    "level": 3,
+    "title": "Calendar and Booking",
+    "description": "Calendar types, availability, booking links, appointment reminders, and no-show reduction.",
+    "outcome": "Design a simple booking flow for an appointment-based business.",
+    "lesson": "calendar-booking.md",
+    "seeded": true
+  },
+  {
+    "id": "forms-funnels",
+    "level": 4,
+    "title": "Forms, Funnels, and Lead Capture",
+    "description": "Forms, surveys, landing pages, thank-you pages, and basic conversion structure.",
+    "outcome": "Plan a lead capture funnel that sends clean data into the CRM.",
+    "lesson": "forms-funnels.md",
+    "seeded": true
+  },
+  {
+    "id": "communication",
+    "level": 5,
+    "title": "Communication",
+    "description": "Conversations inbox, email and SMS templates, follow-up logic, and reply handling.",
+    "outcome": "Write practical lead follow-up sequences with reply-aware handling.",
+    "lesson": "communication.md",
+    "seeded": false
+  },
+  {
+    "id": "workflow-automations",
+    "level": 6,
+    "title": "Workflow Automations",
+    "description": "Triggers, actions, wait steps, if/else logic, notifications, reminders, and re-engagement.",
+    "outcome": "Build and test automations from client requirements.",
+    "lesson": "workflow-automations.md",
+    "seeded": false
+  },
+  {
+    "id": "client-implementation",
+    "level": 7,
+    "title": "Client Implementation",
+    "description": "Onboarding checklists, requirement gathering, process mapping, testing, and troubleshooting.",
+    "outcome": "Run a small GHL implementation like a reliable operator.",
+    "lesson": "client-implementation.md",
+    "seeded": false
+  },
+  {
+    "id": "advanced-practical",
+    "level": 8,
+    "title": "Advanced Practical Skills",
+    "description": "Snapshots, sub-accounts, webhooks, API concepts, integrations, reporting, and optimization.",
+    "outcome": "Discuss advanced tools without skipping no-code fundamentals.",
+    "lesson": "advanced-practical.md",
+    "seeded": false
+  },
+  {
+    "id": "hire-ready-portfolio",
+    "level": 9,
+    "title": "Hire-Ready Portfolio",
+    "description": "Build five practical portfolio projects, case studies, resume bullets, and interview answers.",
+    "outcome": "Package your work for VA, CRM assistant, and automation specialist applications.",
+    "lesson": "hire-ready-portfolio.md",
+    "seeded": false
+  }
+]
