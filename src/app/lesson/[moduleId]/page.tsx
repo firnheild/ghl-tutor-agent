@@ -5,7 +5,13 @@ import { AppShell } from "@/components/app-shell";
 import { CourseSidebar } from "@/components/course-sidebar";
 import { LessonAccessGate } from "@/components/lesson-access-gate";
 import { MarkdownLesson } from "@/components/markdown-lesson";
-import { getLessonMarkdown, getModule, getModules } from "@/lib/content";
+import { VisualSnippets } from "@/components/visual-snippets";
+import {
+  getLessonMarkdown,
+  getModule,
+  getModules,
+  getVisualSnippets,
+} from "@/lib/content";
 
 export async function generateStaticParams() {
   const modules = await getModules();
@@ -18,10 +24,11 @@ export default async function LessonPage({
   params: Promise<{ moduleId: string }>;
 }) {
   const { moduleId } = await params;
-  const [module, markdown, modules] = await Promise.all([
+  const [module, markdown, modules, snippets] = await Promise.all([
     getModule(moduleId),
     getLessonMarkdown(moduleId),
     getModules(),
+    getVisualSnippets(moduleId),
   ]);
 
   if (!module) {
@@ -96,6 +103,7 @@ export default async function LessonPage({
                 </div>
               )}
             </div>
+            <VisualSnippets snippets={snippets} />
           </LessonAccessGate>
         </div>
       </section>

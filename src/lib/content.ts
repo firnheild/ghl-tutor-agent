@@ -42,6 +42,14 @@ export type GlossaryTerm = {
   example: string;
 };
 
+export type VisualSnippet = {
+  moduleId: string;
+  title: string;
+  image: string;
+  caption: string;
+  lookFor: string[];
+};
+
 const contentDir = path.join(process.cwd(), "content");
 
 const moduleGlossaryTerms: Record<string, string[]> = {
@@ -238,4 +246,9 @@ export async function getProjects() {
 
 export async function getGlossary() {
   return readJson<GlossaryTerm[]>("glossary.json");
+}
+
+export async function getVisualSnippets(moduleId: string) {
+  const snippets = await readJson<VisualSnippet[]>("visual-snippets.json");
+  return snippets.filter((snippet) => snippet.moduleId === moduleId);
 }

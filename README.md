@@ -12,6 +12,7 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - Recorded quizzes with at least 10 items per skill level, gated by prerequisite level completion
 - Zero-knowledge glossary for core GHL and automation terms
 - Coursera-style lesson sidebar, gated lesson progression, shuffled quiz choices, and dark/light theme toggle
+- Visual snippet slots for GHL screenshots so students can connect terms to the actual app UI
 - Mock client briefs and portfolio projects
 - Settings page documenting model, token, and cost controls
 - Certificate-style self-issued completion page in `/progress`
@@ -43,12 +44,19 @@ The app never exposes `OPENAI_API_KEY` to the browser. Tutor chat is the only MV
 content/
   modules.json
   lessons/*.md
+  visual-snippets.json
   quizzes/*.json
   scenarios/*.json
   projects/*.json
 ```
 
 Each seeded lesson includes a title, skill level, learning objective, plain-English explanation, steps, client example, mistakes, practice task, quiz, expected answer, and hire-ready note.
+
+## Adding Real GHL Screenshots
+
+The app includes placeholder visual snippets in `public/ghl-snippets/`. Replace these with screenshots from your own demo or training HighLevel account. Redact names, phone numbers, emails, message content, API keys, webhook URLs, client business data, and billing details before committing images.
+
+Keep the same filenames or update `content/visual-snippets.json` with the new image paths.
 
 ## Main Routes
 

@@ -1,0 +1,72 @@
+[
+  {
+    "moduleId": "orientation",
+    "title": "GHL dashboard overview",
+    "image": "/ghl-snippets/orientation-dashboard.svg",
+    "caption": "Use this slot for a clean screenshot of the main HighLevel dashboard or launchpad.",
+    "lookFor": ["Left navigation", "Sub-account context", "Main dashboard cards", "Where CRM tools are accessed"]
+  },
+  {
+    "moduleId": "crm-foundations",
+    "title": "Contacts record and CRM list",
+    "image": "/ghl-snippets/crm-contacts.svg",
+    "caption": "Use this slot for screenshots of the Contacts list and a single contact record.",
+    "lookFor": ["Contact name", "Phone and email fields", "Tags", "Custom fields", "Notes and tasks"]
+  },
+  {
+    "moduleId": "pipeline-sales",
+    "title": "Opportunities pipeline",
+    "image": "/ghl-snippets/pipeline-opportunities.svg",
+    "caption": "Use this slot for a screenshot of Opportunities with stage columns.",
+    "lookFor": ["Pipeline stages", "Opportunity cards", "Won and lost stages", "Manual movement areas"]
+  },
+  {
+    "moduleId": "calendar-booking",
+    "title": "Calendar and booking setup",
+    "image": "/ghl-snippets/calendar-booking.svg",
+    "caption": "Use this slot for calendar availability, appointment settings, or a booking link preview.",
+    "lookFor": ["Availability", "Appointment length", "Buffers", "Booking link", "Reminder settings"]
+  },
+  {
+    "moduleId": "forms-funnels",
+    "title": "Form and funnel builder",
+    "image": "/ghl-snippets/forms-funnels.svg",
+    "caption": "Use this slot for a form builder, funnel page, or thank-you page screenshot.",
+    "lookFor": ["Form fields", "Landing page", "Submit button", "Thank-you page", "CRM routing"]
+  },
+  {
+    "moduleId": "communication",
+    "title": "Conversations inbox",
+    "image": "/ghl-snippets/conversations-inbox.svg",
+    "caption": "Use this slot for a screenshot of the Conversations inbox with mock or redacted messages.",
+    "lookFor": ["Lead message thread", "SMS/email channel", "Assigned user", "Reply box", "Conversation status"]
+  },
+  {
+    "moduleId": "workflow-automations",
+    "title": "Workflow builder",
+    "image": "/ghl-snippets/workflow-builder.svg",
+    "caption": "Use this slot for a workflow canvas showing trigger, actions, waits, and conditions.",
+    "lookFor": ["Trigger", "Send SMS action", "Wait step", "If/else branch", "Stop rule"]
+  },
+  {
+    "moduleId": "client-implementation",
+    "title": "Client setup checklist",
+    "image": "/ghl-snippets/client-implementation.svg",
+    "caption": "Use this slot for a client onboarding checklist or sub-account setup screen.",
+    "lookFor": ["Business details", "Pipeline setup", "Calendar setup", "Workflow QA", "Launch checklist"]
+  },
+  {
+    "moduleId": "advanced-practical",
+    "title": "Webhook or integration setup",
+    "image": "/ghl-snippets/external-automation.svg",
+    "caption": "Use this slot for a webhook action in GHL plus Make, n8n, or Zapier receiving data.",
+    "lookFor": ["Webhook URL", "Mapped fields", "External scenario", "Error handling", "Secret safety"]
+  },
+  {
+    "moduleId": "hire-ready-portfolio",
+    "title": "Portfolio project proof",
+    "image": "/ghl-snippets/portfolio-proof.svg",
+    "caption": "Use this slot for final project screenshots, mock workflow diagrams, or case study visuals.",
+    "lookFor": ["Problem summary", "Build screenshots", "Workflow logic", "Testing proof", "Case study result"]
+  }
+]
