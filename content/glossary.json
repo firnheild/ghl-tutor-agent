@@ -1,0 +1,176 @@
+[
+  {
+    "term": "Lead",
+    "category": "CRM",
+    "definition": "A person or business that might become a customer. A lead can come from a form, funnel, call, ad, referral, website chat, social media message, import, or manual entry.",
+    "example": "A homeowner fills out a seller valuation form. That person is now a real estate lead."
+  },
+  {
+    "term": "Contact",
+    "category": "CRM",
+    "definition": "The person record inside the CRM. It usually stores name, phone, email, tags, notes, tasks, custom fields, conversations, and appointment history.",
+    "example": "Maria Santos is a contact with the tag Dental Implant Interest."
+  },
+  {
+    "term": "CRM",
+    "category": "CRM",
+    "definition": "Customer Relationship Management. In plain English, it is the organized database where a business tracks leads, customers, conversations, tasks, and sales activity.",
+    "example": "A clinic uses the CRM to see who requested a consultation and who still needs follow-up."
+  },
+  {
+    "term": "Tag",
+    "category": "CRM",
+    "definition": "A label added to a contact for organization, segmentation, or automation. Tags should have a clear purpose.",
+    "example": "New Lead, No Show, VIP Customer, and Whitening Interest are tags."
+  },
+  {
+    "term": "Custom Field",
+    "category": "CRM",
+    "definition": "A field created to store specific information that the business needs. Use fields for values, not broad labels.",
+    "example": "Pet Type, Preferred Service, Budget, Property Address, and Insurance Provider are custom fields."
+  },
+  {
+    "term": "Smart List",
+    "category": "CRM",
+    "definition": "A saved filtered view of contacts. It helps teams quickly find a useful group of people.",
+    "example": "A smart list can show all new leads from the last seven days who have not booked."
+  },
+  {
+    "term": "Form",
+    "category": "Lead Capture",
+    "definition": "A set of fields that collects information from a lead. Keep forms short unless the business truly needs more details.",
+    "example": "A grooming form asks for name, phone, pet type, service, and preferred appointment day."
+  },
+  {
+    "term": "Field",
+    "category": "Lead Capture",
+    "definition": "One question or input inside a form or contact record.",
+    "example": "Phone Number is one field. Service Interest is another field."
+  },
+  {
+    "term": "Funnel",
+    "category": "Lead Capture",
+    "definition": "A focused path that guides a visitor toward one clear action, usually from landing page to form to thank-you page.",
+    "example": "A dental implant funnel explains the offer, collects lead details, and invites the lead to book."
+  },
+  {
+    "term": "Landing Page",
+    "category": "Lead Capture",
+    "definition": "The page where a visitor arrives after clicking an ad, post, email, or link. It should focus on one offer and one action.",
+    "example": "A free buyer guide landing page asks visitors to enter their email."
+  },
+  {
+    "term": "Thank-You Page",
+    "category": "Lead Capture",
+    "definition": "The page shown after a form is submitted. It confirms what happened and tells the lead the next step.",
+    "example": "After submitting a clinic form, the thank-you page says to book a consultation."
+  },
+  {
+    "term": "Call",
+    "category": "Lead Source",
+    "definition": "A phone inquiry from a possible customer. Calls should be tracked because missed calls can still become leads.",
+    "example": "A missed call after business hours can trigger an automatic text-back."
+  },
+  {
+    "term": "Ad",
+    "category": "Lead Source",
+    "definition": "A paid promotion on platforms like Facebook, Google, Instagram, or TikTok that tries to attract attention and generate leads.",
+    "example": "A dental clinic runs a Facebook ad for free implant consultations."
+  },
+  {
+    "term": "Referral",
+    "category": "Lead Source",
+    "definition": "A lead recommended by an existing customer, partner, friend, or another business.",
+    "example": "A current grooming customer recommends a neighbor with a new dog."
+  },
+  {
+    "term": "Pipeline",
+    "category": "Sales Process",
+    "definition": "A visual tracker that shows where each deal or opportunity is in the sales process.",
+    "example": "New Lead, Contacted, Booked, Won, and Lost are pipeline stages."
+  },
+  {
+    "term": "Opportunity",
+    "category": "Sales Process",
+    "definition": "The deal record connected to a contact. It tracks where the lead is in a pipeline.",
+    "example": "Maria is the contact. Her implant consultation deal is the opportunity."
+  },
+  {
+    "term": "Calendar",
+    "category": "Booking",
+    "definition": "The booking system that controls availability, appointment length, buffers, team assignment, and booking links.",
+    "example": "A grooming shop calendar allows 60-minute appointments with a 15-minute buffer."
+  },
+  {
+    "term": "Workflow",
+    "category": "Automation",
+    "definition": "A rule-based automation that starts from a trigger and runs actions.",
+    "example": "When a form is submitted, send an SMS, create an opportunity, and notify staff."
+  },
+  {
+    "term": "Trigger",
+    "category": "Automation",
+    "definition": "The event that starts a workflow.",
+    "example": "Form Submitted, Tag Added, Appointment Booked, Customer Replied, and Missed Call are triggers."
+  },
+  {
+    "term": "Action",
+    "category": "Automation",
+    "definition": "Something a workflow does after it starts.",
+    "example": "Send SMS, Add Tag, Create Task, Move Opportunity, and Notify User are actions."
+  },
+  {
+    "term": "Wait Step",
+    "category": "Automation",
+    "definition": "A delay before the next workflow action.",
+    "example": "Wait one day, then check if the lead booked an appointment."
+  },
+  {
+    "term": "Condition",
+    "category": "Automation",
+    "definition": "A rule that checks whether something is true before deciding what happens next.",
+    "example": "If the contact has an appointment, stop the nurture messages."
+  },
+  {
+    "term": "Webhook",
+    "category": "External Automation",
+    "definition": "A URL that receives event data from another app. It is often used to send GHL data to Make, n8n, Zapier, or custom apps.",
+    "example": "A GHL form submission sends lead details to a Make webhook."
+  },
+  {
+    "term": "API",
+    "category": "External Automation",
+    "definition": "A structured way for software systems to talk to each other. Beginners should understand the concept before trying to code with it.",
+    "example": "An API can let one tool create or update records in another tool."
+  },
+  {
+    "term": "Make",
+    "category": "External Automation",
+    "definition": "A visual automation platform useful for multi-step scenarios, data formatting, routers, and app connections.",
+    "example": "Make can receive a GHL webhook, add a row to Google Sheets, and send a Slack message."
+  },
+  {
+    "term": "n8n",
+    "category": "External Automation",
+    "definition": "A flexible automation platform often used by technical builders, including self-hosted workflows and custom logic.",
+    "example": "n8n can receive a webhook, enrich lead data, and update another system."
+  },
+  {
+    "term": "Zapier",
+    "category": "External Automation",
+    "definition": "A beginner-friendly automation platform for connecting apps with simple triggers and actions.",
+    "example": "Zapier can send a new GHL lead to a spreadsheet or email tool."
+  },
+  {
+    "term": "Snapshot",
+    "category": "Agency Setup",
+    "definition": "A reusable package of GHL assets, such as workflows, funnels, fields, calendars, and pipelines, that can help set up new client accounts faster.",
+    "example": "An agency can create a dental clinic snapshot and adapt it for each new clinic client."
+  },
+  {
+    "term": "Sub-Account",
+    "category": "Agency Setup",
+    "definition": "A separate client workspace inside an agency HighLevel account.",
+    "example": "A marketing agency may have one sub-account for each local business client."
+  }
+]

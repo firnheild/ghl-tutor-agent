@@ -8,6 +8,16 @@ Learning objective: Create booking flows with availability, appointment reminder
 
 Calendars let leads book time without back-and-forth messages. A good booking system makes the next step obvious, confirms the appointment, reminds the lead, and gives staff enough context.
 
+## Key Terms
+
+- Calendar: The booking system that controls available days, times, appointment length, and who receives the appointment.
+- Appointment: A scheduled meeting, consultation, service visit, or call.
+- Availability: The times when a business or staff member is open for booking.
+- Buffer: Extra time before or after appointments so staff are not overloaded.
+- Booking link: A link a lead uses to choose an available time.
+- Appointment reminder: A message sent before the appointment so the lead does not forget.
+- No-show: When a lead books but does not attend.
+
 ## Step-by-Step Instructions
 
 1. Choose the right calendar type for the business need.

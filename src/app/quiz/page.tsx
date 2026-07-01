@@ -1,9 +1,9 @@
 import { AppShell } from "@/components/app-shell";
 import { QuizRunner } from "@/components/quiz-runner";
-import { getQuizzes } from "@/lib/content";
+import { getModules, getQuizzes } from "@/lib/content";
 
 export default async function QuizPage() {
-  const questions = await getQuizzes();
+  const [modules, questions] = await Promise.all([getModules(), getQuizzes()]);
 
   return (
     <AppShell>
@@ -11,11 +11,11 @@ export default async function QuizPage() {
         <p className="text-sm font-medium text-emerald-700">Quiz mode</p>
         <h1 className="text-3xl font-semibold">Check your GHL basics</h1>
         <p className="max-w-2xl text-muted-foreground">
-          Short checks keep the learner honest. Each answer gives immediate
-          correction in plain language.
+          Each skill level has its own recorded quiz. Pass the quiz and the
+          progress tracker automatically marks that level complete.
         </p>
       </section>
-      <QuizRunner questions={questions} />
+      <QuizRunner modules={modules} questions={questions} />
     </AppShell>
   );
 }

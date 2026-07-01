@@ -8,6 +8,15 @@ Learning objective: Map sales stages into pipelines and understand opportunities
 
 A pipeline shows where each lead is in the sales process. An opportunity is the deal record inside that pipeline. Good stages are based on real actions, not vague feelings.
 
+## Key Terms
+
+- Pipeline: A visual sales tracker with stages. It shows where leads are in the process from new inquiry to won or lost.
+- Opportunity: The deal record connected to a contact. One contact can exist in the CRM, while the opportunity tracks the sales process.
+- Stage: One step in the pipeline. Examples: New Lead, Contacted, Booked, Proposal Sent, Won, Lost.
+- Lead status: A simple label showing the contact's general status, such as new, active, won, lost, or unqualified.
+- Manual movement: A person moves the opportunity to another stage after checking what actually happened.
+- Automated movement: A workflow moves the opportunity when a clear event happens, such as form submitted or appointment booked.
+
 ## Step-by-Step Instructions
 
 1. List the client sales steps from new inquiry to won or lost.

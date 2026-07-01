@@ -3,6 +3,7 @@ import { Bot, Menu, Settings } from "lucide-react";
 
 const navItems = [
   { href: "/learn", label: "Learn" },
+  { href: "/glossary", label: "Glossary" },
   { href: "/agent", label: "Agent" },
   { href: "/practice", label: "Practice" },
   { href: "/quiz", label: "Quiz" },

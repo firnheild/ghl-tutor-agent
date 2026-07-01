@@ -12,6 +12,18 @@ External automation tools are useful when the work must leave GHL or combine sev
 
 Use external automation only when it solves a real problem. More tools mean more places for errors, costs, and secrets to manage.
 
+## Key Terms
+
+- Integration: A connection between two or more tools so data can move between them.
+- Webhook: A URL that receives event data from another app. Example: GHL sends a new lead to a Make webhook.
+- API: A structured way for software systems to talk to each other. Beginners do not need to code APIs first, but they should understand the concept.
+- Zapier: A beginner-friendly automation platform for connecting apps with simple triggers and actions.
+- Make: A visual automation platform useful for multi-step scenarios, routers, formatting, and app connections.
+- n8n: A flexible automation platform often used by more technical builders, including self-hosted workflows and custom logic.
+- Field mapping: Matching data from one app to the correct field in another app. Example: GHL Phone goes to Google Sheets Phone.
+- Error handling: Planning what happens when an automation fails.
+- Secret: A private credential such as an API key, webhook URL, token, or password. Secrets must never be exposed publicly.
+
 ## Step-by-Step Instructions
 
 1. First ask: Can this be done with a native GHL workflow?

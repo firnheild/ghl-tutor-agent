@@ -8,6 +8,17 @@ Learning objective: Understand what GoHighLevel is, what jobs use it, and how to
 
 GoHighLevel is an all-in-one business growth platform. A local business can use it to collect leads, store contact details, book appointments, send follow-up messages, track deals, request reviews, and report results. Your job is not to click random buttons. Your job is to understand the business process and build a clean system around it.
 
+## Key Terms
+
+- Lead: A person or business that might become a customer. A lead can come from a form, call, ad, referral, website chat, social media message, import, or manual entry.
+- CRM: Customer Relationship Management. In simple words, it is the organized contact database where the business tracks leads and customers.
+- Form: A set of questions or fields that collects information, such as name, phone, email, service interest, and preferred appointment time.
+- Funnel: A focused path that guides a visitor toward one action. A simple funnel can be landing page, form, and thank-you page.
+- Call: A phone inquiry from a possible customer. Calls can become leads when the business tracks and follows up with them.
+- Ad: A paid promotion on platforms like Facebook, Google, Instagram, or TikTok that tries to get attention and generate leads.
+- Referral: A lead recommended by another customer, partner, friend, or business.
+- Automation: A rule-based process that performs actions automatically, such as sending a text after a form is submitted.
+
 ## Step-by-Step Instructions
 
 1. Identify the business type: clinic, agency, real estate team, ecommerce store, or appointment-based service.

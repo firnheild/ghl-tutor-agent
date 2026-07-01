@@ -35,6 +35,13 @@ export type Project = {
   caseStudyPrompt: string;
 };
 
+export type GlossaryTerm = {
+  term: string;
+  category: string;
+  definition: string;
+  example: string;
+};
+
 const contentDir = path.join(process.cwd(), "content");
 
 async function readJson<T>(relativePath: string): Promise<T> {
@@ -74,4 +81,8 @@ export async function getScenarios() {
 
 export async function getProjects() {
   return readJson<Project[]>("projects/portfolio.json");
+}
+
+export async function getGlossary() {
+  return readJson<GlossaryTerm[]>("glossary.json");
 }

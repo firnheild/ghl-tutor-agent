@@ -8,6 +8,17 @@ Learning objective: Capture leads through forms, surveys, landing pages, and tha
 
 Forms and funnels collect lead information. The landing page creates interest, the form captures details, and the thank-you page tells the lead what happens next. A good lead capture system also sends the data into the CRM cleanly.
 
+## Key Terms
+
+- Form: A set of fields that collects information from a lead.
+- Field: One question or input inside a form. Examples: First Name, Phone, Email, Service Interest.
+- Survey: A longer form that asks more qualifying questions, often used when the business needs more detail.
+- Funnel: A focused path that moves a visitor toward one clear action, such as booking or submitting a lead form.
+- Landing page: The page where a visitor arrives after clicking an ad, link, or post.
+- Lead magnet: Something useful offered in exchange for contact information, such as a buyer guide, checklist, coupon, or free consultation.
+- Thank-you page: The page shown after form submission. It confirms the next step and can invite booking.
+- Conversion: When a visitor takes the desired action, such as submitting a form or booking an appointment.
+
 ## Step-by-Step Instructions
 
 1. Define the offer or reason the lead should submit details.

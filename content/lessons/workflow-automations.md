@@ -10,6 +10,18 @@ A workflow is a set of instructions that runs when something happens. In GHL, th
 
 The goal is not to automate everything. The goal is to make the next correct action happen reliably.
 
+## Key Terms
+
+- Workflow: A rule-based automation that starts from a trigger and runs actions.
+- Trigger: The event that starts the workflow. Examples: Form Submitted, Tag Added, Appointment Booked, Customer Replied, Missed Call.
+- Action: Something the workflow does. Examples: Send SMS, Send Email, Add Tag, Create Task, Move Opportunity, Notify User.
+- Wait step: A delay before the next action, such as wait one day or wait until appointment time.
+- Condition: A rule that checks if something is true. Example: Does the contact have an appointment?
+- If/else branch: A split path. If the condition is true, do one thing. If not, do another.
+- Internal notification: A message to the business team, not the lead.
+- Stop rule: A rule that removes or stops a contact from the workflow when they reply, book, buy, cancel, or no longer qualify.
+- Re-engagement: A workflow that follows up with old or inactive leads.
+
 ## Step-by-Step Instructions
 
 1. Write the business goal before touching the workflow builder.

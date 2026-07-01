@@ -2,6 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { Module, Project } from "@/lib/content";
+import {
+  readManualProgress,
+  readQuizResults,
+  writeManualProgress,
+  type QuizResults,
+} from "@/lib/progress";
 
 export function ProgressTracker({
   modules,
@@ -10,57 +16,97 @@ export function ProgressTracker({
   modules: Module[];
   projects: Project[];
 }) {
-  const [completed, setCompleted] = useState<Record<string, boolean>>(() => {
-    if (typeof window === "undefined") {
-      return {};
-    }
-
-    const saved = window.localStorage.getItem("ghl-progress");
-    return saved ? (JSON.parse(saved) as Record<string, boolean>) : {};
-  });
+  const [manualProgress, setManualProgress] = useState<Record<string, boolean>>(
+    () => readManualProgress(),
+  );
+  const [quizResults, setQuizResults] = useState<QuizResults>(() =>
+    readQuizResults(),
+  );
 
   useEffect(() => {
-    window.localStorage.setItem("ghl-progress", JSON.stringify(completed));
-  }, [completed]);
+    writeManualProgress(manualProgress);
+  }, [manualProgress]);
+
+  useEffect(() => {
+    function syncQuizResults() {
+      setQuizResults(readQuizResults());
+    }
+
+    window.addEventListener("storage", syncQuizResults);
+    window.addEventListener("focus", syncQuizResults);
+    return () => {
+      window.removeEventListener("storage", syncQuizResults);
+      window.removeEventListener("focus", syncQuizResults);
+    };
+  }, []);
 
   const totalItems = modules.length + projects.length;
-  const completedCount = useMemo(
-    () => Object.values(completed).filter(Boolean).length,
-    [completed],
-  );
+  const completedCount = useMemo(() => {
+    const completedModules = modules.filter(
+      (module) => quizResults[module.id]?.passed,
+    ).length;
+    const completedProjects = projects.filter(
+      (project) => manualProgress[`project-${project.id}`],
+    ).length;
+
+    return completedModules + completedProjects;
+  }, [manualProgress, modules, projects, quizResults]);
   const percent = Math.round((completedCount / totalItems) * 100);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
       <section className="space-y-4">
-        {[...modules, ...projects.map((project, index) => ({
-          id: `project-${project.id}`,
-          title: project.title,
-          level: index + 10,
-          description: "Portfolio project",
-          outcome: project.caseStudyPrompt,
-          lesson: "",
-          seeded: true,
-        }))].map((item) => (
+        {modules.map((module) => {
+          const result = quizResults[module.id];
+          const passed = Boolean(result?.passed);
+
+          return (
+            <div
+              key={module.id}
+              className="flex items-start gap-3 rounded-lg border bg-card p-4"
+            >
+              <span
+                className={`mt-1 grid size-5 place-items-center rounded-full border text-xs ${
+                  passed
+                    ? "border-emerald-600 bg-emerald-600 text-white"
+                    : "border-muted-foreground text-muted-foreground"
+                }`}
+              >
+                {passed ? "✓" : ""}
+              </span>
+              <span>
+                <span className="block font-semibold">{module.title}</span>
+                <span className="text-sm text-muted-foreground">
+                  {passed
+                    ? `Completed by quiz: ${result?.percent}%`
+                    : "Not complete yet. Pass this level's quiz to unlock completion."}
+                </span>
+              </span>
+            </div>
+          );
+        })}
+
+        {projects.map((project) => (
           <label
-            key={item.id}
+            key={project.id}
             className="flex items-start gap-3 rounded-lg border bg-card p-4"
           >
             <input
               type="checkbox"
               className="mt-1 size-4 accent-emerald-700"
-              checked={Boolean(completed[item.id])}
+              checked={Boolean(manualProgress[`project-${project.id}`])}
               onChange={(event) =>
-                setCompleted((current) => ({
+                setManualProgress((current) => ({
                   ...current,
-                  [item.id]: event.target.checked,
+                  [`project-${project.id}`]: event.target.checked,
                 }))
               }
             />
             <span>
-              <span className="block font-semibold">{item.title}</span>
+              <span className="block font-semibold">{project.title}</span>
               <span className="text-sm text-muted-foreground">
-                {item.outcome}
+                Portfolio project. Mark manually after your case study draft is
+                done.
               </span>
             </span>
           </label>

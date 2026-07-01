@@ -1,6 +1,14 @@
 [
   {
-    "id": "q1",
+    "id": "orientation-q1",
+    "moduleId": "orientation",
+    "question": "What is a lead?",
+    "choices": ["A person or business that may become a customer", "A finished website design", "A staff password", "A payment receipt only"],
+    "answer": "A person or business that may become a customer",
+    "explanation": "A lead is someone who has shown interest, such as by filling a form, calling, clicking an ad, or asking for information."
+  },
+  {
+    "id": "orientation-q2",
     "moduleId": "orientation",
     "question": "Before building an automation, what should you map first?",
     "choices": ["The client business process", "The logo colors", "The most advanced API option", "The social media calendar"],
@@ -8,7 +16,15 @@
     "explanation": "Automations should follow the actual lead source, next action, owner, and tracking needs."
   },
   {
-    "id": "q2",
+    "id": "orientation-q3",
+    "moduleId": "orientation",
+    "question": "Which example is a lead source?",
+    "choices": ["A referral from an existing customer", "A hidden API key", "A random password", "A browser tab"],
+    "answer": "A referral from an existing customer",
+    "explanation": "Lead sources include forms, funnels, calls, ads, referrals, website chat, imports, and manual entry."
+  },
+  {
+    "id": "crm-q1",
     "moduleId": "crm-foundations",
     "question": "Which item is best stored as a custom field?",
     "choices": ["Pet type", "New lead", "Booked appointment", "Needs review request"],
@@ -16,7 +32,23 @@
     "explanation": "A custom field stores a specific value. Tags are better for categories or automation signals."
   },
   {
-    "id": "q3",
+    "id": "crm-q2",
+    "moduleId": "crm-foundations",
+    "question": "What is a tag best used for?",
+    "choices": ["Labeling or segmenting contacts for organization and automation", "Storing a long private password", "Replacing all contact fields", "Designing the landing page"],
+    "answer": "Labeling or segmenting contacts for organization and automation",
+    "explanation": "Tags help group contacts, trigger workflows, or show a contact's status or interest."
+  },
+  {
+    "id": "crm-q3",
+    "moduleId": "crm-foundations",
+    "question": "What is a smart list?",
+    "choices": ["A saved filtered view of contacts", "A paid ad campaign", "A type of logo", "A completed invoice"],
+    "answer": "A saved filtered view of contacts",
+    "explanation": "Smart lists make it easy to find groups such as new leads, missing phone numbers, or contacts interested in one service."
+  },
+  {
+    "id": "pipeline-q1",
     "moduleId": "pipeline-sales",
     "question": "What does an opportunity track?",
     "choices": ["A deal or sales process stage", "The user's password", "A website color", "A generic note only"],
@@ -24,7 +56,23 @@
     "explanation": "The contact is the person. The opportunity is the deal record inside a pipeline."
   },
   {
-    "id": "q4",
+    "id": "pipeline-q2",
+    "moduleId": "pipeline-sales",
+    "question": "What should pipeline stages represent?",
+    "choices": ["Real steps in the sales process", "Random labels that sound impressive", "Only staff names", "Only email templates"],
+    "answer": "Real steps in the sales process",
+    "explanation": "Useful stages show where a lead actually is, such as New Lead, Contacted, Booked, Won, or Lost."
+  },
+  {
+    "id": "pipeline-q3",
+    "moduleId": "pipeline-sales",
+    "question": "When should movement through a pipeline stay manual?",
+    "choices": ["When human judgment is needed", "Whenever a button is green", "Only when the contact has no phone", "Never"],
+    "answer": "When human judgment is needed",
+    "explanation": "Automation can create or update simple stages, but humans should control stages that require sales judgment."
+  },
+  {
+    "id": "calendar-q1",
     "moduleId": "calendar-booking",
     "question": "Why add calendar buffers?",
     "choices": ["To prevent back-to-back overload", "To delete old contacts", "To change the domain", "To replace SMS reminders"],
@@ -32,7 +80,23 @@
     "explanation": "Buffers protect staff time between appointments."
   },
   {
-    "id": "q5",
+    "id": "calendar-q2",
+    "moduleId": "calendar-booking",
+    "question": "What is a booking link?",
+    "choices": ["A link where a lead can choose an available appointment time", "A secret API password", "A smart list filter only", "A review reply"],
+    "answer": "A link where a lead can choose an available appointment time",
+    "explanation": "Booking links reduce back-and-forth messages by letting leads pick a time from available slots."
+  },
+  {
+    "id": "calendar-q3",
+    "moduleId": "calendar-booking",
+    "question": "Why test a booking flow as a lead?",
+    "choices": ["To confirm the appointment, reminders, contact record, and notifications work", "To make the logo larger", "To remove all reminders", "To avoid using calendars"],
+    "answer": "To confirm the appointment, reminders, contact record, and notifications work",
+    "explanation": "Testing proves the full experience works before the client or customer uses it."
+  },
+  {
+    "id": "forms-q1",
     "moduleId": "forms-funnels",
     "question": "What should a thank-you page do?",
     "choices": ["Confirm the next step", "Ask for the API key", "Hide the booking link forever", "Replace the CRM"],
@@ -40,7 +104,47 @@
     "explanation": "A thank-you page should reduce confusion by telling the lead what happens next."
   },
   {
-    "id": "q6",
+    "id": "forms-q2",
+    "moduleId": "forms-funnels",
+    "question": "What is a form?",
+    "choices": ["A set of fields that collects information from a lead", "A pipeline stage", "A staff schedule", "An API integration only"],
+    "answer": "A set of fields that collects information from a lead",
+    "explanation": "Forms collect details like name, email, phone, service interest, and preferred appointment time."
+  },
+  {
+    "id": "forms-q3",
+    "moduleId": "forms-funnels",
+    "question": "What is the main purpose of a funnel?",
+    "choices": ["Guide a visitor toward one clear action", "Store all passwords", "Replace every workflow", "Hide contact data"],
+    "answer": "Guide a visitor toward one clear action",
+    "explanation": "A funnel is a focused path, often landing page to form to thank-you page."
+  },
+  {
+    "id": "communication-q1",
+    "moduleId": "communication",
+    "question": "What is the Conversations inbox used for?",
+    "choices": ["Managing replies and messages from leads and customers", "Editing website colors only", "Creating passwords", "Deleting all pipelines"],
+    "answer": "Managing replies and messages from leads and customers",
+    "explanation": "The Conversations inbox helps staff see and answer SMS, email, chat, and other customer messages."
+  },
+  {
+    "id": "communication-q2",
+    "moduleId": "communication",
+    "question": "What should a good follow-up message do?",
+    "choices": ["Be clear, short, and ask for one next action", "Explain every feature in GHL", "Ignore the lead's question", "Use confusing jargon"],
+    "answer": "Be clear, short, and ask for one next action",
+    "explanation": "Follow-up should move the lead one step forward, such as booking, replying, or confirming details."
+  },
+  {
+    "id": "communication-q3",
+    "moduleId": "communication",
+    "question": "Why should automations detect replies?",
+    "choices": ["So the lead can leave the nurture path and receive human help", "So every lead gets more duplicate texts", "So all tags are deleted", "So booking links stop working"],
+    "answer": "So the lead can leave the nurture path and receive human help",
+    "explanation": "Reply handling prevents awkward messages and tells staff when a real conversation is happening."
+  },
+  {
+    "id": "workflow-q1",
     "moduleId": "workflow-automations",
     "question": "What is the safest first step before building a GHL workflow?",
     "choices": ["Map the business goal and trigger", "Add every possible action", "Connect an external API immediately", "Import all old contacts"],
@@ -48,7 +152,7 @@
     "explanation": "A workflow should follow a clear business process. Start with the goal, trigger, next action, and stop rules."
   },
   {
-    "id": "q7",
+    "id": "workflow-q2",
     "moduleId": "workflow-automations",
     "question": "Why add stop or exit rules to a nurture workflow?",
     "choices": ["To avoid sending wrong messages after a lead replies or books", "To make the workflow look longer", "To delete pipeline stages", "To expose API keys"],
@@ -56,11 +160,83 @@
     "explanation": "Good automations stop or change path when the lead takes the desired action."
   },
   {
-    "id": "q8",
+    "id": "workflow-q3",
+    "moduleId": "workflow-automations",
+    "question": "What is a trigger?",
+    "choices": ["The event that starts a workflow", "A landing page headline", "A staff profile photo", "A final invoice"],
+    "answer": "The event that starts a workflow",
+    "explanation": "Triggers include form submitted, tag added, appointment booked, customer replied, or missed call."
+  },
+  {
+    "id": "implementation-q1",
+    "moduleId": "client-implementation",
+    "question": "What should you collect before building for a client?",
+    "choices": ["Requirements, current process, tools, roles, and launch goals", "Only their favorite color", "Only your own guesses", "Nothing"],
+    "answer": "Requirements, current process, tools, roles, and launch goals",
+    "explanation": "Implementation starts with understanding the client process and what success means."
+  },
+  {
+    "id": "implementation-q2",
+    "moduleId": "client-implementation",
+    "question": "Why create a testing checklist?",
+    "choices": ["To confirm every key path works before launch", "To make the project slower for no reason", "To skip client approval", "To hide errors"],
+    "answer": "To confirm every key path works before launch",
+    "explanation": "Testing catches broken forms, wrong tags, missing notifications, bad timing, and confusing messages."
+  },
+  {
+    "id": "implementation-q3",
+    "moduleId": "client-implementation",
+    "question": "What does troubleshooting mean?",
+    "choices": ["Finding why something failed and fixing the cause", "Deleting the whole account immediately", "Ignoring client reports", "Changing random settings"],
+    "answer": "Finding why something failed and fixing the cause",
+    "explanation": "Good troubleshooting follows evidence: logs, test contacts, workflow history, settings, and data."
+  },
+  {
+    "id": "advanced-q1",
     "moduleId": "advanced-practical",
     "question": "When should a beginner use Make, n8n, or Zapier with GHL?",
     "choices": ["When GHL needs to send data to another app or run logic GHL cannot handle cleanly", "For every automation, even simple reminders", "Before learning GHL workflows", "To store API keys in public pages"],
     "answer": "When GHL needs to send data to another app or run logic GHL cannot handle cleanly",
     "explanation": "Use native GHL workflows first. Add external automation only when another app, transformation, or advanced logic is truly needed."
+  },
+  {
+    "id": "advanced-q2",
+    "moduleId": "advanced-practical",
+    "question": "What is a webhook in plain English?",
+    "choices": ["A way for one app to send event data to another app's URL", "A website color palette", "A saved contact note", "A review star rating"],
+    "answer": "A way for one app to send event data to another app's URL",
+    "explanation": "Webhooks are commonly used to send data from GHL to Make, n8n, Zapier, or a custom app."
+  },
+  {
+    "id": "advanced-q3",
+    "moduleId": "advanced-practical",
+    "question": "What should you protect when using external automation tools?",
+    "choices": ["API keys, client data, webhook URLs, and private credentials", "Only button colors", "Only public testimonials", "Nothing"],
+    "answer": "API keys, client data, webhook URLs, and private credentials",
+    "explanation": "Secrets and client data should never be exposed in public pages, shared screenshots, or browser code."
+  },
+  {
+    "id": "portfolio-q1",
+    "moduleId": "hire-ready-portfolio",
+    "question": "What should a portfolio project prove?",
+    "choices": ["That you can solve a practical client problem", "That you know every setting by memory", "That you can copy random templates", "That you never test"],
+    "answer": "That you can solve a practical client problem",
+    "explanation": "A strong portfolio shows the client problem, your build plan, workflow logic, and expected business result."
+  },
+  {
+    "id": "portfolio-q2",
+    "moduleId": "hire-ready-portfolio",
+    "question": "What should a case study include?",
+    "choices": ["Client problem, solution, tools used, workflow summary, and result", "Only a screenshot with no explanation", "Only your hourly rate", "Only a list of passwords"],
+    "answer": "Client problem, solution, tools used, workflow summary, and result",
+    "explanation": "A case study helps hiring clients understand how you think and what value you can create."
+  },
+  {
+    "id": "portfolio-q3",
+    "moduleId": "hire-ready-portfolio",
+    "question": "What is the honest way to label the completion certificate in this MVP?",
+    "choices": ["Self-issued training completion, not official HighLevel certification", "Official HighLevel certification", "A government license", "A guaranteed job offer"],
+    "answer": "Self-issued training completion, not official HighLevel certification",
+    "explanation": "The app can show training completion, but it must not claim to be official HighLevel certification."
   }
 ]
