@@ -50,6 +50,17 @@ export type VisualSnippet = {
   lookFor: string[];
 };
 
+export type PracticeGuide = {
+  moduleId: string;
+  title: string;
+  image: string;
+  example: string;
+  steps: string[];
+  expectedOutput: string[];
+  screenshotPrompt: string;
+  testingNotes: string;
+};
+
 const contentDir = path.join(process.cwd(), "content");
 
 const moduleGlossaryTerms: Record<string, string[]> = {
@@ -251,4 +262,9 @@ export async function getGlossary() {
 export async function getVisualSnippets(moduleId: string) {
   const snippets = await readJson<VisualSnippet[]>("visual-snippets.json");
   return snippets.filter((snippet) => snippet.moduleId === moduleId);
+}
+
+export async function getPracticeGuide(moduleId: string) {
+  const guides = await readJson<PracticeGuide[]>("practice-guides.json");
+  return guides.find((guide) => guide.moduleId === moduleId);
 }

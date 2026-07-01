@@ -7,6 +7,10 @@ export function practiceProgressKey(moduleId: string) {
   return `practice-${moduleId}`;
 }
 
+export function practiceStepProgressKey(moduleId: string, stepIndex: number) {
+  return `practice-${moduleId}-step-${stepIndex}`;
+}
+
 export type QuizResult = {
   moduleId: string;
   score: number;

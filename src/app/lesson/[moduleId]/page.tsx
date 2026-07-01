@@ -11,6 +11,7 @@ import {
   getLessonMarkdown,
   getModule,
   getModules,
+  getPracticeGuide,
   getQuizzes,
   getScenarios,
   getVisualSnippets,
@@ -27,13 +28,22 @@ export default async function LessonPage({
   params: Promise<{ moduleId: string }>;
 }) {
   const { moduleId } = await params;
-  const [module, markdown, modules, snippets, questions, scenarios] = await Promise.all([
+  const [
+    module,
+    markdown,
+    modules,
+    snippets,
+    questions,
+    scenarios,
+    practiceGuide,
+  ] = await Promise.all([
     getModule(moduleId),
     getLessonMarkdown(moduleId),
     getModules(),
     getVisualSnippets(moduleId),
     getQuizzes(),
     getScenarios(),
+    getPracticeGuide(moduleId),
   ]);
 
   if (!module) {
@@ -109,6 +119,7 @@ export default async function LessonPage({
             <LessonCompletion
               module={module}
               modules={modules}
+              practiceGuide={practiceGuide}
               questions={questions}
               scenario={scenario}
             />

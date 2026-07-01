@@ -1,0 +1,207 @@
+[
+  {
+    "moduleId": "orientation",
+    "title": "Identify the GHL workspace",
+    "image": "/ghl-snippets/orientation-dashboard.svg",
+    "example": "Use a demo dashboard screenshot and label the left navigation, sub-account area, contacts, conversations, calendars, funnels, and automations.",
+    "steps": [
+      "Open a GHL demo, screenshot, or training image.",
+      "Point out where contacts, conversations, calendars, funnels, and automations live.",
+      "Write one sentence explaining what kind of business problem each area solves.",
+      "Save or upload a screenshot proof for your notes."
+    ],
+    "expectedOutput": [
+      "A labeled dashboard reference",
+      "A short explanation of the main GHL areas",
+      "One example client request matched to the correct area"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of the main dashboard with the left navigation visible.",
+    "testingNotes": "Can you explain where you would start if a client asks for faster lead follow-up?"
+  },
+  {
+    "moduleId": "crm-foundations",
+    "title": "Design clean tags and custom fields",
+    "image": "/ghl-snippets/crm-contacts.svg",
+    "example": "For a dental clinic, create tags like source-facebook-ad, interest-implant, status-new-lead, and custom fields like Preferred Appointment Time.",
+    "steps": [
+      "List the lead source, interest, and follow-up status tags needed for the client.",
+      "Decide which information belongs in a custom field instead of a tag.",
+      "Open a contact record or screenshot and identify where tags and custom fields appear.",
+      "Create a quick test contact plan using realistic but fake data."
+    ],
+    "expectedOutput": [
+      "Three to five tags",
+      "Two custom fields",
+      "One mock contact example",
+      "A screenshot or visual reference of the contact record"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of a contact record showing tags, fields, notes, or tasks.",
+    "testingNotes": "Check that tags describe groups or status, while custom fields store specific values."
+  },
+  {
+    "moduleId": "pipeline-sales",
+    "title": "Map a lead into pipeline stages",
+    "image": "/ghl-snippets/pipeline-opportunities.svg",
+    "example": "For a real estate team, use stages like New Lead, Contacted, Appointment Set, Offer Sent, Won, and Lost.",
+    "steps": [
+      "Write the business sales process from first inquiry to closed deal.",
+      "Turn each major step into a pipeline stage.",
+      "Choose when an opportunity should move manually and when automation can move it.",
+      "Create one fake opportunity card and decide which stage it belongs in."
+    ],
+    "expectedOutput": [
+      "A stage list",
+      "One example opportunity",
+      "Manual vs automated movement notes",
+      "A pipeline screenshot or sketch"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of pipeline columns and one example opportunity card.",
+    "testingNotes": "Check that every stage describes a real business step, not just a vague status."
+  },
+  {
+    "moduleId": "calendar-booking",
+    "title": "Plan a booking flow",
+    "image": "/ghl-snippets/calendar-booking.svg",
+    "example": "For a pet grooming shop, create a booking flow with grooming service length, buffer time, reminder messages, and a no-show follow-up.",
+    "steps": [
+      "Choose the appointment type and length.",
+      "Set the available days, business hours, and buffer time.",
+      "Write the confirmation and reminder message content.",
+      "Describe what should happen when someone no-shows."
+    ],
+    "expectedOutput": [
+      "Calendar settings plan",
+      "Booking link purpose",
+      "Reminder message draft",
+      "No-show handling note"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of calendar availability, booking settings, or a booking link preview.",
+    "testingNotes": "Test with a fake appointment and confirm the reminder timing makes sense."
+  },
+  {
+    "moduleId": "forms-funnels",
+    "title": "Build a lead capture path",
+    "image": "/ghl-snippets/forms-funnels.svg",
+    "example": "For a clinic ad, create a form with name, phone, email, service interest, and preferred appointment time, then send the lead to a thank-you page.",
+    "steps": [
+      "Choose the minimum fields needed to qualify the lead.",
+      "Decide which fields should be required.",
+      "Plan the thank-you page message and next step.",
+      "Write where the form should send the lead inside the CRM."
+    ],
+    "expectedOutput": [
+      "Form field list",
+      "Required field decisions",
+      "Thank-you page message",
+      "CRM routing plan"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of the form builder, funnel page, or thank-you page.",
+    "testingNotes": "Submit fake data and check that the lead arrives in the expected place."
+  },
+  {
+    "moduleId": "communication",
+    "title": "Draft reply-aware follow-up",
+    "image": "/ghl-snippets/conversations-inbox.svg",
+    "example": "For a new dental lead, write a first SMS, an email fallback, and a reply handling rule so the workflow stops when the lead responds.",
+    "steps": [
+      "Write a short SMS that sounds human and asks for one clear next action.",
+      "Write an email version for leads who do not respond by SMS.",
+      "Identify where replies appear in the Conversations inbox.",
+      "Decide when staff should take over manually."
+    ],
+    "expectedOutput": [
+      "One SMS draft",
+      "One email draft",
+      "Reply handling rule",
+      "Staff handoff note"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of a mock or redacted conversation thread.",
+    "testingNotes": "Check that messages do not continue after a lead replies or books."
+  },
+  {
+    "moduleId": "workflow-automations",
+    "title": "Design workflow steps",
+    "image": "/ghl-snippets/workflow-builder.svg",
+    "example": "Build a missed-call workflow with a trigger, SMS response, internal notification, wait step, if/else branch, and stop condition.",
+    "steps": [
+      "Choose the trigger that starts the workflow.",
+      "Add the first action the lead should receive.",
+      "Add internal staff notification or task creation.",
+      "Add a wait step and condition for reply or appointment booked.",
+      "Write the stop rule that prevents over-messaging."
+    ],
+    "expectedOutput": [
+      "Trigger",
+      "Lead-facing action",
+      "Internal action",
+      "Wait and condition",
+      "Stop rule"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of the workflow canvas showing trigger and actions.",
+    "testingNotes": "Run a fake test contact through the workflow and inspect every step outcome."
+  },
+  {
+    "moduleId": "client-implementation",
+    "title": "Prepare a launch checklist",
+    "image": "/ghl-snippets/client-implementation.svg",
+    "example": "Create a checklist for client requirements, CRM fields, form testing, workflow testing, staff handoff, and final launch notes.",
+    "steps": [
+      "Collect the client requirement in plain English.",
+      "List the GHL assets to create or update.",
+      "Write the fake-data test cases.",
+      "Write the handoff notes a staff member would need."
+    ],
+    "expectedOutput": [
+      "Requirement summary",
+      "Asset checklist",
+      "Testing checklist",
+      "Handoff note"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of your checklist, settings screen, or QA notes.",
+    "testingNotes": "A teammate should be able to follow your notes without asking what to click next."
+  },
+  {
+    "moduleId": "advanced-practical",
+    "title": "Plan an external automation",
+    "image": "/ghl-snippets/external-automation.svg",
+    "example": "Send a seller valuation lead from GHL to Make, n8n, or Zapier, then create a Google Sheets row and Slack notification.",
+    "steps": [
+      "Decide what stays inside native GHL workflows.",
+      "List the exact fields to send to the external tool.",
+      "Identify the webhook or integration trigger.",
+      "Write the external steps and error handling plan.",
+      "Write how you will protect API keys, tokens, and webhook URLs."
+    ],
+    "expectedOutput": [
+      "Native GHL boundary",
+      "Field mapping",
+      "Webhook or app trigger",
+      "External tool steps",
+      "Secret safety note"
+    ],
+    "screenshotPrompt": "Upload or keep a screenshot of the webhook action or external automation scenario.",
+    "testingNotes": "Send mock data first and verify the destination before using real client leads."
+  },
+  {
+    "moduleId": "hire-ready-portfolio",
+    "title": "Package proof into a case study",
+    "image": "/ghl-snippets/portfolio-proof.svg",
+    "example": "Turn one practice build into a short case study with problem, solution, screenshots, testing proof, and a resume bullet.",
+    "steps": [
+      "Choose one client-style problem you solved.",
+      "Add screenshots or diagrams from your build.",
+      "Write the workflow or CRM logic in simple language.",
+      "Add testing proof and what you would improve next.",
+      "Write one resume bullet from the project."
+    ],
+    "expectedOutput": [
+      "Case study title",
+      "Problem and solution",
+      "Visual proof",
+      "Testing proof",
+      "Resume bullet"
+    ],
+    "screenshotPrompt": "Upload or keep screenshots of the final workflow, form, pipeline, or case study page.",
+    "testingNotes": "The portfolio proof should make sense to a non-technical business owner."
+  }
+]

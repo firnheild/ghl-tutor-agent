@@ -1,12 +1,27 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
-import { CheckCircle2, ClipboardCheck, LockKeyhole } from "lucide-react";
-import type { Module, QuizQuestion, Scenario } from "@/lib/content";
+import Image from "next/image";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import {
+  Camera,
+  CheckCircle2,
+  ClipboardCheck,
+  FileImage,
+  ListChecks,
+  LockKeyhole,
+  ShieldCheck,
+} from "lucide-react";
+import type {
+  Module,
+  PracticeGuide,
+  QuizQuestion,
+  Scenario,
+} from "@/lib/content";
 import {
   isModuleUnlocked,
   PASSING_PERCENT,
   practiceProgressKey,
+  practiceStepProgressKey,
   writeManualProgress,
   writeQuizResults,
 } from "@/lib/progress";
@@ -90,24 +105,40 @@ function getServerShuffleSeedSnapshot() {
 export function LessonCompletion({
   module,
   modules,
+  practiceGuide,
   questions,
   scenario,
 }: {
   module: Module;
   modules: Module[];
+  practiceGuide?: PracticeGuide;
   questions: QuizQuestion[];
   scenario: Scenario;
 }) {
   const manualProgress = useManualProgress();
   const quizResults = useQuizResults();
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [builderNotes, setBuilderNotes] = useState("");
+  const [testingNotes, setTestingNotes] = useState("");
+  const [proofImageUrl, setProofImageUrl] = useState<string | null>(null);
+  const [proofImageName, setProofImageName] = useState<string | null>(null);
   const shuffleSeed = useSyncExternalStore(
     subscribeToShuffleSeed,
     getShuffleSeedSnapshot,
     getServerShuffleSeedSnapshot,
   );
   const practiceKey = practiceProgressKey(module.id);
-  const practiceComplete = Boolean(manualProgress[practiceKey]);
+  const guideSteps = practiceGuide?.steps ?? [
+    "Read the lesson example.",
+    "Write a short implementation plan.",
+    "Add testing notes before taking the quiz.",
+  ];
+  const completedStepCount = guideSteps.filter((_, index) =>
+    Boolean(manualProgress[practiceStepProgressKey(module.id, index)]),
+  ).length;
+  const allPracticeStepsComplete = completedStepCount === guideSteps.length;
+  const practiceComplete =
+    Boolean(manualProgress[practiceKey]) && allPracticeStepsComplete;
   const moduleUnlocked = isModuleUnlocked(modules, module.id, quizResults);
   const moduleQuestions = questions.filter(
     (question) => question.moduleId === module.id,
@@ -140,11 +171,55 @@ export function LessonCompletion({
   const quizReady =
     moduleUnlocked && practiceComplete && answeredCount === moduleQuestions.length;
 
-  function setPracticeComplete(complete: boolean) {
+  useEffect(() => {
+    return () => {
+      if (proofImageUrl) {
+        URL.revokeObjectURL(proofImageUrl);
+      }
+    };
+  }, [proofImageUrl]);
+
+  function setPracticeStepComplete(stepIndex: number, complete: boolean) {
+    const nextProgress = {
+      ...manualProgress,
+      [practiceStepProgressKey(module.id, stepIndex)]: complete,
+    };
+    const nextCompletedCount = guideSteps.filter((_, index) =>
+      index === stepIndex
+        ? complete
+        : Boolean(nextProgress[practiceStepProgressKey(module.id, index)]),
+    ).length;
+
+    writeManualProgress({
+      ...nextProgress,
+      [practiceKey]: nextCompletedCount === guideSteps.length,
+    });
+  }
+
+  function markPracticeComplete() {
     writeManualProgress({
       ...manualProgress,
-      [practiceKey]: complete,
+      ...Object.fromEntries(
+        guideSteps.map((_, index) => [
+          practiceStepProgressKey(module.id, index),
+          true,
+        ]),
+      ),
+      [practiceKey]: true,
     });
+  }
+
+  function selectProofImage(file?: File) {
+    if (!file) {
+      return;
+    }
+
+    if (proofImageUrl) {
+      URL.revokeObjectURL(proofImageUrl);
+    }
+
+    setProofImageName(file.name);
+    setProofImageUrl(URL.createObjectURL(file));
   }
 
   function submitQuiz() {
@@ -182,22 +257,162 @@ export function LessonCompletion({
             </h2>
           </div>
         </div>
-        <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
+        <div className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="space-y-3">
             <p className="text-sm leading-6 text-muted-foreground">
               Client: {scenario.business}
             </p>
             <p className="text-sm leading-6">{scenario.task}</p>
-            <div className="rounded-md border bg-muted/40 p-3 text-sm leading-6">
-              Submit to yourself: a short implementation plan with tags, fields,
-              workflow steps, or testing notes where relevant.
-            </div>
+            {practiceGuide ? (
+              <div className="rounded-md border bg-muted/40 p-3 text-sm leading-6">
+                <span className="font-medium">Example:</span>{" "}
+                {practiceGuide.example}
+              </div>
+            ) : null}
           </div>
+          {practiceGuide ? (
+            <div className="rounded-lg border bg-background p-3">
+              <div className="overflow-hidden rounded-md border bg-muted">
+                <Image
+                  src={practiceGuide.image}
+                  alt={`${practiceGuide.title} practice example`}
+                  width={1200}
+                  height={720}
+                  className="h-auto w-full"
+                />
+              </div>
+              <p className="mt-3 flex items-center gap-2 text-sm font-medium">
+                <Camera className="size-4 text-emerald-700" />
+                Example visual for this practice
+              </p>
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mt-5 grid gap-4 xl:grid-cols-2">
+          <div className="rounded-lg border bg-background p-4">
+            <p className="mb-3 flex items-center gap-2 font-semibold">
+              <ListChecks className="size-4 text-emerald-700" />
+              Do the practice
+            </p>
+            <div className="space-y-2">
+              {guideSteps.map((step, index) => {
+                const stepKey = practiceStepProgressKey(module.id, index);
+
+                return (
+                  <label
+                    key={step}
+                    className="flex items-start gap-3 rounded-md border bg-card p-3 text-sm leading-6"
+                  >
+                    <input
+                      checked={Boolean(manualProgress[stepKey])}
+                      className="mt-1 size-4 accent-emerald-700"
+                      onChange={(event) =>
+                        setPracticeStepComplete(index, event.target.checked)
+                      }
+                      type="checkbox"
+                    />
+                    <span>{step}</span>
+                  </label>
+                );
+              })}
+            </div>
+            <button
+              className="mt-3 w-full rounded-md border px-3 py-2 text-sm font-medium hover:bg-muted"
+              onClick={markPracticeComplete}
+              type="button"
+            >
+              Mark all practice steps done
+            </button>
+          </div>
+
+          <div className="rounded-lg border bg-background p-4">
+            <p className="mb-3 flex items-center gap-2 font-semibold">
+              <ShieldCheck className="size-4 text-emerald-700" />
+              Expected output
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {(practiceGuide?.expectedOutput ?? [
+                "Implementation plan",
+                "Testing notes",
+                "Screenshot proof",
+              ]).map((item) => (
+                <span
+                  key={item}
+                  className="rounded-md border bg-card px-2 py-1 text-xs text-muted-foreground"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="mt-4 rounded-md border bg-muted/40 p-3 text-sm leading-6">
+              {practiceGuide?.testingNotes ??
+                "Test your plan with fake data before using real client data."}
+            </div>
+            <label className="mt-4 flex cursor-pointer items-center justify-between gap-3 rounded-md border bg-card px-3 py-2 text-sm hover:bg-muted">
+              <span className="inline-flex items-center gap-2">
+                <FileImage className="size-4 text-emerald-700" />
+                Add screenshot proof
+              </span>
+              <input
+                accept="image/*"
+                className="sr-only"
+                onChange={(event) => selectProofImage(event.target.files?.[0])}
+                type="file"
+              />
+            </label>
+            <p className="mt-2 text-xs leading-5 text-muted-foreground">
+              {practiceGuide?.screenshotPrompt ??
+                "Use a redacted screenshot or practice mockup."}
+            </p>
+            {proofImageUrl ? (
+              <div className="mt-3 overflow-hidden rounded-md border">
+                {/* Local object URLs cannot be optimized by next/image. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  alt={proofImageName ?? "Practice proof"}
+                  className="h-auto w-full"
+                  src={proofImageUrl}
+                />
+              </div>
+            ) : null}
+          </div>
+        </div>
+
+        <div className="mt-5 grid gap-4 lg:grid-cols-2">
+          <label className="block rounded-lg border bg-background p-4">
+            <span className="text-sm font-medium">Builder notes</span>
+            <textarea
+              className="mt-2 min-h-28 w-full rounded-md border bg-card p-3 text-sm outline-none focus:ring-2 focus:ring-emerald-600"
+              onChange={(event) => setBuilderNotes(event.target.value)}
+              placeholder="Write the tags, fields, workflow steps, or setup choices you would build..."
+              value={builderNotes}
+            />
+          </label>
+          <label className="block rounded-lg border bg-background p-4">
+            <span className="text-sm font-medium">Testing notes</span>
+            <textarea
+              className="mt-2 min-h-28 w-full rounded-md border bg-card p-3 text-sm outline-none focus:ring-2 focus:ring-emerald-600"
+              onChange={(event) => setTestingNotes(event.target.value)}
+              placeholder="Write how you would test this with fake data before a client launch..."
+              value={testingNotes}
+            />
+          </label>
+        </div>
+
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-muted-foreground">
+            {completedStepCount}/{guideSteps.length} practice steps complete
+          </p>
           <label className="flex items-center gap-2 rounded-md border bg-background px-3 py-2 text-sm font-medium">
             <input
               checked={practiceComplete}
               className="size-4 accent-emerald-700"
-              onChange={(event) => setPracticeComplete(event.target.checked)}
+              onChange={(event) => {
+                if (event.target.checked) {
+                  markPracticeComplete();
+                }
+              }}
               type="checkbox"
             />
             Practice done
