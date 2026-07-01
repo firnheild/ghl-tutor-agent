@@ -3,11 +3,26 @@
 import { useMemo, useState } from "react";
 import type { Module, QuizQuestion } from "@/lib/content";
 import {
+  isModuleUnlocked,
   PASSING_PERCENT,
   readQuizResults,
   writeQuizResults,
   type QuizResults,
 } from "@/lib/progress";
+
+function shuffleChoices(choices: string[]) {
+  const shuffled = [...choices];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [
+      shuffled[swapIndex],
+      shuffled[index],
+    ];
+  }
+
+  return shuffled;
+}
 
 export function QuizRunner({
   modules,
@@ -21,6 +36,14 @@ export function QuizRunner({
     Record<string, Record<string, string>>
   >({});
   const [results, setResults] = useState<QuizResults>(() => readQuizResults());
+  const [choicesByQuestion] = useState<Record<string, string[]>>(() =>
+    Object.fromEntries(
+      questions.map((question) => [
+        question.id,
+        shuffleChoices(question.choices),
+      ]),
+    ),
+  );
 
   const activeModule = modules.find((module) => module.id === activeModuleId);
   const activeQuestions = questions.filter(
@@ -47,14 +70,8 @@ export function QuizRunner({
       : 0;
   const passed = percent >= PASSING_PERCENT;
   const result = results[activeModuleId];
-  const activeModuleIndex = modules.findIndex(
-    (module) => module.id === activeModuleId,
-  );
   const isActiveLocked =
-    activeModuleIndex > 0 &&
-    modules
-      .slice(0, activeModuleIndex)
-      .some((module) => !results[module.id]?.passed);
+    !isModuleUnlocked(modules, activeModuleId, results);
 
   function recordResult() {
     if (isActiveLocked) {
@@ -81,13 +98,9 @@ export function QuizRunner({
   return (
     <div className="grid gap-4 lg:grid-cols-[280px_1fr]">
       <aside className="space-y-2">
-        {modules.map((module, index) => {
+        {modules.map((module) => {
           const moduleResult = results[module.id];
-          const locked =
-            index > 0 &&
-            modules
-              .slice(0, index)
-              .some((previousModule) => !results[previousModule.id]?.passed);
+          const locked = !isModuleUnlocked(modules, module.id, results);
           return (
             <button
               key={module.id}
@@ -163,7 +176,7 @@ export function QuizRunner({
           <div key={question.id} className="rounded-lg border bg-card p-5">
             <p className="font-semibold">{question.question}</p>
             <div className="mt-4 grid gap-2">
-              {question.choices.map((choice) => {
+              {(choicesByQuestion[question.id] ?? question.choices).map((choice) => {
                 const selected = answers[question.id] === choice;
                 return (
                   <button

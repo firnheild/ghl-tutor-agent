@@ -11,6 +11,7 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - Quiz mode, practice tasks, scenario simulator, portfolio builder, and progress tracker
 - Recorded quizzes with at least 10 items per skill level, gated by prerequisite level completion
 - Zero-knowledge glossary for core GHL and automation terms
+- Coursera-style lesson sidebar, gated lesson progression, shuffled quiz choices, and dark/light theme toggle
 - Mock client briefs and portfolio projects
 - Settings page documenting model, token, and cost controls
 - Certificate-style self-issued completion page in `/progress`

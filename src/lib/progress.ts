@@ -39,3 +39,19 @@ export function readManualProgress(): Record<string, boolean> {
 export function writeManualProgress(progress: Record<string, boolean>) {
   window.localStorage.setItem(MANUAL_PROGRESS_KEY, JSON.stringify(progress));
 }
+
+export function isModuleUnlocked(
+  modules: { id: string }[],
+  moduleId: string,
+  results: QuizResults,
+) {
+  const moduleIndex = modules.findIndex((module) => module.id === moduleId);
+
+  if (moduleIndex <= 0) {
+    return true;
+  }
+
+  return modules
+    .slice(0, moduleIndex)
+    .every((module) => results[module.id]?.passed);
+}

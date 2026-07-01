@@ -1,9 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Check, Circle, ExternalLink } from "lucide-react";
+import {
+  BookOpen,
+  Check,
+  Circle,
+  ExternalLink,
+  LockKeyhole,
+} from "lucide-react";
 import type { Module } from "@/lib/content";
-import { readQuizResults, type QuizResults } from "@/lib/progress";
+import {
+  isModuleUnlocked,
+  readQuizResults,
+  type QuizResults,
+} from "@/lib/progress";
 import { useMemo } from "react";
 
 export function CourseSidebar({
@@ -23,19 +33,21 @@ export function CourseSidebar({
           GHL Tutor Agent Training
         </h2>
 
-        <div className="mt-5 space-y-6">
+        <div className="mt-5 space-y-2">
           {modules.map((module) => {
             const active = module.id === activeModuleId;
             const passed = Boolean(results[module.id]?.passed);
+            const unlocked = isModuleUnlocked(modules, module.id, results);
+            const itemClassName = `grid grid-cols-[24px_1fr] gap-3 rounded-md p-3 text-sm transition ${
+              active
+                ? "bg-emerald-50 text-emerald-950 dark:bg-emerald-950/40 dark:text-emerald-50"
+                : unlocked
+                  ? "hover:bg-muted"
+                  : "cursor-not-allowed opacity-50"
+            }`;
 
-            return (
-              <Link
-                key={module.id}
-                href={`/lesson/${module.id}`}
-                className={`grid grid-cols-[24px_1fr] gap-3 rounded-md p-3 text-sm transition ${
-                  active ? "bg-emerald-50 text-emerald-950" : "hover:bg-muted"
-                }`}
-              >
+            const itemContent = (
+              <>
                 <span
                   className={`mt-0.5 grid size-5 place-items-center rounded-full ${
                     passed
@@ -43,7 +55,13 @@ export function CourseSidebar({
                       : "text-muted-foreground"
                   }`}
                 >
-                  {passed ? <Check className="size-3.5" /> : <Circle className="size-4" />}
+                  {passed ? (
+                    <Check className="size-3.5" />
+                  ) : unlocked ? (
+                    <Circle className="size-4" />
+                  ) : (
+                    <LockKeyhole className="size-4" />
+                  )}
                 </span>
                 <span>
                   <span className="block text-xs font-medium text-muted-foreground">
@@ -53,10 +71,24 @@ export function CourseSidebar({
                     {module.title}
                   </span>
                   <span className="mt-1 block text-xs text-muted-foreground">
-                    Lesson • Quiz • Practice
+                    {unlocked ? "Lesson - Quiz - Practice" : "Locked"}
                   </span>
                 </span>
+              </>
+            );
+
+            return unlocked ? (
+              <Link
+                key={module.id}
+                href={`/lesson/${module.id}`}
+                className={itemClassName}
+              >
+                {itemContent}
               </Link>
+            ) : (
+              <div key={module.id} className={itemClassName}>
+                {itemContent}
+              </div>
             );
           })}
         </div>

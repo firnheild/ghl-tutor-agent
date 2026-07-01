@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Bot, Menu, Settings } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navItems = [
   { href: "/learn", label: "Learn" },
@@ -11,7 +12,13 @@ const navItems = [
   { href: "/progress", label: "Progress" },
 ];
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({
+  children,
+  fullWidth = false,
+}: {
+  children: React.ReactNode;
+  fullWidth?: boolean;
+}) {
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-20 border-b bg-background/95 backdrop-blur">
@@ -34,6 +41,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Link
               href="/settings"
               aria-label="Settings"
@@ -50,7 +58,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
-      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+      <main
+        className={`mx-auto flex w-full flex-1 flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8 ${
+          fullWidth ? "max-w-none" : "max-w-7xl"
+        }`}
+      >
         {children}
       </main>
     </div>
