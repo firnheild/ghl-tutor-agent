@@ -1,36 +1,59 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 
 type Theme = "light" | "dark";
+const THEME_CHANGE_EVENT = "ghl-theme-change";
 
 function applyTheme(theme: Theme) {
   document.documentElement.classList.toggle("dark", theme === "dark");
   window.localStorage.setItem("ghl-theme", theme);
+  window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+}
+
+function getPreferredTheme(): Theme {
+  const savedTheme = window.localStorage.getItem("ghl-theme") as Theme | null;
+
+  return (
+    savedTheme ??
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light")
+  );
+}
+
+function subscribeToTheme(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(THEME_CHANGE_EVENT, callback);
+
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(THEME_CHANGE_EVENT, callback);
+  };
+}
+
+function getThemeSnapshot() {
+  return getPreferredTheme();
+}
+
+function getServerThemeSnapshot(): Theme {
+  return "light";
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === "undefined") {
-      return "light";
-    }
-
-    const savedTheme = window.localStorage.getItem("ghl-theme") as Theme | null;
-    return savedTheme ??
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-  });
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
 
   useEffect(() => {
     applyTheme(theme);
   }, [theme]);
 
   function toggleTheme() {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    applyTheme(nextTheme);
+    applyTheme(theme === "dark" ? "light" : "dark");
   }
 
   return (

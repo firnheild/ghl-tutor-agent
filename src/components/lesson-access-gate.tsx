@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { LockKeyhole } from "lucide-react";
 import type { Module } from "@/lib/content";
-import { isModuleUnlocked, readQuizResults } from "@/lib/progress";
+import { useQuizResults } from "@/lib/progress-hooks";
+import { isModuleUnlocked } from "@/lib/progress";
 
 export function LessonAccessGate({
   modules,
@@ -14,7 +15,7 @@ export function LessonAccessGate({
   moduleId: string;
   children: React.ReactNode;
 }) {
-  const results = readQuizResults();
+  const results = useQuizResults();
   const unlocked = isModuleUnlocked(modules, moduleId, results);
   const moduleIndex = modules.findIndex((module) => module.id === moduleId);
   const previousModule = moduleIndex > 0 ? modules[moduleIndex - 1] : null;

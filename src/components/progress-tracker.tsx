@@ -1,13 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { Module, Project } from "@/lib/content";
-import {
-  readManualProgress,
-  readQuizResults,
-  writeManualProgress,
-  type QuizResults,
-} from "@/lib/progress";
+import { useManualProgress, useQuizResults } from "@/lib/progress-hooks";
+import { writeManualProgress } from "@/lib/progress";
 
 export function ProgressTracker({
   modules,
@@ -16,29 +12,8 @@ export function ProgressTracker({
   modules: Module[];
   projects: Project[];
 }) {
-  const [manualProgress, setManualProgress] = useState<Record<string, boolean>>(
-    () => readManualProgress(),
-  );
-  const [quizResults, setQuizResults] = useState<QuizResults>(() =>
-    readQuizResults(),
-  );
-
-  useEffect(() => {
-    writeManualProgress(manualProgress);
-  }, [manualProgress]);
-
-  useEffect(() => {
-    function syncQuizResults() {
-      setQuizResults(readQuizResults());
-    }
-
-    window.addEventListener("storage", syncQuizResults);
-    window.addEventListener("focus", syncQuizResults);
-    return () => {
-      window.removeEventListener("storage", syncQuizResults);
-      window.removeEventListener("focus", syncQuizResults);
-    };
-  }, []);
+  const manualProgress = useManualProgress();
+  const quizResults = useQuizResults();
 
   const totalItems = modules.length + projects.length;
   const completedCount = useMemo(() => {
@@ -96,10 +71,10 @@ export function ProgressTracker({
               className="mt-1 size-4 accent-emerald-700"
               checked={Boolean(manualProgress[`project-${project.id}`])}
               onChange={(event) =>
-                setManualProgress((current) => ({
-                  ...current,
+                writeManualProgress({
+                  ...manualProgress,
                   [`project-${project.id}`]: event.target.checked,
-                }))
+                })
               }
             />
             <span>

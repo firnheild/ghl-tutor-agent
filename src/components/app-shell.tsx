@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Bot, Menu, Settings } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { ThemeToggleLoader } from "@/components/theme-toggle-loader";
 
 const navItems = [
   { href: "/learn", label: "Learn" },
@@ -41,7 +41,7 @@ export function AppShell({
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <ThemeToggle />
+            <ThemeToggleLoader />
             <Link
               href="/settings"
               aria-label="Settings"

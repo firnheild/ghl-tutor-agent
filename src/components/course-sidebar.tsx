@@ -9,12 +9,8 @@ import {
   LockKeyhole,
 } from "lucide-react";
 import type { Module } from "@/lib/content";
-import {
-  isModuleUnlocked,
-  readQuizResults,
-  type QuizResults,
-} from "@/lib/progress";
-import { useMemo } from "react";
+import { useQuizResults } from "@/lib/progress-hooks";
+import { isModuleUnlocked } from "@/lib/progress";
 
 export function CourseSidebar({
   modules,
@@ -23,7 +19,7 @@ export function CourseSidebar({
   modules: Module[];
   activeModuleId: string;
 }) {
-  const results = useMemo<QuizResults>(() => readQuizResults(), []);
+  const results = useQuizResults();
 
   return (
     <aside className="lg:sticky lg:top-20 lg:h-[calc(100vh-6rem)] lg:overflow-y-auto">

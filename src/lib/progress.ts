@@ -1,5 +1,6 @@
 export const QUIZ_RESULTS_KEY = "ghl-quiz-results";
 export const MANUAL_PROGRESS_KEY = "ghl-progress";
+export const PROGRESS_CHANGE_EVENT = "ghl-progress-change";
 export const PASSING_PERCENT = 66;
 
 export type QuizResult = {
@@ -25,6 +26,7 @@ export function readQuizResults(): QuizResults {
 
 export function writeQuizResults(results: QuizResults) {
   window.localStorage.setItem(QUIZ_RESULTS_KEY, JSON.stringify(results));
+  window.dispatchEvent(new Event(PROGRESS_CHANGE_EVENT));
 }
 
 export function readManualProgress(): Record<string, boolean> {
@@ -38,6 +40,7 @@ export function readManualProgress(): Record<string, boolean> {
 
 export function writeManualProgress(progress: Record<string, boolean>) {
   window.localStorage.setItem(MANUAL_PROGRESS_KEY, JSON.stringify(progress));
+  window.dispatchEvent(new Event(PROGRESS_CHANGE_EVENT));
 }
 
 export function isModuleUnlocked(

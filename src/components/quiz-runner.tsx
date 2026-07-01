@@ -1,20 +1,45 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import type { Module, QuizQuestion } from "@/lib/content";
 import {
   isModuleUnlocked,
   PASSING_PERCENT,
-  readQuizResults,
   writeQuizResults,
-  type QuizResults,
 } from "@/lib/progress";
+import { useQuizResults } from "@/lib/progress-hooks";
 
-function shuffleChoices(choices: string[]) {
+const SERVER_SHUFFLE_SEED = "server";
+
+function hashSeed(seed: string) {
+  let hash = 2166136261;
+
+  for (let index = 0; index < seed.length; index += 1) {
+    hash ^= seed.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return hash >>> 0;
+}
+
+function seededRandom(seed: number) {
+  let value = seed;
+
+  return () => {
+    value += 0x6d2b79f5;
+    let next = value;
+    next = Math.imul(next ^ (next >>> 15), next | 1);
+    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
+    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function shuffleChoices(choices: string[], seed: string) {
   const shuffled = [...choices];
+  const random = seededRandom(hashSeed(seed));
 
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1));
+    const swapIndex = Math.floor(random() * (index + 1));
     [shuffled[index], shuffled[swapIndex]] = [
       shuffled[swapIndex],
       shuffled[index],
@@ -36,30 +61,57 @@ function answersMatch(
 
   return (
     currentEntries.length === Object.keys(submittedAnswers).length &&
-    currentEntries.every(([questionId, answer]) => submittedAnswers[questionId] === answer)
+    currentEntries.every(
+      ([questionId, answer]) => submittedAnswers[questionId] === answer,
+    )
   );
 }
 
-export function QuizRunner({
-  modules,
-  questions,
-}: {
+function subscribeToShuffleSeed() {
+  return () => {};
+}
+
+function getShuffleSeedSnapshot() {
+  const browserWindow = window as Window & {
+    __ghlQuizShuffleSeed?: string;
+  };
+
+  browserWindow.__ghlQuizShuffleSeed ??= `${Date.now()}-${Math.random()}`;
+  return browserWindow.__ghlQuizShuffleSeed;
+}
+
+function getServerShuffleSeedSnapshot() {
+  return SERVER_SHUFFLE_SEED;
+}
+
+export type QuizRunnerProps = {
   modules: Module[];
   questions: QuizQuestion[];
-}) {
+};
+
+export function QuizRunner({ modules, questions }: QuizRunnerProps) {
   const [activeModuleId, setActiveModuleId] = useState(modules[0]?.id ?? "");
   const [answersByModule, setAnswersByModule] = useState<
     Record<string, Record<string, string>>
   >({});
-  const [results, setResults] = useState<QuizResults>(() => readQuizResults());
-  const [choicesByQuestion] = useState<Record<string, string[]>>(() =>
-    Object.fromEntries(
-      questions.map((question) => [
-        question.id,
-        shuffleChoices(question.choices),
-      ]),
-    ),
+  const shuffleSeed = useSyncExternalStore(
+    subscribeToShuffleSeed,
+    getShuffleSeedSnapshot,
+    getServerShuffleSeedSnapshot,
   );
+  const choicesByQuestion = useMemo(
+    () =>
+      Object.fromEntries(
+        questions.map((question) => [
+          question.id,
+          shuffleSeed === SERVER_SHUFFLE_SEED
+            ? question.choices
+            : shuffleChoices(question.choices, `${shuffleSeed}-${question.id}`),
+        ]),
+      ),
+    [questions, shuffleSeed],
+  );
+  const results = useQuizResults();
 
   const activeModule = modules.find((module) => module.id === activeModuleId);
   const activeQuestions = questions.filter(
@@ -108,7 +160,6 @@ export function QuizRunner({
       },
     };
 
-    setResults(nextResults);
     writeQuizResults(nextResults);
   }
 

@@ -1,5 +1,5 @@
 import { AppShell } from "@/components/app-shell";
-import { QuizRunner } from "@/components/quiz-runner";
+import { QuizRunnerLoader } from "@/components/quiz-runner-loader";
 import { getModules, getQuizzes } from "@/lib/content";
 
 export default async function QuizPage() {
@@ -15,7 +15,7 @@ export default async function QuizPage() {
           progress tracker automatically marks that level complete.
         </p>
       </section>
-      <QuizRunner modules={modules} questions={questions} />
+      <QuizRunnerLoader modules={modules} questions={questions} />
     </AppShell>
   );
 }
