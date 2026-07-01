@@ -38,5 +38,29 @@
     "choices": ["Confirm the next step", "Ask for the API key", "Hide the booking link forever", "Replace the CRM"],
     "answer": "Confirm the next step",
     "explanation": "A thank-you page should reduce confusion by telling the lead what happens next."
+  },
+  {
+    "id": "q6",
+    "moduleId": "workflow-automations",
+    "question": "What is the safest first step before building a GHL workflow?",
+    "choices": ["Map the business goal and trigger", "Add every possible action", "Connect an external API immediately", "Import all old contacts"],
+    "answer": "Map the business goal and trigger",
+    "explanation": "A workflow should follow a clear business process. Start with the goal, trigger, next action, and stop rules."
+  },
+  {
+    "id": "q7",
+    "moduleId": "workflow-automations",
+    "question": "Why add stop or exit rules to a nurture workflow?",
+    "choices": ["To avoid sending wrong messages after a lead replies or books", "To make the workflow look longer", "To delete pipeline stages", "To expose API keys"],
+    "answer": "To avoid sending wrong messages after a lead replies or books",
+    "explanation": "Good automations stop or change path when the lead takes the desired action."
+  },
+  {
+    "id": "q8",
+    "moduleId": "advanced-practical",
+    "question": "When should a beginner use Make, n8n, or Zapier with GHL?",
+    "choices": ["When GHL needs to send data to another app or run logic GHL cannot handle cleanly", "For every automation, even simple reminders", "Before learning GHL workflows", "To store API keys in public pages"],
+    "answer": "When GHL needs to send data to another app or run logic GHL cannot handle cleanly",
+    "explanation": "Use native GHL workflows first. Add external automation only when another app, transformation, or advanced logic is truly needed."
   }
 ]

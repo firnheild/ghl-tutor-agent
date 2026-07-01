@@ -19,5 +19,19 @@
     "brief": "The team needs separate buyer and seller tracking. Agents want tasks when hot leads submit a valuation form.",
     "task": "Map the pipeline stages, tags, and internal notification rules.",
     "expected": ["Buyer/seller tags", "Pipeline stages", "Hot lead task", "Agent notification", "Lead source field"]
+  },
+  {
+    "id": "dental-missed-call-workflow",
+    "business": "Dental clinic",
+    "brief": "The clinic misses calls during lunch and after hours. The owner wants leads to receive a fast text response and the front desk to get a task.",
+    "task": "Design a native GHL missed-call text-back workflow with a trigger, actions, wait step, condition, and stop rule.",
+    "expected": ["Missed call trigger", "SMS response", "Task or internal notification", "Wait step", "Reply or booked appointment stop rule"]
+  },
+  {
+    "id": "seller-lead-external-automation",
+    "business": "Real estate agency",
+    "brief": "Seller valuation leads come into GHL, but the agency also wants each lead saved in Google Sheets and posted to Slack for the acquisitions team.",
+    "task": "Decide what stays inside GHL and what should be handled by Make, n8n, or Zapier. Include the fields to send and the testing plan.",
+    "expected": ["Native GHL form and follow-up", "Webhook to external tool", "Name phone email lead source property address", "Google Sheets row", "Slack notification", "Mock-data test"]
   }
 ]

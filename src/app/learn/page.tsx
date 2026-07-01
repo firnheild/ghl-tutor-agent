@@ -12,9 +12,9 @@ export default async function LearnPage() {
         <p className="text-sm font-medium text-emerald-700">Skill roadmap</p>
         <h1 className="text-3xl font-semibold">Beginner to hire-ready</h1>
         <p className="max-w-3xl text-muted-foreground">
-          Work through one level at a time. The first five modules include full
-          seeded lessons for the MVP, and later levels are mapped as the next
-          content expansion.
+          Work through one level at a time. The MVP now includes seeded lessons
+          for the core beginner path, native GHL workflows, and external
+          automation basics.
         </p>
       </section>
 

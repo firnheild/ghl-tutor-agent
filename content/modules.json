@@ -60,7 +60,7 @@
     "description": "Triggers, actions, wait steps, if/else logic, notifications, reminders, and re-engagement.",
     "outcome": "Build and test automations from client requirements.",
     "lesson": "workflow-automations.md",
-    "seeded": false
+    "seeded": true
   },
   {
     "id": "client-implementation",
@@ -74,11 +74,11 @@
   {
     "id": "advanced-practical",
     "level": 8,
-    "title": "Advanced Practical Skills",
-    "description": "Snapshots, sub-accounts, webhooks, API concepts, integrations, reporting, and optimization.",
-    "outcome": "Discuss advanced tools without skipping no-code fundamentals.",
+    "title": "External Automations and Advanced Practical Skills",
+    "description": "Snapshots, sub-accounts, webhooks, API concepts, Make, n8n, Zapier, reporting, and optimization.",
+    "outcome": "Know when to stay inside GHL and when to connect external automation tools safely.",
     "lesson": "advanced-practical.md",
-    "seeded": false
+    "seeded": true
   },
   {
     "id": "hire-ready-portfolio",

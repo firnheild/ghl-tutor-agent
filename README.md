@@ -7,7 +7,7 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - Next.js App Router, TypeScript, Tailwind CSS, and shadcn/ui
 - AI tutor chat using Vercel AI SDK and the OpenAI provider
 - Local Markdown/JSON curriculum content, no vector database
-- Seed lessons for Levels 0-4
+- Seed lessons for Levels 0-4, Level 6, and Level 8
 - Quiz mode, practice tasks, scenario simulator, portfolio builder, and progress tracker
 - Mock client briefs and portfolio projects
 - Settings page documenting model, token, and cost controls
