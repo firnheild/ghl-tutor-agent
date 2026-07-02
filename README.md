@@ -8,8 +8,8 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - AI tutor chat using Vercel AI SDK and the OpenAI provider
 - Local Markdown/JSON curriculum content, no vector database
 - Seed lessons for Levels 0-4, Level 6, and Level 8
-- Quiz mode, practice tasks, scenario simulator, portfolio builder, and progress tracker
-- Recorded quizzes with at least 10 items per skill level, gated by prerequisite level completion
+- Practice tasks, inline lesson quizzes, scenario simulator, portfolio builder, and progress tracker
+- Recorded quizzes with at least 10 items per skill level, accessed through lessons and gated by prerequisite level completion
 - Zero-knowledge glossary for core GHL and automation terms
 - Coursera-style lesson sidebar, gated lesson progression, shuffled quiz choices, and dark/light theme toggle
 - Visual snippet slots for GHL screenshots so students can connect terms to the actual app UI
@@ -54,9 +54,24 @@ Each seeded lesson includes a title, skill level, learning objective, plain-Engl
 
 ## Adding Real GHL Screenshots
 
-The app includes placeholder visual snippets in `public/ghl-snippets/`. Replace these with screenshots from your own demo or training HighLevel account. Redact names, phone numbers, emails, message content, API keys, webhook URLs, client business data, and billing details before committing images.
+The app includes redacted training mockups in `public/ghl-snippets/`. Replace these with screenshots from your own demo or training HighLevel account when you are ready.
 
 Keep the same filenames or update `content/visual-snippets.json` with the new image paths.
+
+Recommended screenshot set:
+
+- `orientation-dashboard.svg`: dashboard or launchpad with left navigation visible
+- `crm-contacts.svg`: contact list and one contact record showing tags, fields, notes, or tasks
+- `pipeline-opportunities.svg`: opportunities pipeline with stage columns
+- `calendar-booking.svg`: calendar availability, booking rules, or booking link preview
+- `forms-funnels.svg`: form builder, funnel page, or thank-you page
+- `conversations-inbox.svg`: conversations inbox with mock or redacted messages
+- `workflow-builder.svg`: workflow canvas with trigger, actions, wait, condition, and stop rule
+- `client-implementation.svg`: setup checklist, settings, QA, or handoff notes
+- `external-automation.svg`: webhook action plus Make, n8n, Zapier, Sheets, or Slack receiving data
+- `portfolio-proof.svg`: final proof screenshots, testing notes, or case study visual
+
+Before committing real screenshots, redact names, phone numbers, emails, message content, API keys, webhook URLs, client business data, billing details, and account IDs.
 
 ## Main Routes
 
@@ -66,7 +81,7 @@ Keep the same filenames or update `content/visual-snippets.json` with the new im
 - `/lesson/[moduleId]` lesson view
 - `/agent` interactive tutor chat
 - `/practice` practice task generator
-- `/quiz` quiz mode
+- `/quiz` redirects to `/learn`; quizzes are taken inside lessons
 - `/simulator` client scenario simulator
 - `/portfolio` portfolio project builder
 - `/progress` progress tracker and self-issued completion page

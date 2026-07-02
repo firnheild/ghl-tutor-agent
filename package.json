@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "generate:snippets": "node scripts/generate-ghl-snippets.mjs",
     "lint": "eslint"
   },
   "dependencies": {

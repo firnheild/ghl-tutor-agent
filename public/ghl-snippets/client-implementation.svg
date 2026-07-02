@@ -1,1 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><rect width="1200" height="720" fill="#f8fafc"/><text x="48" y="70" font-family="Arial" font-size="30" font-weight="700">Client Implementation Checklist</text><rect x="160" y="120" width="880" height="500" rx="16" fill="#fff" stroke="#cbd5e1"/><g font-family="Arial" font-size="24" fill="#0f172a"><text x="230" y="190">? Business details gathered</text><text x="230" y="260">? Pipeline stages mapped</text><text x="230" y="330">? Calendar tested</text><text x="230" y="400">? Workflow QA complete</text><text x="230" y="470">? Launch handoff prepared</text></g><text x="230" y="570" font-family="Arial" font-size="22" fill="#64748b">Screenshot slot: onboarding checklist, QA notes, and launch tasks.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+    <rect width="1200" height="720" fill="#eef3f8"/>
+    
+    <rect x="24" y="24" width="192" height="672" rx="22" fill="#111827" stroke="#111827"/>
+    <text x="52" y="72" font-family="Inter, Arial, sans-serif" font-size="24" fill="#ffffff" font-weight="800">HighLevel</text>
+    <text x="52" y="100" font-family="Inter, Arial, sans-serif" font-size="12" fill="#9ca3af" font-weight="600">Training sub-account</text>
+    
+          <rect x="44" y="138" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="155" r="5" fill="#6b7280"/>
+          <text x="76" y="160" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Launchpad</text>
+        
+          <rect x="44" y="186" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="203" r="5" fill="#6b7280"/>
+          <text x="76" y="208" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Dashboard</text>
+        
+          <rect x="44" y="234" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="251" r="5" fill="#6b7280"/>
+          <text x="76" y="256" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Conversations</text>
+        
+          <rect x="44" y="282" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="299" r="5" fill="#6b7280"/>
+          <text x="76" y="304" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Contacts</text>
+        
+          <rect x="44" y="330" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="347" r="5" fill="#6b7280"/>
+          <text x="76" y="352" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Opportunities</text>
+        
+          <rect x="44" y="378" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="395" r="5" fill="#6b7280"/>
+          <text x="76" y="400" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Calendars</text>
+        
+          <rect x="44" y="426" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="443" r="5" fill="#6b7280"/>
+          <text x="76" y="448" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Sites</text>
+        
+          <rect x="44" y="474" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="491" r="5" fill="#6b7280"/>
+          <text x="76" y="496" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Automation</text>
+        
+          <rect x="44" y="522" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="539" r="5" fill="#6b7280"/>
+          <text x="76" y="544" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Reporting</text>
+        
+          <rect x="44" y="570" width="144" height="34" rx="8" fill="#0ea5a3" stroke="#0ea5a3"/>
+          <circle cx="62" cy="587" r="5" fill="#ffffff"/>
+          <text x="76" y="592" font-family="Inter, Arial, sans-serif" font-size="13" fill="#ffffff" font-weight="800">Settings</text>
+        
+  
+    <rect x="240" y="24" width="936" height="672" rx="22" fill="#ffffff" stroke="#d7dde5"/>
+    <text x="272" y="70" font-family="Inter, Arial, sans-serif" font-size="28" fill="#0f172a" font-weight="800">Client implementation checklist</text>
+    <text x="272" y="100" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">Requirements, build tasks, testing proof, and handoff notes.</text>
+    <rect x="1000" y="50" width="132" height="30" rx="15" fill="#fff7ed" stroke="#fed7aa"/><text x="1014" y="70" font-family="Inter, Arial, sans-serif" font-size="13" fill="#c2410c" font-weight="700">redacted demo</text>
+    
+      <rect x="272" y="132" width="824" height="500" rx="14" fill="#f8fafc" stroke="#d7dde5"/>
+      <rect x="312" y="174" width="740" height="42" rx="14" fill="#ffffff" stroke="#d7dde5"/><circle cx="336" cy="199" r="10" fill="#10b981"/><text x="362" y="205" font-family="Inter, Arial, sans-serif" font-size="17" fill="#334155" font-weight="700">Collect business requirements</text><rect x="312" y="238" width="740" height="42" rx="14" fill="#ffffff" stroke="#d7dde5"/><circle cx="336" cy="263" r="10" fill="#10b981"/><text x="362" y="269" font-family="Inter, Arial, sans-serif" font-size="17" fill="#334155" font-weight="700">Create CRM fields and tags</text><rect x="312" y="302" width="740" height="42" rx="14" fill="#ffffff" stroke="#d7dde5"/><circle cx="336" cy="327" r="10" fill="#10b981"/><text x="362" y="333" font-family="Inter, Arial, sans-serif" font-size="17" fill="#334155" font-weight="700">Build form, calendar, or workflow</text><rect x="312" y="366" width="740" height="42" rx="14" fill="#ffffff" stroke="#d7dde5"/><circle cx="336" cy="391" r="10" fill="#e5e7eb"/><text x="362" y="397" font-family="Inter, Arial, sans-serif" font-size="17" fill="#334155" font-weight="700">Test with fake data</text><rect x="312" y="430" width="740" height="42" rx="14" fill="#ffffff" stroke="#d7dde5"/><circle cx="336" cy="455" r="10" fill="#e5e7eb"/><text x="362" y="461" font-family="Inter, Arial, sans-serif" font-size="17" fill="#334155" font-weight="700">Record screenshot proof</text><rect x="312" y="494" width="740" height="42" rx="14" fill="#ffffff" stroke="#d7dde5"/><circle cx="336" cy="519" r="10" fill="#e5e7eb"/><text x="362" y="525" font-family="Inter, Arial, sans-serif" font-size="17" fill="#334155" font-weight="700">Write handoff notes</text>
+      <text x="312" y="590" font-family="Inter, Arial, sans-serif" font-size="18" fill="#334155" font-weight="700">Practice focus: a teammate should be able to launch from your checklist.</text>
+    
+    <text x="272" y="668" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">Training mockup. Replace this SVG with a redacted real GHL screenshot when available.</text>
+  </svg>

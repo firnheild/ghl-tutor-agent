@@ -3,70 +3,70 @@
     "moduleId": "orientation",
     "title": "GHL dashboard overview",
     "image": "/ghl-snippets/orientation-dashboard.svg",
-    "caption": "Use this slot for a clean screenshot of the main HighLevel dashboard or launchpad.",
+    "caption": "Redacted training example of the main GHL dashboard. Replace with a real demo-account screenshot when available.",
     "lookFor": ["Left navigation", "Sub-account context", "Main dashboard cards", "Where CRM tools are accessed"]
   },
   {
     "moduleId": "crm-foundations",
     "title": "Contacts record and CRM list",
     "image": "/ghl-snippets/crm-contacts.svg",
-    "caption": "Use this slot for screenshots of the Contacts list and a single contact record.",
+    "caption": "Redacted training example of a contacts list and contact record showing tags, custom fields, notes, and tasks.",
     "lookFor": ["Contact name", "Phone and email fields", "Tags", "Custom fields", "Notes and tasks"]
   },
   {
     "moduleId": "pipeline-sales",
     "title": "Opportunities pipeline",
     "image": "/ghl-snippets/pipeline-opportunities.svg",
-    "caption": "Use this slot for a screenshot of Opportunities with stage columns.",
+    "caption": "Redacted training example of Opportunities with practical stage columns and example lead cards.",
     "lookFor": ["Pipeline stages", "Opportunity cards", "Won and lost stages", "Manual movement areas"]
   },
   {
     "moduleId": "calendar-booking",
     "title": "Calendar and booking setup",
     "image": "/ghl-snippets/calendar-booking.svg",
-    "caption": "Use this slot for calendar availability, appointment settings, or a booking link preview.",
+    "caption": "Redacted training example of calendar availability, booking rules, reminder settings, and booking link context.",
     "lookFor": ["Availability", "Appointment length", "Buffers", "Booking link", "Reminder settings"]
   },
   {
     "moduleId": "forms-funnels",
     "title": "Form and funnel builder",
     "image": "/ghl-snippets/forms-funnels.svg",
-    "caption": "Use this slot for a form builder, funnel page, or thank-you page screenshot.",
+    "caption": "Redacted training example of a simple lead capture path from landing page to form to thank-you page.",
     "lookFor": ["Form fields", "Landing page", "Submit button", "Thank-you page", "CRM routing"]
   },
   {
     "moduleId": "communication",
     "title": "Conversations inbox",
     "image": "/ghl-snippets/conversations-inbox.svg",
-    "caption": "Use this slot for a screenshot of the Conversations inbox with mock or redacted messages.",
+    "caption": "Redacted training example of the Conversations inbox with mock SMS replies and staff handoff context.",
     "lookFor": ["Lead message thread", "SMS/email channel", "Assigned user", "Reply box", "Conversation status"]
   },
   {
     "moduleId": "workflow-automations",
     "title": "Workflow builder",
     "image": "/ghl-snippets/workflow-builder.svg",
-    "caption": "Use this slot for a workflow canvas showing trigger, actions, waits, and conditions.",
+    "caption": "Redacted training example of a workflow canvas with trigger, actions, wait step, condition, and stop rule.",
     "lookFor": ["Trigger", "Send SMS action", "Wait step", "If/else branch", "Stop rule"]
   },
   {
     "moduleId": "client-implementation",
     "title": "Client setup checklist",
     "image": "/ghl-snippets/client-implementation.svg",
-    "caption": "Use this slot for a client onboarding checklist or sub-account setup screen.",
+    "caption": "Redacted training example of a client implementation checklist with build, QA, and handoff steps.",
     "lookFor": ["Business details", "Pipeline setup", "Calendar setup", "Workflow QA", "Launch checklist"]
   },
   {
     "moduleId": "advanced-practical",
     "title": "Webhook or integration setup",
     "image": "/ghl-snippets/external-automation.svg",
-    "caption": "Use this slot for a webhook action in GHL plus Make, n8n, or Zapier receiving data.",
+    "caption": "Redacted training example of a GHL webhook boundary and external automation handoff.",
     "lookFor": ["Webhook URL", "Mapped fields", "External scenario", "Error handling", "Secret safety"]
   },
   {
     "moduleId": "hire-ready-portfolio",
     "title": "Portfolio project proof",
     "image": "/ghl-snippets/portfolio-proof.svg",
-    "caption": "Use this slot for final project screenshots, mock workflow diagrams, or case study visuals.",
+    "caption": "Redacted training example of how to package screenshots, testing proof, and resume bullets into a portfolio case study.",
     "lookFor": ["Problem summary", "Build screenshots", "Workflow logic", "Testing proof", "Case study result"]
   }
 ]

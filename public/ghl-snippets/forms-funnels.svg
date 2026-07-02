@@ -1,1 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><rect width="1200" height="720" fill="#f8fafc"/><text x="48" y="70" font-family="Arial" font-size="30" font-weight="700">Forms and Funnels</text><rect x="48" y="110" width="500" height="520" rx="16" fill="#fff" stroke="#cbd5e1"/><rect x="652" y="110" width="500" height="520" rx="16" fill="#fff" stroke="#cbd5e1"/><text x="80" y="160" font-family="Arial" font-size="22" font-weight="700">Form Fields</text><text x="684" y="160" font-family="Arial" font-size="22" font-weight="700">Landing Page</text><g fill="#f1f5f9" stroke="#cbd5e1"><rect x="80" y="210" width="420" height="48" rx="8"/><rect x="80" y="280" width="420" height="48" rx="8"/><rect x="80" y="350" width="420" height="48" rx="8"/><rect x="684" y="210" width="420" height="250" rx="12"/></g><rect x="684" y="500" width="220" height="56" rx="8" fill="#059669"/><text x="728" y="535" font-family="Arial" font-size="20" fill="#fff">Submit Lead</text><text x="80" y="674" font-family="Arial" font-size="22" fill="#64748b">Screenshot slot: form builder, funnel page, and thank-you page.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+    <rect width="1200" height="720" fill="#eef3f8"/>
+    
+    <rect x="24" y="24" width="192" height="672" rx="22" fill="#111827" stroke="#111827"/>
+    <text x="52" y="72" font-family="Inter, Arial, sans-serif" font-size="24" fill="#ffffff" font-weight="800">HighLevel</text>
+    <text x="52" y="100" font-family="Inter, Arial, sans-serif" font-size="12" fill="#9ca3af" font-weight="600">Training sub-account</text>
+    
+          <rect x="44" y="138" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="155" r="5" fill="#6b7280"/>
+          <text x="76" y="160" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Launchpad</text>
+        
+          <rect x="44" y="186" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="203" r="5" fill="#6b7280"/>
+          <text x="76" y="208" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Dashboard</text>
+        
+          <rect x="44" y="234" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="251" r="5" fill="#6b7280"/>
+          <text x="76" y="256" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Conversations</text>
+        
+          <rect x="44" y="282" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="299" r="5" fill="#6b7280"/>
+          <text x="76" y="304" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Contacts</text>
+        
+          <rect x="44" y="330" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="347" r="5" fill="#6b7280"/>
+          <text x="76" y="352" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Opportunities</text>
+        
+          <rect x="44" y="378" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="395" r="5" fill="#6b7280"/>
+          <text x="76" y="400" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Calendars</text>
+        
+          <rect x="44" y="426" width="144" height="34" rx="8" fill="#0ea5a3" stroke="#0ea5a3"/>
+          <circle cx="62" cy="443" r="5" fill="#ffffff"/>
+          <text x="76" y="448" font-family="Inter, Arial, sans-serif" font-size="13" fill="#ffffff" font-weight="800">Sites</text>
+        
+          <rect x="44" y="474" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="491" r="5" fill="#6b7280"/>
+          <text x="76" y="496" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Automation</text>
+        
+          <rect x="44" y="522" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="539" r="5" fill="#6b7280"/>
+          <text x="76" y="544" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Reporting</text>
+        
+          <rect x="44" y="570" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="587" r="5" fill="#6b7280"/>
+          <text x="76" y="592" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Settings</text>
+        
+  
+    <rect x="240" y="24" width="936" height="672" rx="22" fill="#ffffff" stroke="#d7dde5"/>
+    <text x="272" y="70" font-family="Inter, Arial, sans-serif" font-size="28" fill="#0f172a" font-weight="800">Form and funnel builder</text>
+    <text x="272" y="100" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">A lead capture path from landing page to form to thank-you page.</text>
+    <rect x="1000" y="50" width="132" height="30" rx="15" fill="#fff7ed" stroke="#fed7aa"/><text x="1014" y="70" font-family="Inter, Arial, sans-serif" font-size="13" fill="#c2410c" font-weight="700">redacted demo</text>
+    
+      <rect x="272" y="130" width="260" height="500" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="302" y="170" font-family="Inter, Arial, sans-serif" font-size="20" fill="#0f172a" font-weight="800">Landing page</text> <rect x="302" y="204" width="198" height="72" rx="14" fill="#ffffff" stroke="#d7dde5"/> <text x="324" y="246" font-family="Inter, Arial, sans-serif" font-size="18" fill="#334155" font-weight="800">Free consultation</text> <rect x="332" y="316" width="140" height="42" rx="8" fill="#0ea5a3" stroke="#0ea5a3"/> <text x="360" y="344" font-family="Inter, Arial, sans-serif" font-size="15" fill="#ffffff" font-weight="800">Book now</text>
+      <rect x="586" y="130" width="260" height="500" rx="14" fill="#ffffff" stroke="#d7dde5"/> <text x="616" y="170" font-family="Inter, Arial, sans-serif" font-size="20" fill="#0f172a" font-weight="800">Form fields</text>
+      <rect x="616" y="206" width="190" height="40" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="636" y="232" font-family="Inter, Arial, sans-serif" font-size="14" fill="#334155" font-weight="700">Full name</text><rect x="616" y="268" width="190" height="40" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="636" y="294" font-family="Inter, Arial, sans-serif" font-size="14" fill="#334155" font-weight="700">Phone</text><rect x="616" y="330" width="190" height="40" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="636" y="356" font-family="Inter, Arial, sans-serif" font-size="14" fill="#334155" font-weight="700">Email</text><rect x="616" y="392" width="190" height="40" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="636" y="418" font-family="Inter, Arial, sans-serif" font-size="14" fill="#334155" font-weight="700">Service interest</text><rect x="616" y="454" width="190" height="40" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="636" y="480" font-family="Inter, Arial, sans-serif" font-size="14" fill="#334155" font-weight="700">Preferred time</text>
+      <rect x="900" y="130" width="196" height="500" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="930" y="170" font-family="Inter, Arial, sans-serif" font-size="18" fill="#0f172a" font-weight="800">Thank-you page</text> <text x="930" y="222" font-family="Inter, Arial, sans-serif" font-size="15" fill="#334155" font-weight="700">Your request</text> <text x="930" y="248" font-family="Inter, Arial, sans-serif" font-size="15" fill="#334155" font-weight="700">was received.</text> <rect x="930" y="300" width="148" height="30" rx="15" fill="#ecfdf5" stroke="#a7f3d0"/><text x="944" y="320" font-family="Inter, Arial, sans-serif" font-size="13" fill="#047857" font-weight="700">Next: check SMS</text>
+      <text x="304" y="620" font-family="Inter, Arial, sans-serif" font-size="18" fill="#334155" font-weight="700">Practice focus: keep forms short and send clean data into the CRM.</text>
+    
+    <text x="272" y="668" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">Training mockup. Replace this SVG with a redacted real GHL screenshot when available.</text>
+  </svg>

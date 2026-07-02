@@ -1,1 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><rect width="1200" height="720" fill="#f8fafc"/><text x="48" y="70" font-family="Arial" font-size="30" font-weight="700">Portfolio Project Proof</text><rect x="72" y="120" width="320" height="460" rx="16" fill="#fff" stroke="#cbd5e1"/><rect x="440" y="120" width="320" height="460" rx="16" fill="#fff" stroke="#cbd5e1"/><rect x="808" y="120" width="320" height="460" rx="16" fill="#fff" stroke="#cbd5e1"/><text x="112" y="190" font-family="Arial" font-size="24" font-weight="700">Problem</text><text x="480" y="190" font-family="Arial" font-size="24" font-weight="700">Build</text><text x="848" y="190" font-family="Arial" font-size="24" font-weight="700">Result</text><g fill="#f1f5f9"><rect x="112" y="230" width="240" height="220" rx="10"/><rect x="480" y="230" width="240" height="220" rx="10"/><rect x="848" y="230" width="240" height="220" rx="10"/></g><text x="112" y="640" font-family="Arial" font-size="22" fill="#64748b">Screenshot slot: case study visuals and tested workflows.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+    <rect width="1200" height="720" fill="#eef3f8"/>
+    
+    <rect x="24" y="24" width="192" height="672" rx="22" fill="#111827" stroke="#111827"/>
+    <text x="52" y="72" font-family="Inter, Arial, sans-serif" font-size="24" fill="#ffffff" font-weight="800">HighLevel</text>
+    <text x="52" y="100" font-family="Inter, Arial, sans-serif" font-size="12" fill="#9ca3af" font-weight="600">Training sub-account</text>
+    
+          <rect x="44" y="138" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="155" r="5" fill="#6b7280"/>
+          <text x="76" y="160" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Launchpad</text>
+        
+          <rect x="44" y="186" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="203" r="5" fill="#6b7280"/>
+          <text x="76" y="208" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Dashboard</text>
+        
+          <rect x="44" y="234" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="251" r="5" fill="#6b7280"/>
+          <text x="76" y="256" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Conversations</text>
+        
+          <rect x="44" y="282" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="299" r="5" fill="#6b7280"/>
+          <text x="76" y="304" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Contacts</text>
+        
+          <rect x="44" y="330" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="347" r="5" fill="#6b7280"/>
+          <text x="76" y="352" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Opportunities</text>
+        
+          <rect x="44" y="378" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="395" r="5" fill="#6b7280"/>
+          <text x="76" y="400" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Calendars</text>
+        
+          <rect x="44" y="426" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="443" r="5" fill="#6b7280"/>
+          <text x="76" y="448" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Sites</text>
+        
+          <rect x="44" y="474" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="491" r="5" fill="#6b7280"/>
+          <text x="76" y="496" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Automation</text>
+        
+          <rect x="44" y="522" width="144" height="34" rx="8" fill="#0ea5a3" stroke="#0ea5a3"/>
+          <circle cx="62" cy="539" r="5" fill="#ffffff"/>
+          <text x="76" y="544" font-family="Inter, Arial, sans-serif" font-size="13" fill="#ffffff" font-weight="800">Reporting</text>
+        
+          <rect x="44" y="570" width="144" height="34" rx="8" fill="#111827" stroke="#374151"/>
+          <circle cx="62" cy="587" r="5" fill="#6b7280"/>
+          <text x="76" y="592" font-family="Inter, Arial, sans-serif" font-size="13" fill="#d1d5db" font-weight="600">Settings</text>
+        
+  
+    <rect x="240" y="24" width="936" height="672" rx="22" fill="#ffffff" stroke="#d7dde5"/>
+    <text x="272" y="70" font-family="Inter, Arial, sans-serif" font-size="28" fill="#0f172a" font-weight="800">Portfolio proof and case study</text>
+    <text x="272" y="100" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">How to package a practice build for job applications or client proof.</text>
+    <rect x="1000" y="50" width="132" height="30" rx="15" fill="#fff7ed" stroke="#fed7aa"/><text x="1014" y="70" font-family="Inter, Arial, sans-serif" font-size="13" fill="#c2410c" font-weight="700">redacted demo</text>
+    
+      <rect x="280" y="138" width="360" height="440" rx="14" fill="#ffffff" stroke="#d7dde5"/> <text x="310" y="178" font-family="Inter, Arial, sans-serif" font-size="24" fill="#0f172a" font-weight="800">Case study</text>
+      <text x="310" y="226" font-family="Inter, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="800">Problem</text> <text x="310" y="254" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">Missed calls were not followed up.</text>
+      <text x="310" y="310" font-family="Inter, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="800">Solution</text> <text x="310" y="338" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">Built text-back workflow and staff task.</text>
+      <text x="310" y="394" font-family="Inter, Arial, sans-serif" font-size="17" fill="#0f172a" font-weight="800">Result</text> <text x="310" y="422" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">Demo lead received reply in 1 minute.</text>
+      <rect x="700" y="138" width="360" height="180" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="730" y="178" font-family="Inter, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="800">Visual proof</text> <rect x="730" y="218" width="180" height="30" rx="15" fill="#ecfdf5" stroke="#a7f3d0"/><text x="744" y="238" font-family="Inter, Arial, sans-serif" font-size="13" fill="#047857" font-weight="700">workflow screenshot</text> <rect x="730" y="258" width="172" height="30" rx="15" fill="#eff6ff" stroke="#bfdbfe"/><text x="744" y="278" font-family="Inter, Arial, sans-serif" font-size="13" fill="#1d4ed8" font-weight="700">test contact proof</text>
+      <rect x="700" y="360" width="360" height="180" rx="14" fill="#f8fafc" stroke="#d7dde5"/> <text x="730" y="400" font-family="Inter, Arial, sans-serif" font-size="22" fill="#0f172a" font-weight="800">Resume bullet</text> <text x="730" y="444" font-family="Inter, Arial, sans-serif" font-size="15" fill="#334155" font-weight="700">Built a mock GHL follow-up system</text> <text x="730" y="470" font-family="Inter, Arial, sans-serif" font-size="15" fill="#334155" font-weight="700">with reminders, tasks, and QA notes.</text>
+    
+    <text x="272" y="668" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b" font-weight="600">Training mockup. Replace this SVG with a redacted real GHL screenshot when available.</text>
+  </svg>
