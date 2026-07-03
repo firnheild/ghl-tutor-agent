@@ -10,6 +10,8 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - Seed lessons for Levels 0-4, Level 6, and Level 8
 - Practice tasks, inline lesson quizzes, scenario simulator, portfolio builder, and progress tracker
 - Recorded quizzes with at least 10 items per skill level, accessed through lessons and gated by prerequisite level completion
+- Optional Supabase accounts, progress sync, quiz attempt storage, and instructor dashboard
+- AI practice review from inside each lesson after students complete practice notes
 - Zero-knowledge glossary for core GHL and automation terms
 - Coursera-style lesson sidebar, gated lesson progression, shuffled quiz choices, and dark/light theme toggle
 - Visual snippet slots for GHL screenshots so students can connect terms to the actual app UI
@@ -37,6 +39,35 @@ ENABLE_HIGHLEVEL_API=false
 ```
 
 The app never exposes `OPENAI_API_KEY` to the browser. Tutor chat is the only MVP feature that calls a paid external model.
+
+## Production Accounts And Progress Sync
+
+The app works in local demo mode without Supabase. To enable student accounts,
+cross-device progress, saved quiz attempts, and the instructor dashboard:
+
+1. Create a Supabase project.
+2. In Supabase SQL Editor, run `supabase/schema.sql`.
+3. Add these variables to `.env.local` and to Vercel:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+4. In Supabase Auth settings, add `http://localhost:3000/auth/callback` and
+   your deployed `/auth/callback` URL to allowed redirect URLs.
+5. Create your account at `/login`, then promote it in Supabase SQL:
+
+```sql
+update public.profiles
+set role = 'admin'
+where email = 'you@example.com';
+```
+
+Students can keep learning locally before signing in. When they sign in,
+practice progress, quiz results, and portfolio notes sync through
+`/api/progress/snapshot`.
 
 ## Content Structure
 
@@ -86,21 +117,23 @@ Before committing real screenshots, redact names, phone numbers, emails, message
 - `/portfolio` portfolio project builder
 - `/progress` progress tracker and self-issued completion page
 - `/settings` model/API key setup notes
+- `/login` student account sign in and sign up
+- `/admin` instructor dashboard skeleton for production review
 
 ## Deploy To Vercel
 
 1. Push this app to GitHub.
 2. Import the project in Vercel.
 3. Add `OPENAI_API_KEY`, `OPENAI_MODEL`, `MAX_OUTPUT_TOKENS`, and `ENABLE_HIGHLEVEL_API` in Project Settings.
-4. Deploy on the Hobby/free tier.
+4. Add Supabase env vars if you want production accounts and progress sync.
+5. Deploy on the Hobby/free tier.
 
 No paid HighLevel API connection is required for the MVP. The app uses mock data, mock client briefs, and simulated GHL tasks.
 
 ## Future Roadmap
 
-- Supabase login, progress sync, quiz scores, and saved portfolio projects
 - Optional HighLevel API integration behind `ENABLE_HIGHLEVEL_API=true`
-- Admin panel for lessons, quizzes, scenarios, and project rubrics
-- Stronger final assessment with rubric-based tutor review
+- Full admin content editor for lessons, quizzes, scenarios, and project rubrics
+- Stronger final assessment with mentor review queue and certificate approval
 - Certificate generation with student name and completion date
 - Paid course features, cohorts, mentor review, and private project feedback

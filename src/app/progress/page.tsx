@@ -11,8 +11,9 @@ export default async function ProgressPage() {
         <p className="text-sm font-medium text-emerald-700">Progress tracker</p>
         <h1 className="text-3xl font-semibold">Track learning and projects</h1>
         <p className="max-w-2xl text-muted-foreground">
-          MVP progress is stored locally in the browser. Supabase can be added
-          later for accounts, synced progress, quiz scores, and saved projects.
+          Progress is stored locally for solo practice and syncs to Supabase
+          when a learner signs in. Quiz completion, practice steps, and
+          portfolio notes can follow the student across devices after setup.
         </p>
       </section>
       <ProgressTracker modules={modules} projects={projects} />

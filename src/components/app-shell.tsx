@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Bot, Menu, Settings } from "lucide-react";
+import { AuthStatus } from "@/components/auth-status";
+import { ProgressSync } from "@/components/progress-sync";
 import { ThemeToggleLoader } from "@/components/theme-toggle-loader";
 
 const navItems = [
@@ -9,6 +11,7 @@ const navItems = [
   { href: "/simulator", label: "Simulator" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/progress", label: "Progress" },
+  { href: "/admin", label: "Admin" },
 ];
 
 export function AppShell({
@@ -20,6 +23,7 @@ export function AppShell({
 }) {
   return (
     <div className="min-h-screen bg-background">
+      <ProgressSync />
       <header className="sticky top-0 z-20 border-b bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2 font-semibold">
@@ -40,6 +44,7 @@ export function AppShell({
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <AuthStatus />
             <ThemeToggleLoader />
             <Link
               href="/settings"

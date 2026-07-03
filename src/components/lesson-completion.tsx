@@ -8,8 +8,10 @@ import {
   ClipboardCheck,
   FileImage,
   ListChecks,
+  Loader2,
   LockKeyhole,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 import type {
   Module,
@@ -122,6 +124,9 @@ export function LessonCompletion({
   const [testingNotes, setTestingNotes] = useState("");
   const [proofImageUrl, setProofImageUrl] = useState<string | null>(null);
   const [proofImageName, setProofImageName] = useState<string | null>(null);
+  const [review, setReview] = useState<string | null>(null);
+  const [reviewError, setReviewError] = useState<string | null>(null);
+  const [reviewLoading, setReviewLoading] = useState(false);
   const shuffleSeed = useSyncExternalStore(
     subscribeToShuffleSeed,
     getShuffleSeedSnapshot,
@@ -170,6 +175,10 @@ export function LessonCompletion({
   const isSubmitted = answersMatch(answers, result?.answers);
   const quizReady =
     moduleUnlocked && practiceComplete && answeredCount === moduleQuestions.length;
+  const reviewReady =
+    practiceComplete &&
+    builderNotes.trim().length >= 20 &&
+    testingNotes.trim().length >= 20;
 
   useEffect(() => {
     return () => {
@@ -239,6 +248,50 @@ export function LessonCompletion({
         answers,
       },
     });
+  }
+
+  async function requestAiReview() {
+    if (!reviewReady || reviewLoading) {
+      return;
+    }
+
+    setReviewLoading(true);
+    setReviewError(null);
+    setReview(null);
+
+    try {
+      const response = await fetch("/api/ai-review", {
+        body: JSON.stringify({
+          builderNotes,
+          moduleId: module.id,
+          practiceSteps: guideSteps.filter((_, index) =>
+            Boolean(manualProgress[practiceStepProgressKey(module.id, index)]),
+          ),
+          screenshotProvided: Boolean(proofImageName),
+          testingNotes,
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "POST",
+      });
+
+      const data = (await response.json()) as {
+        error?: string;
+        review?: string;
+      };
+
+      if (!response.ok) {
+        setReviewError(data.error ?? "AI review is not available yet.");
+        return;
+      }
+
+      setReview(data.review ?? null);
+    } catch {
+      setReviewError("AI review could not be reached. Try again after setup.");
+    } finally {
+      setReviewLoading(false);
+    }
   }
 
   return (
@@ -417,6 +470,50 @@ export function LessonCompletion({
             />
             Practice done
           </label>
+        </div>
+
+        <div className="mt-5 rounded-lg border bg-background p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <p className="flex items-center gap-2 font-semibold">
+                <Sparkles className="size-4 text-emerald-700" />
+                AI practice review
+              </p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                Request feedback after writing builder notes and testing notes.
+                Reviews are saved to your account when Supabase is connected.
+              </p>
+            </div>
+            <button
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              disabled={!reviewReady || reviewLoading}
+              onClick={requestAiReview}
+              type="button"
+            >
+              {reviewLoading ? (
+                <Loader2 className="size-4 animate-spin" />
+              ) : (
+                <Sparkles className="size-4" />
+              )}
+              {reviewLoading ? "Reviewing" : "Request review"}
+            </button>
+          </div>
+          {!reviewReady ? (
+            <p className="mt-3 text-xs leading-5 text-muted-foreground">
+              Complete practice and add at least 20 characters in both notes to
+              unlock AI review.
+            </p>
+          ) : null}
+          {reviewError ? (
+            <p className="mt-3 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900 dark:border-amber-900/70 dark:bg-amber-950/40 dark:text-amber-100">
+              {reviewError}
+            </p>
+          ) : null}
+          {review ? (
+            <div className="mt-3 whitespace-pre-wrap rounded-md border bg-card p-3 text-sm leading-6">
+              {review}
+            </div>
+          ) : null}
         </div>
       </div>
 
