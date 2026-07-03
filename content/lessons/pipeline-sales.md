@@ -40,6 +40,29 @@ A real estate agent needs stages for New Buyer Lead, Contacted, Consultation Boo
 
 Design a five-stage pipeline for a dental implant consultation offer. Keep stage names practical.
 
+## Easy Practice Version
+
+Start with this simple five-stage pipeline:
+
+1. New Implant Lead
+2. Contacted
+3. Consultation Booked
+4. Treatment Plan Sent
+5. Won or Lost
+
+Then write which stages should move automatically and which should be moved by a human.
+
+## Hirable Completion Standard
+
+You meet the hire-ready expectation for this level when you can:
+
+- Explain the difference between a contact and an opportunity.
+- Turn a real sales process into clear stages.
+- Avoid vague stages that staff will not update.
+- Decide when automation can safely create or move an opportunity.
+- Decide when human judgment is required.
+- Add lost reasons or notes so reporting is useful.
+
 ## Quick Quiz
 
 Question: What is the difference between a contact and an opportunity?

@@ -42,6 +42,29 @@ A dental clinic runs a free implant consultation offer. The funnel has a headlin
 
 Create the form fields and thank-you page message for a real estate buyer guide lead magnet.
 
+## Easy Practice Version
+
+Start with these fields:
+
+1. First name
+2. Phone
+3. Email
+4. Buying timeline
+5. Preferred area
+
+Then write a thank-you message that tells the lead what happens next.
+
+## Hirable Completion Standard
+
+You meet the hire-ready expectation for this level when you can:
+
+- Explain the difference between a form, field, funnel, landing page, and thank-you page.
+- Choose only the fields the business truly needs.
+- Decide which fields should be required.
+- Explain where the lead should go in the CRM after submission.
+- Write a thank-you page that confirms the next step.
+- Test the lead capture path with fake data.
+
 ## Quick Quiz
 
 Question: What are the three basic parts of a lead capture funnel?

@@ -41,6 +41,27 @@ A dental clinic imports 800 old leads. You create smart lists for leads with pho
 
 For a grooming shop, suggest three tags, two custom fields, and one smart list that would help staff follow up.
 
+## Easy Practice Version
+
+Use this starter format:
+
+- Tags: New Grooming Lead, Dog Grooming Interest, Needs Follow-Up
+- Custom fields: Pet Type, Preferred Appointment Day
+- Smart list: New grooming leads without appointment
+
+Then explain why each item helps the staff follow up.
+
+## Hirable Completion Standard
+
+You meet the hire-ready expectation for this level when you can:
+
+- Explain the difference between contacts, tags, custom fields, notes, and tasks.
+- Choose tags that help segmentation or automation.
+- Choose custom fields for specific values instead of using notes for everything.
+- Create one useful smart list idea for staff.
+- Avoid messy tag naming and duplicate contact problems.
+- Explain why clean CRM setup must happen before automation.
+
 ## Quick Quiz
 
 Question: When should you use a custom field instead of a tag?

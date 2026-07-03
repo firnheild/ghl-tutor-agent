@@ -51,7 +51,7 @@
     "description": "Conversations inbox, email and SMS templates, follow-up logic, and reply handling.",
     "outcome": "Write practical lead follow-up sequences with reply-aware handling.",
     "lesson": "communication.md",
-    "seeded": false
+    "seeded": true
   },
   {
     "id": "workflow-automations",
@@ -69,7 +69,7 @@
     "description": "Onboarding checklists, requirement gathering, process mapping, testing, and troubleshooting.",
     "outcome": "Run a small GHL implementation like a reliable operator.",
     "lesson": "client-implementation.md",
-    "seeded": false
+    "seeded": true
   },
   {
     "id": "advanced-practical",
@@ -87,6 +87,6 @@
     "description": "Build five practical portfolio projects, case studies, resume bullets, and interview answers.",
     "outcome": "Package your work for VA, CRM assistant, and automation specialist applications.",
     "lesson": "hire-ready-portfolio.md",
-    "seeded": false
+    "seeded": true
   }
 ]

@@ -42,6 +42,25 @@ A pet grooming shop wants fewer missed appointments and faster follow-up with ne
 
 Write a two-sentence explanation of what GoHighLevel does for a dental clinic. Include one lead source and one follow-up action.
 
+## Easy Practice Version
+
+If you are completely new, use this sentence frame:
+
+"A dental clinic can use GoHighLevel to collect leads from ____ and follow up by ____."
+
+Then add one more sentence explaining what should be tracked, such as contact details, service interest, appointment status, or follow-up tasks.
+
+## Hirable Completion Standard
+
+You meet the hire-ready expectation for this level when you can:
+
+- Explain GHL in plain language without sounding like a feature list.
+- Identify at least three lead sources, such as form, call, ad, referral, or chat.
+- Name the next action a business should take after a lead arrives.
+- Decide what should be tracked in the CRM.
+- Match a simple client request to the correct GHL area.
+- Ask clarifying questions before building.
+
 ## Quick Quiz
 
 Question: What should you understand first before building a GHL automation?

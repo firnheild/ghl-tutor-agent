@@ -7,7 +7,7 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - Next.js App Router, TypeScript, Tailwind CSS, and shadcn/ui
 - AI tutor chat using Vercel AI SDK and the OpenAI provider
 - Local Markdown/JSON curriculum content, no vector database
-- Seed lessons for Levels 0-4, Level 6, and Level 8
+- Seed lessons for Levels 0-9
 - Practice tasks, inline lesson quizzes, scenario simulator, portfolio builder, and progress tracker
 - Recorded quizzes with at least 10 items per skill level, accessed through lessons and gated by prerequisite level completion
 - Optional Supabase accounts, progress sync, quiz attempt storage, and instructor dashboard
@@ -81,7 +81,7 @@ content/
   projects/*.json
 ```
 
-Each seeded lesson includes a title, skill level, learning objective, plain-English explanation, steps, client example, mistakes, practice task, quiz, expected answer, and hire-ready note.
+Each seeded lesson includes a title, skill level, learning objective, plain-English explanation, key terms, steps, client example, mistakes, easy practice version, hirable completion standard, quiz prompt, expected answer, and hire-ready note.
 
 ## Adding Real GHL Screenshots
 

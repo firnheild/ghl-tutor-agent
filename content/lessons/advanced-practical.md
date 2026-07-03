@@ -56,6 +56,28 @@ A dental clinic wants every new implant consultation lead saved in a Google Shee
 
 Create a simple external automation plan for this brief: A real estate team wants every seller valuation form lead from GHL sent to Google Sheets and Slack, then assigned to an agent for follow-up. Decide what stays inside GHL, what goes to Make or n8n, what fields are sent, and how you would test it.
 
+## Easy Practice Version
+
+Use this simple split:
+
+- Keep inside GHL: form capture, contact record, tag, opportunity, and lead follow-up.
+- Send outside GHL: name, phone, email, property address, lead source, and timestamp.
+- External tool: Make or n8n receives webhook, adds a Google Sheets row, and posts a Slack alert.
+- Safety note: hide API keys and webhook URLs in screenshots.
+
+Then write one fake-data test.
+
+## Hirable Completion Standard
+
+You meet the hire-ready expectation for this level when you can:
+
+- Decide whether native GHL workflows are enough.
+- Explain what a webhook does in plain language.
+- Map only the fields the external tool needs.
+- Choose Make, n8n, or Zapier for a clear reason.
+- Add a basic failure notification or error check.
+- Protect API keys, tokens, webhook URLs, and client data.
+
 ## Quick Quiz
 
 Question: When should a beginner use Make, n8n, or Zapier instead of only GHL workflows?

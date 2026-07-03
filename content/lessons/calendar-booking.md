@@ -41,6 +41,28 @@ A grooming shop books 60-minute appointments with a 15-minute cleanup buffer. Th
 
 Write the reminder schedule for a dental consultation booked three days from now. Include timing and message purpose.
 
+## Easy Practice Version
+
+Use this simple reminder plan:
+
+1. Immediately after booking: confirmation message.
+2. 24 hours before: reminder with appointment details.
+3. 2 hours before: short final reminder.
+4. After no-show: polite reschedule message or staff task.
+
+Then explain why each message exists.
+
+## Hirable Completion Standard
+
+You meet the hire-ready expectation for this level when you can:
+
+- Explain what a booking link does.
+- Choose appointment length, availability, and buffer time.
+- Write confirmation and reminder message purposes.
+- Test a booking link as a lead.
+- Check timezone, staff assignment, and notification behavior.
+- Explain how reminders reduce no-shows without over-messaging.
+
 ## Quick Quiz
 
 Question: Why should you test a booking link as a lead?

@@ -50,6 +50,31 @@ A pet grooming shop wants faster follow-up. A new lead submits a grooming form. 
 
 Design a simple missed-call text-back workflow for a dental clinic. Include the trigger, three actions, one wait step, one condition, and one internal notification.
 
+## Easy Practice Version
+
+Use this starter workflow:
+
+1. Trigger: Missed call.
+2. Action: Send SMS asking how the clinic can help.
+3. Action: Add tag Missed Call Lead.
+4. Action: Notify front desk.
+5. Wait: 10 minutes.
+6. Condition: Did the lead reply?
+7. Stop rule: Stop nurture when the lead replies or books.
+
+Then explain how you would test it with a fake contact.
+
+## Hirable Completion Standard
+
+You meet the hire-ready expectation for this level when you can:
+
+- Identify one clear trigger.
+- Add only the actions needed for the business goal.
+- Use waits and if/else branches without making the workflow confusing.
+- Add staff notification when a human must act.
+- Add stop rules so leads do not receive the wrong messages.
+- Test every branch with fake data before launch.
+
 ## Quick Quiz
 
 Question: Why should a workflow have stop or exit rules?
