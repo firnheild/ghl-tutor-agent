@@ -12,6 +12,7 @@ import {
   getModule,
   getModules,
   getPracticeGuide,
+  getPracticeReview,
   getQuizzes,
   getScenarios,
   getVisualSnippets,
@@ -36,6 +37,7 @@ export default async function LessonPage({
     questions,
     scenarios,
     practiceGuide,
+    practiceReview,
   ] = await Promise.all([
     getModule(moduleId),
     getLessonMarkdown(moduleId),
@@ -44,6 +46,7 @@ export default async function LessonPage({
     getQuizzes(),
     getScenarios(),
     getPracticeGuide(moduleId),
+    getPracticeReview(moduleId),
   ]);
 
   if (!module) {
@@ -120,6 +123,7 @@ export default async function LessonPage({
               module={module}
               modules={modules}
               practiceGuide={practiceGuide}
+              practiceReview={practiceReview}
               questions={questions}
               scenario={scenario}
             />

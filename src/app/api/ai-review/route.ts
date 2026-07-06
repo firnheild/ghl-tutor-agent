@@ -2,7 +2,7 @@ import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getModule, getPracticeGuide } from "@/lib/content";
+import { getModule, getPracticeGuide, getPracticeReview } from "@/lib/content";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const maxDuration = 30;
@@ -64,9 +64,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const [module, practiceGuide] = await Promise.all([
+  const [module, practiceGuide, practiceReview] = await Promise.all([
     getModule(body.data.moduleId),
     getPracticeGuide(body.data.moduleId),
+    getPracticeReview(body.data.moduleId),
   ]);
 
   if (!module) {
@@ -77,6 +78,7 @@ export async function POST(request: Request) {
     builderNotes: body.data.builderNotes,
     expectedOutput: practiceGuide?.expectedOutput ?? [],
     practiceSteps: body.data.practiceSteps,
+    rubric: practiceReview?.rubric ?? [],
     screenshotProvided: body.data.screenshotProvided,
     testingNotes: body.data.testingNotes,
   };
@@ -99,12 +101,25 @@ export async function POST(request: Request) {
   const result = await generateText({
     model: openai(process.env.OPENAI_MODEL ?? "gpt-4.1-mini"),
     system:
-      "You are a warm but practical GoHighLevel instructor. Review beginner practice work using simple language. Return concise feedback with: Strengths, Fix Next, Testing Check, and Hire-Ready Tip. Do not invent screenshots or claim access to the student's GHL account.",
+      "You are a warm but practical GoHighLevel instructor. Review beginner practice work using the provided rubric. Return concise feedback with: Rubric Score, Strengths, Fix Next, Testing Check, and Hire-Ready Tip. Do not invent screenshots or claim access to the student's GHL account.",
     prompt: [
       `Module: Level ${module.level} - ${module.title}`,
       `Outcome: ${module.outcome}`,
       `Practice example: ${practiceGuide?.example ?? "No guide available."}`,
       `Expected output: ${(practiceGuide?.expectedOutput ?? []).join(", ")}`,
+      `Rubric:\n${
+        practiceReview?.rubric
+          .map(
+            (item, index) =>
+              `${index + 1}. ${item.criterion}\nPass: ${item.pass}\nStrong: ${item.excellent}`,
+          )
+          .join("\n\n") ?? "No rubric available."
+      }`,
+      `Hire-ready sample:\nBuilder notes: ${
+        practiceReview?.samples.hireReady.builderNotes ?? "No sample available."
+      }\nTesting notes: ${
+        practiceReview?.samples.hireReady.testingNotes ?? "No sample available."
+      }`,
       `Completed steps: ${body.data.practiceSteps.join(" | ") || "Not provided"}`,
       `Screenshot proof provided: ${body.data.screenshotProvided ? "yes" : "no"}`,
       `Builder notes:\n${body.data.builderNotes}`,

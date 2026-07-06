@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import {
+  Award,
+  BookOpenCheck,
   Camera,
   CheckCircle2,
   ClipboardCheck,
@@ -16,6 +18,8 @@ import {
 import type {
   Module,
   PracticeGuide,
+  PracticeReview,
+  PracticeReviewSample,
   QuizQuestion,
   Scenario,
 } from "@/lib/content";
@@ -104,16 +108,67 @@ function getServerShuffleSeedSnapshot() {
   return SERVER_SHUFFLE_SEED;
 }
 
+const sampleLabels: Record<
+  keyof PracticeReview["samples"],
+  { label: string; tone: string }
+> = {
+  beginner: {
+    label: "Beginner answer",
+    tone: "Acceptable first pass",
+  },
+  hireReady: {
+    label: "Hire-ready answer",
+    tone: "Stronger client-ready version",
+  },
+  needsImprovement: {
+    label: "Needs improvement",
+    tone: "What to avoid",
+  },
+};
+
+function SampleAnswerCard({
+  sample,
+  tone,
+  title,
+}: {
+  sample: PracticeReviewSample;
+  tone: string;
+  title: string;
+}) {
+  return (
+    <div className="rounded-md border bg-card p-3">
+      <p className="text-sm font-semibold">{title}</p>
+      <p className="mt-1 text-xs text-muted-foreground">{tone}</p>
+      <div className="mt-3 space-y-3 text-sm leading-6">
+        <div>
+          <p className="font-medium">Builder notes</p>
+          <p className="text-muted-foreground">{sample.builderNotes}</p>
+        </div>
+        <div>
+          <p className="font-medium">Testing notes</p>
+          <p className="text-muted-foreground">{sample.testingNotes}</p>
+        </div>
+        <div className="rounded-md border bg-muted/40 p-2">
+          <p className="font-medium">Instructor note</p>
+          <p className="text-muted-foreground">{sample.whyItWorks}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function LessonCompletion({
   module,
   modules,
   practiceGuide,
+  practiceReview,
   questions,
   scenario,
 }: {
   module: Module;
   modules: Module[];
   practiceGuide?: PracticeGuide;
+  practiceReview?: PracticeReview;
   questions: QuizQuestion[];
   scenario: Scenario;
 }) {
@@ -127,6 +182,7 @@ export function LessonCompletion({
   const [review, setReview] = useState<string | null>(null);
   const [reviewError, setReviewError] = useState<string | null>(null);
   const [reviewLoading, setReviewLoading] = useState(false);
+  const [showSamples, setShowSamples] = useState(false);
   const shuffleSeed = useSyncExternalStore(
     subscribeToShuffleSeed,
     getShuffleSeedSnapshot,
@@ -179,6 +235,8 @@ export function LessonCompletion({
     practiceComplete &&
     builderNotes.trim().length >= 20 &&
     testingNotes.trim().length >= 20;
+  const samplesUnlocked =
+    builderNotes.trim().length >= 20 || testingNotes.trim().length >= 20;
 
   useEffect(() => {
     return () => {
@@ -452,6 +510,80 @@ export function LessonCompletion({
             />
           </label>
         </div>
+
+        {practiceReview ? (
+          <div className="mt-5 grid gap-4 xl:grid-cols-[minmax(0,1fr)_420px]">
+            <div className="rounded-lg border bg-background p-4">
+              <p className="mb-3 flex items-center gap-2 font-semibold">
+                <Award className="size-4 text-emerald-700" />
+                Practice rubric
+              </p>
+              <div className="space-y-3">
+                {practiceReview.rubric.map((item) => (
+                  <div key={item.criterion} className="rounded-md border bg-card p-3">
+                    <p className="text-sm font-semibold">{item.criterion}</p>
+                    <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                      <span className="font-medium text-foreground">Pass:</span>{" "}
+                      {item.pass}
+                    </p>
+                    <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                      <span className="font-medium text-foreground">
+                        Strong:
+                      </span>{" "}
+                      {item.excellent}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-lg border bg-background p-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="flex items-center gap-2 font-semibold">
+                    <BookOpenCheck className="size-4 text-emerald-700" />
+                    Sample answers
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                    Write your own notes first, then compare against these
+                    examples.
+                  </p>
+                </div>
+                <button
+                  className="rounded-md border px-3 py-2 text-sm font-medium hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+                  disabled={!samplesUnlocked}
+                  onClick={() => setShowSamples((current) => !current)}
+                  type="button"
+                >
+                  {showSamples ? "Hide samples" : "View samples"}
+                </button>
+              </div>
+              {!samplesUnlocked ? (
+                <p className="mt-3 rounded-md border bg-muted/40 p-3 text-xs leading-5 text-muted-foreground">
+                  Add at least 20 characters to builder notes or testing notes
+                  before viewing the examples.
+                </p>
+              ) : null}
+              {showSamples ? (
+                <div className="mt-4 space-y-3">
+                  {(
+                    Object.entries(practiceReview.samples) as [
+                      keyof PracticeReview["samples"],
+                      PracticeReviewSample,
+                    ][]
+                  ).map(([key, sample]) => (
+                    <SampleAnswerCard
+                      key={key}
+                      sample={sample}
+                      title={sampleLabels[key].label}
+                      tone={sampleLabels[key].tone}
+                    />
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted-foreground">

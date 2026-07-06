@@ -1,0 +1,372 @@
+[
+  {
+    "moduleId": "orientation",
+    "rubric": [
+      {
+        "criterion": "Explains GHL in plain business language",
+        "pass": "Mentions leads, CRM, appointments, follow-up, or tracking without heavy jargon.",
+        "excellent": "Connects GHL to a specific business outcome such as faster response, fewer missed appointments, or organized lead tracking."
+      },
+      {
+        "criterion": "Identifies a lead source and next action",
+        "pass": "Names one lead source and one follow-up action.",
+        "excellent": "Shows the full path from lead source to CRM record to staff or automated follow-up."
+      },
+      {
+        "criterion": "Knows what to track",
+        "pass": "Mentions basic contact details, source, service interest, or appointment status.",
+        "excellent": "Includes tags, fields, notes, tasks, or pipeline stage as tracking examples."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "A dental clinic can use GHL to collect leads from a Facebook ad form and send a follow-up text. It should track the lead name, phone, service interest, and whether the person booked a consultation.",
+        "testingNotes": "I would test with one fake lead from the form and check if the contact appears in the CRM.",
+        "whyItWorks": "This is simple but acceptable because it names the source, next action, and tracked information."
+      },
+      "hireReady": {
+        "builderNotes": "For a dental clinic, I would map the lead path as Facebook ad -> consultation form -> CRM contact -> tag 'implant-interest' -> opportunity stage 'New Consultation Lead' -> SMS asking the lead to book. Staff should receive a task if the lead does not book.",
+        "testingNotes": "I would submit fake form data, confirm the contact fields are saved, check the tag and opportunity stage, confirm the SMS content, and verify that staff know when to follow up manually.",
+        "whyItWorks": "This answer shows process thinking, CRM tracking, workflow boundaries, and human follow-up."
+      },
+      "needsImprovement": {
+        "builderNotes": "GHL helps businesses with automation and marketing.",
+        "testingNotes": "I would check if it works.",
+        "whyItWorks": "This is too vague. It does not identify the lead source, next action, tracked data, or how to test."
+      }
+    }
+  },
+  {
+    "moduleId": "crm-foundations",
+    "rubric": [
+      {
+        "criterion": "Uses tags for grouping or automation signals",
+        "pass": "Suggests tags tied to source, interest, or status.",
+        "excellent": "Uses clear names that avoid random labels and can support smart lists or workflows."
+      },
+      {
+        "criterion": "Uses custom fields for specific values",
+        "pass": "Suggests fields such as pet type, budget, appointment preference, or property address.",
+        "excellent": "Explains why the value belongs in a field instead of a tag or note."
+      },
+      {
+        "criterion": "Creates a useful smart list or cleanup view",
+        "pass": "Defines one filtered group that staff can act on.",
+        "excellent": "Includes a follow-up purpose such as missing phone, no appointment, or new leads this week."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "For a grooming shop, I would use tags New Grooming Lead, Dog Grooming Interest, and Needs Follow-Up. Custom fields would be Pet Type and Preferred Appointment Day. Smart list: New leads without appointment.",
+        "testingNotes": "I would create a fake contact and check if the tags and custom fields are visible.",
+        "whyItWorks": "This covers the minimum CRM organization pieces and gives staff a useful follow-up list."
+      },
+      "hireReady": {
+        "builderNotes": "Tags: source-facebook-ad, interest-grooming, status-new-lead, needs-follow-up. Custom fields: Pet Type, Pet Size, Preferred Service, Preferred Appointment Day. Smart list: Grooming leads tagged status-new-lead with no appointment booked. Notes should only hold human context, like 'prefers afternoon calls.'",
+        "testingNotes": "I would enter a fake contact, fill every required field, apply the tags, confirm the smart list includes the contact, then remove the appointment condition to confirm the contact leaves the list after booking.",
+        "whyItWorks": "This separates tags, fields, notes, and smart lists clearly and includes a real test of the filtered list."
+      },
+      "needsImprovement": {
+        "builderNotes": "I would add many tags like important, client, follow, pet, call, maybe.",
+        "testingNotes": "I would look at the contact.",
+        "whyItWorks": "The tags are vague and inconsistent. It does not explain fields, smart lists, or a reliable test."
+      }
+    }
+  },
+  {
+    "moduleId": "pipeline-sales",
+    "rubric": [
+      {
+        "criterion": "Stages match real sales steps",
+        "pass": "Creates practical stages from new inquiry to won or lost.",
+        "excellent": "Each stage has a clear meaning that staff can update consistently."
+      },
+      {
+        "criterion": "Separates contact record from opportunity",
+        "pass": "Mentions that the person is the contact and the deal is the opportunity.",
+        "excellent": "Explains what information belongs on each record."
+      },
+      {
+        "criterion": "Defines manual versus automated movement",
+        "pass": "Names at least one automated move and one manual move.",
+        "excellent": "Uses automation only for clear events and keeps judgment-based stages manual."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "Dental implant pipeline: New Lead, Contacted, Consultation Booked, Treatment Plan Sent, Won or Lost. A form can create the opportunity. Staff should move it after the consultation.",
+        "testingNotes": "I would submit a fake form and check if the opportunity appears in New Lead.",
+        "whyItWorks": "This is practical and shows basic stage thinking."
+      },
+      "hireReady": {
+        "builderNotes": "Stages: New Implant Lead, Contact Attempted, Consultation Booked, Consult Completed, Treatment Plan Sent, Won, Lost. Automation can create the opportunity from the form and move it to Consultation Booked when an appointment is booked. Staff should manually move Consult Completed, Treatment Plan Sent, Won, and Lost because those require judgment.",
+        "testingNotes": "I would create a fake form submission, verify the contact and opportunity, book a fake appointment, confirm the stage moves, then add a test note explaining when staff should manually update later stages.",
+        "whyItWorks": "This answer protects reporting quality by using automation only when the event is clear."
+      },
+      "needsImprovement": {
+        "builderNotes": "Stages: Good lead, Maybe, Hot, Done.",
+        "testingNotes": "I would see if the cards move.",
+        "whyItWorks": "The stages are vague and do not map to real business steps."
+      }
+    }
+  },
+  {
+    "moduleId": "calendar-booking",
+    "rubric": [
+      {
+        "criterion": "Defines booking settings",
+        "pass": "Includes appointment length, availability, or buffer.",
+        "excellent": "Matches settings to the business capacity and service type."
+      },
+      {
+        "criterion": "Plans reminders",
+        "pass": "Includes confirmation and at least one reminder.",
+        "excellent": "Uses timing that reduces no-shows without annoying the lead."
+      },
+      {
+        "criterion": "Tests as the lead",
+        "pass": "Mentions booking a fake appointment.",
+        "excellent": "Checks lead experience, staff notification, timezone, and reminder content."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "For a dental consultation, I would set a 30-minute appointment, weekdays from 9 AM to 5 PM, and a 10-minute buffer. Reminders: confirmation, 24 hours before, and 2 hours before.",
+        "testingNotes": "I would book a fake appointment and check if the confirmation is sent.",
+        "whyItWorks": "This covers the basic booking and reminder structure."
+      },
+      "hireReady": {
+        "builderNotes": "Set a 30-minute implant consultation calendar with weekday availability, 10-minute buffer, and assigned front desk owner. Confirmation should include date, time, clinic address, and reschedule link. Reminder timing: immediate confirmation, 24 hours before, 2 hours before, and a no-show task if the person does not attend.",
+        "testingNotes": "I would book as a fake lead, confirm the contact and appointment record, check timezone, verify reminders have the right details, and confirm staff receives the internal notification.",
+        "whyItWorks": "This includes settings, messages, staff ownership, no-show handling, and realistic QA."
+      },
+      "needsImprovement": {
+        "builderNotes": "I would make a calendar and send reminders.",
+        "testingNotes": "I would test the link.",
+        "whyItWorks": "This is too general. It does not define appointment settings, message timing, or what to verify."
+      }
+    }
+  },
+  {
+    "moduleId": "forms-funnels",
+    "rubric": [
+      {
+        "criterion": "Chooses useful form fields",
+        "pass": "Includes name, phone or email, and one qualifying field.",
+        "excellent": "Keeps fields minimal while collecting enough data for follow-up."
+      },
+      {
+        "criterion": "Defines thank-you page next step",
+        "pass": "Confirms what happens after submission.",
+        "excellent": "Guides the lead to book, wait for a call, or check email without confusion."
+      },
+      {
+        "criterion": "Routes data into CRM",
+        "pass": "Mentions tags, fields, source, or pipeline.",
+        "excellent": "Explains exactly how the lead should be tracked and followed up."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "For a real estate buyer guide, fields: first name, phone, email, buying timeline, and preferred area. Thank-you page: 'Thanks, your guide is on the way. A team member may contact you if you requested help.'",
+        "testingNotes": "I would submit fake data and check if the contact is created.",
+        "whyItWorks": "This answer has useful fields and a clear thank-you message."
+      },
+      "hireReady": {
+        "builderNotes": "Landing page offers a free buyer guide. Form fields: first name, phone, email, preferred area, buying timeline. Required: name and email, phone optional unless phone follow-up is promised. CRM routing: source-buyer-guide tag, custom fields for area and timeline, opportunity only if the lead requests a consultation. Thank-you page should deliver the guide and offer a booking link.",
+        "testingNotes": "I would submit fake data, confirm field mapping, verify the tag, check the thank-you page, confirm the email delivery, and make sure only qualified leads enter the pipeline.",
+        "whyItWorks": "This shows lead capture, CRM routing, qualification, and testing."
+      },
+      "needsImprovement": {
+        "builderNotes": "I would ask for name, email, phone, address, birthday, income, budget, job, and all details.",
+        "testingNotes": "I would submit it.",
+        "whyItWorks": "This asks for too much and does not explain routing or the next step."
+      }
+    }
+  },
+  {
+    "moduleId": "communication",
+    "rubric": [
+      {
+        "criterion": "Writes clear lead-facing messages",
+        "pass": "Message is short, human, and asks for one next action.",
+        "excellent": "Message matches the lead context and avoids pressure or jargon."
+      },
+      {
+        "criterion": "Defines reply handling",
+        "pass": "Stops automation or alerts staff when the lead replies.",
+        "excellent": "Explains exactly when staff should take over and what they should see."
+      },
+      {
+        "criterion": "Includes SMS and email roles",
+        "pass": "Uses SMS for quick response or email for longer detail.",
+        "excellent": "Uses channel choice intentionally and avoids duplicate over-messaging."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "SMS: 'Hi Ana, thanks for asking about grooming. Would you like a weekday or weekend appointment?' Email: 'Thanks for your grooming request. Reply with your preferred day and pet type.' Stop when the lead replies.",
+        "testingNotes": "I would send it to a fake contact and reply to see if staff can see the message.",
+        "whyItWorks": "This is short, clear, and includes reply stopping."
+      },
+      "hireReady": {
+        "builderNotes": "For a new grooming lead, first SMS: 'Hi Ana, thanks for requesting grooming info. We can help with bath, trim, or full grooming. Do you prefer a weekday or weekend slot?' If no SMS reply after 4 hours, send an email with service options and booking link. If the lead replies, stop nurture and create a front desk task.",
+        "testingNotes": "I would create a fake contact, trigger the sequence, confirm the SMS and email timing, reply as the lead, check that automation stops, and confirm the staff task appears.",
+        "whyItWorks": "This includes channel strategy, reply handling, timing, and staff handoff."
+      },
+      "needsImprovement": {
+        "builderNotes": "Send many messages until they book.",
+        "testingNotes": "I would check if messages send.",
+        "whyItWorks": "This risks annoying leads and does not include reply handling or staff handoff."
+      }
+    }
+  },
+  {
+    "moduleId": "workflow-automations",
+    "rubric": [
+      {
+        "criterion": "Starts from one clear trigger",
+        "pass": "Names one trigger that matches the business goal.",
+        "excellent": "Avoids mixing unrelated triggers in one workflow."
+      },
+      {
+        "criterion": "Includes useful actions and timing",
+        "pass": "Includes lead-facing action, internal action, wait, or condition.",
+        "excellent": "Keeps the workflow simple and explains why each step exists."
+      },
+      {
+        "criterion": "Adds stop rules and branch testing",
+        "pass": "Mentions stopping after reply, booking, or qualification change.",
+        "excellent": "Tests each path with fake contacts and checks workflow history."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "Missed-call workflow: trigger missed call, send SMS asking how the clinic can help, add tag Missed Call Lead, notify front desk, wait 10 minutes, check if the lead replied, stop if replied.",
+        "testingNotes": "I would use a fake contact and check if the SMS and notification happen.",
+        "whyItWorks": "This includes trigger, actions, wait, condition, and stop logic."
+      },
+      "hireReady": {
+        "builderNotes": "Trigger: missed call during business hours. Actions: send SMS within 1 minute, add tag missed-call-lead, create task for front desk, notify assigned user. Wait 10 minutes, then if no reply send one follow-up or leave task open. Stop if the lead replies, books, or staff marks contacted.",
+        "testingNotes": "I would test three fake contacts: one replies, one books, and one does nothing. I would inspect workflow history, tags, task creation, SMS timing, and stop behavior for each path.",
+        "whyItWorks": "This is operationally safe because it tests branches and prevents over-messaging."
+      },
+      "needsImprovement": {
+        "builderNotes": "Trigger everything and send SMS, email, voicemail, and many reminders.",
+        "testingNotes": "I would run it.",
+        "whyItWorks": "This is too broad and likely creates duplicate or confusing communication."
+      }
+    }
+  },
+  {
+    "moduleId": "client-implementation",
+    "rubric": [
+      {
+        "criterion": "Restates client goal and scope",
+        "pass": "Defines the problem and the GHL assets needed.",
+        "excellent": "Clearly separates what is included, what is not included, and what success means."
+      },
+      {
+        "criterion": "Creates a testing checklist",
+        "pass": "Includes fake-data tests for core paths.",
+        "excellent": "Tests happy path, missing data, staff notification, and failure points."
+      },
+      {
+        "criterion": "Writes handoff notes",
+        "pass": "Explains what was built and what staff should do next.",
+        "excellent": "A teammate could follow the notes without asking what to click."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "Client goal: dental consultation leads should enter the CRM and get follow-up. Assets: form, contact fields, tag, pipeline stage, SMS workflow, staff notification.",
+        "testingNotes": "I would submit a fake lead and check the contact, tag, SMS, opportunity, and notification.",
+        "whyItWorks": "This covers the core implementation checklist."
+      },
+      "hireReady": {
+        "builderNotes": "Scope: build dental consultation intake from form to CRM to follow-up. Assets: form fields, source tag, service-interest field, New Consultation pipeline stage, SMS confirmation, staff task, and handoff note. Out of scope: ad setup and medical advice. Success: fake leads enter the correct stage and staff can respond within 5 minutes.",
+        "testingNotes": "Test cases: complete form, missing phone, duplicate email, appointment booked, no reply after SMS. For each test, check contact fields, tags, opportunity stage, workflow history, message content, and staff notification. Handoff: staff should review New Consultation leads twice daily and mark contacted.",
+        "whyItWorks": "This answer shows scope control, QA thinking, and handoff readiness."
+      },
+      "needsImprovement": {
+        "builderNotes": "I will build what the client asks.",
+        "testingNotes": "I will check it after.",
+        "whyItWorks": "This is not enough. It has no scope, assets, test cases, or handoff."
+      }
+    }
+  },
+  {
+    "moduleId": "advanced-practical",
+    "rubric": [
+      {
+        "criterion": "Chooses native GHL or external tool intentionally",
+        "pass": "Explains what stays in GHL and what leaves GHL.",
+        "excellent": "Uses external automation only when another app or transformation is truly needed."
+      },
+      {
+        "criterion": "Maps fields safely",
+        "pass": "Lists fields sent to the external tool.",
+        "excellent": "Sends only necessary fields and protects sensitive data."
+      },
+      {
+        "criterion": "Plans error handling and secret safety",
+        "pass": "Mentions testing, failure notification, or secret protection.",
+        "excellent": "Includes mock-data test, failure path, and no exposed API keys or webhook URLs."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "Keep GHL for form capture, contact record, tag, and follow-up. Use Make or n8n to receive a webhook and send name, phone, email, property address, and source to Google Sheets and Slack.",
+        "testingNotes": "I would send one fake seller lead and check the sheet row and Slack message.",
+        "whyItWorks": "This correctly separates native GHL work from external automation."
+      },
+      "hireReady": {
+        "builderNotes": "Native GHL handles form, CRM contact, seller-valuation tag, opportunity creation, and lead follow-up. External Make or n8n scenario receives webhook fields: first name, phone, email, property address, lead source, submitted timestamp, and assigned agent. It creates a Google Sheets row and posts a Slack alert without exposing the webhook URL in screenshots.",
+        "testingNotes": "I would test with mock data, verify field mapping, confirm no duplicate rows, check Slack formatting, create an error notification for failed runs, and redact webhook URLs and tokens from all proof screenshots.",
+        "whyItWorks": "This includes boundary, field mapping, testing, error handling, and secret safety."
+      },
+      "needsImprovement": {
+        "builderNotes": "Use n8n for everything because it is powerful.",
+        "testingNotes": "I would connect it and see.",
+        "whyItWorks": "This skips the native-first decision and does not define data, testing, or safety."
+      }
+    }
+  },
+  {
+    "moduleId": "hire-ready-portfolio",
+    "rubric": [
+      {
+        "criterion": "Shows client problem and solution",
+        "pass": "Includes problem, tools used, and build summary.",
+        "excellent": "Explains business value in a way a non-technical owner understands."
+      },
+      {
+        "criterion": "Includes proof and testing notes",
+        "pass": "Includes screenshot, diagram, checklist, or test note.",
+        "excellent": "Shows proof without exposing private data and explains what was verified."
+      },
+      {
+        "criterion": "Creates job-ready packaging",
+        "pass": "Adds a resume bullet or interview answer.",
+        "excellent": "Connects the project to VA, CRM assistant, or automation specialist responsibilities."
+      }
+    ],
+    "samples": {
+      "beginner": {
+        "builderNotes": "Project: Dental consultation funnel. Problem: clinic needs faster follow-up. Solution: form, CRM tag, pipeline stage, SMS follow-up, and staff notification. Resume bullet: Planned a GHL dental lead follow-up flow with CRM tracking and testing notes.",
+        "testingNotes": "I would include a fake form submission screenshot and notes showing the contact, tag, and SMS were checked.",
+        "whyItWorks": "This is a simple but useful portfolio case study."
+      },
+      "hireReady": {
+        "builderNotes": "Case study: Dental Implant Consultation Follow-Up. Problem: leads from ads were not contacted quickly. Solution: lead form with required contact fields, implant-interest tag, New Consultation opportunity, SMS booking prompt, front desk task, and no-reply follow-up. Expected result: faster speed-to-lead and cleaner consultation tracking. Resume bullet: Built and tested a GHL-style lead capture and follow-up workflow for an appointment-based clinic using CRM tags, pipeline stages, SMS, and staff handoff notes.",
+        "testingNotes": "Proof pack: redacted form screenshot, CRM contact screenshot, workflow diagram, fake test contact result, and a QA checklist. I would explain that all data is mock and the certificate is self-issued training completion, not official HighLevel certification.",
+        "whyItWorks": "This packages the project honestly with business context, proof, testing, and job-ready language."
+      },
+      "needsImprovement": {
+        "builderNotes": "I know GHL and made automations.",
+        "testingNotes": "I have screenshots.",
+        "whyItWorks": "This does not show a problem, solution, test proof, or specific skill."
+      }
+    }
+  }
+]

@@ -4,7 +4,7 @@ Last reviewed: 2026-07-04
 
 ## Current Status
 
-The GHL Tutor Agent now has a complete Level 0-9 lesson pathway. Each level includes a written lesson, key terms, step-by-step instructions, client example, common mistakes, practice task, easy practice version, hirable completion standard, quiz prompt, and hire-ready note.
+The GHL Tutor Agent now has a complete Level 0-9 lesson pathway. Each level includes a written lesson, key terms, step-by-step instructions, client example, common mistakes, practice task, easy practice version, hirable completion standard, quiz prompt, hire-ready note, rubric, and sample answers.
 
 ## Level Coverage
 
@@ -23,7 +23,7 @@ The GHL Tutor Agent now has a complete Level 0-9 lesson pathway. Each level incl
 
 ## Premium-Worthy Assessment
 
-The curriculum is strong enough for a first paid beta or founder-led pilot because it teaches beginner terms, shows visual examples, gates progression, requires practice before quizzes, and connects lessons to hireable tasks.
+The curriculum is strong enough for a first paid beta or founder-led pilot because it teaches beginner terms, shows visual examples, gates progression, requires practice before quizzes, gives sample answers, uses rubrics, and connects lessons to hireable tasks.
 
 The lessons are intentionally easy to start. Each level now has an easy practice version for zero-knowledge students and a hirable completion standard for students who want to know what "good enough for work" means.
 
@@ -31,10 +31,9 @@ The lessons are intentionally easy to start. Each level now has an easy practice
 
 1. Replace redacted mock visuals with real screenshots from a safe demo GHL account.
 2. Add more authored quiz items per level instead of relying partly on generated glossary review questions.
-3. Add instructor-reviewed portfolio rubrics for the final projects.
-4. Add real sample answers and before/after examples for each practice task.
-5. Run a full first-student pass from Level 0 to Level 9 and adjust confusing steps.
+3. Add instructor-reviewed portfolio submission queue in the admin dashboard.
+4. Run a full first-student pass from Level 0 to Level 9 and adjust confusing steps.
 
 ## Recommendation
 
-The course is now ready for a first-student pilot. The next highest-value improvement is adding real GHL screenshots and model answers for each practice task, because that will make the lessons feel less theoretical and more like hands-on job training.
+The course is now ready for a first-student pilot. The next highest-value improvement is replacing mock visuals with real demo-account screenshots, then running the full Level 0-9 pilot and adjusting based on actual learner friction.

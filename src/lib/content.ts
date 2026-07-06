@@ -61,6 +61,26 @@ export type PracticeGuide = {
   testingNotes: string;
 };
 
+export type PracticeReviewSample = {
+  builderNotes: string;
+  testingNotes: string;
+  whyItWorks: string;
+};
+
+export type PracticeReview = {
+  moduleId: string;
+  rubric: {
+    criterion: string;
+    pass: string;
+    excellent: string;
+  }[];
+  samples: {
+    beginner: PracticeReviewSample;
+    hireReady: PracticeReviewSample;
+    needsImprovement: PracticeReviewSample;
+  };
+};
+
 const contentDir = path.join(process.cwd(), "content");
 
 const moduleGlossaryTerms: Record<string, string[]> = {
@@ -267,4 +287,9 @@ export async function getVisualSnippets(moduleId: string) {
 export async function getPracticeGuide(moduleId: string) {
   const guides = await readJson<PracticeGuide[]>("practice-guides.json");
   return guides.find((guide) => guide.moduleId === moduleId);
+}
+
+export async function getPracticeReview(moduleId: string) {
+  const reviews = await readJson<PracticeReview[]>("practice-reviews.json");
+  return reviews.find((review) => review.moduleId === moduleId);
 }

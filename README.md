@@ -75,6 +75,7 @@ practice progress, quiz results, and portfolio notes sync through
 content/
   modules.json
   lessons/*.md
+  practice-reviews.json
   visual-snippets.json
   quizzes/*.json
   scenarios/*.json
@@ -82,6 +83,8 @@ content/
 ```
 
 Each seeded lesson includes a title, skill level, learning objective, plain-English explanation, key terms, steps, client example, mistakes, easy practice version, hirable completion standard, quiz prompt, expected answer, and hire-ready note.
+
+`practice-reviews.json` adds the premium assessment layer: rubric criteria, beginner sample answers, hire-ready sample answers, and examples that need improvement.
 
 ## Adding Real GHL Screenshots
 
@@ -103,6 +106,8 @@ Recommended screenshot set:
 - `portfolio-proof.svg`: final proof screenshots, testing notes, or case study visual
 
 Before committing real screenshots, redact names, phone numbers, emails, message content, API keys, webhook URLs, client business data, billing details, and account IDs.
+
+See `GHL_SCREENSHOT_REPLACEMENT_GUIDE.md` before replacing mock visuals.
 
 ## Main Routes
 
