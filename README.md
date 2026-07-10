@@ -12,6 +12,7 @@ An interactive GoHighLevel learning portal for complete beginners who want to be
 - Recorded quizzes with at least 10 items per skill level, accessed through lessons and gated by prerequisite level completion
 - Optional Supabase accounts, progress sync, quiz attempt storage, and instructor dashboard
 - AI practice review from inside each lesson after students complete practice notes
+- Final portfolio submission with instructor review and certificate-readiness approval
 - Zero-knowledge glossary for core GHL and automation terms
 - Coursera-style lesson sidebar, gated lesson progression, shuffled quiz choices, and dark/light theme toggle
 - Visual snippet slots for GHL screenshots so students can connect terms to the actual app UI
@@ -69,6 +70,11 @@ Students can keep learning locally before signing in. When they sign in,
 practice progress, quiz results, and portfolio notes sync through
 `/api/progress/snapshot`.
 
+Final portfolio submissions are stored in Supabase through
+`/api/portfolio/submissions`. Instructors review them in `/admin` and mark the
+portfolio as `approved` or `needs_revision`. Certificate readiness unlocks only
+after all coursework is complete and the final portfolio is approved.
+
 ## Content Structure
 
 ```text
@@ -120,7 +126,7 @@ See `GHL_SCREENSHOT_REPLACEMENT_GUIDE.md` before replacing mock visuals.
 - `/quiz` redirects to `/learn`; quizzes are taken inside lessons
 - `/simulator` client scenario simulator
 - `/portfolio` portfolio project builder
-- `/progress` progress tracker and self-issued completion page
+- `/progress` progress tracker and certificate-readiness page
 - `/settings` model/API key setup notes
 - `/login` student account sign in and sign up
 - `/admin` instructor dashboard skeleton for production review
@@ -139,6 +145,5 @@ No paid HighLevel API connection is required for the MVP. The app uses mock data
 
 - Optional HighLevel API integration behind `ENABLE_HIGHLEVEL_API=true`
 - Full admin content editor for lessons, quizzes, scenarios, and project rubrics
-- Stronger final assessment with mentor review queue and certificate approval
 - Certificate generation with student name and completion date
 - Paid course features, cohorts, mentor review, and private project feedback

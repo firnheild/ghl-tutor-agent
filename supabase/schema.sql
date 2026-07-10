@@ -65,11 +65,27 @@ create table if not exists public.student_progress_snapshots (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists public.portfolio_submissions (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  project_notes jsonb not null default '{}'::jsonb,
+  completed_projects jsonb not null default '[]'::jsonb,
+  status text not null default 'submitted'
+    check (status in ('draft', 'submitted', 'needs_revision', 'approved')),
+  instructor_feedback text,
+  reviewed_by uuid references auth.users(id) on delete set null,
+  reviewed_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (user_id)
+);
+
 alter table public.profiles enable row level security;
 alter table public.lesson_progress enable row level security;
 alter table public.quiz_attempts enable row level security;
 alter table public.ai_reviews enable row level security;
 alter table public.student_progress_snapshots enable row level security;
+alter table public.portfolio_submissions enable row level security;
 
 drop policy if exists "Profiles are readable by owner" on public.profiles;
 create policy "Profiles are readable by owner"
@@ -140,6 +156,22 @@ create policy "Students update own progress snapshot"
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
 
+drop policy if exists "Students read own portfolio submission" on public.portfolio_submissions;
+create policy "Students read own portfolio submission"
+  on public.portfolio_submissions for select
+  using (auth.uid() = user_id);
+
+drop policy if exists "Students insert own portfolio submission" on public.portfolio_submissions;
+create policy "Students insert own portfolio submission"
+  on public.portfolio_submissions for insert
+  with check (auth.uid() = user_id);
+
+drop policy if exists "Students update own portfolio submission before approval" on public.portfolio_submissions;
+create policy "Students update own portfolio submission before approval"
+  on public.portfolio_submissions for update
+  using (auth.uid() = user_id and status <> 'approved')
+  with check (auth.uid() = user_id and status in ('draft', 'submitted'));
+
 create or replace function public.has_staff_role()
 returns boolean
 language sql
@@ -178,6 +210,17 @@ drop policy if exists "Staff read progress snapshots" on public.student_progress
 create policy "Staff read progress snapshots"
   on public.student_progress_snapshots for select
   using (public.has_staff_role());
+
+drop policy if exists "Staff read portfolio submissions" on public.portfolio_submissions;
+create policy "Staff read portfolio submissions"
+  on public.portfolio_submissions for select
+  using (public.has_staff_role());
+
+drop policy if exists "Staff update portfolio submissions" on public.portfolio_submissions;
+create policy "Staff update portfolio submissions"
+  on public.portfolio_submissions for update
+  using (public.has_staff_role())
+  with check (public.has_staff_role());
 
 create or replace function public.handle_new_user()
 returns trigger
@@ -231,6 +274,11 @@ create trigger ai_reviews_touch_updated_at
 drop trigger if exists student_progress_snapshots_touch_updated_at on public.student_progress_snapshots;
 create trigger student_progress_snapshots_touch_updated_at
   before update on public.student_progress_snapshots
+  for each row execute function public.touch_updated_at();
+
+drop trigger if exists portfolio_submissions_touch_updated_at on public.portfolio_submissions;
+create trigger portfolio_submissions_touch_updated_at
+  before update on public.portfolio_submissions
   for each row execute function public.touch_updated_at();
 
 insert into storage.buckets (id, name, public)

@@ -1,9 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Module, Project } from "@/lib/content";
 import { useManualProgress, useQuizResults } from "@/lib/progress-hooks";
 import { writeManualProgress } from "@/lib/progress";
+
+type PortfolioReviewStatus =
+  | "approved"
+  | "local_only"
+  | "needs_revision"
+  | "not_submitted"
+  | "submitted";
 
 export function ProgressTracker({
   modules,
@@ -14,6 +21,34 @@ export function ProgressTracker({
 }) {
   const manualProgress = useManualProgress();
   const quizResults = useQuizResults();
+  const [portfolioStatus, setPortfolioStatus] =
+    useState<PortfolioReviewStatus>("local_only");
+  const [portfolioFeedback, setPortfolioFeedback] = useState<string | null>(
+    null,
+  );
+
+  useEffect(() => {
+    async function loadPortfolioStatus() {
+      const response = await fetch("/api/portfolio/submissions", {
+        cache: "no-store",
+      });
+
+      if (!response.ok) {
+        setPortfolioStatus("local_only");
+        return;
+      }
+
+      const data = (await response.json()) as {
+        instructorFeedback?: string | null;
+        status?: PortfolioReviewStatus;
+      };
+
+      setPortfolioStatus(data.status ?? "not_submitted");
+      setPortfolioFeedback(data.instructorFeedback ?? null);
+    }
+
+    void loadPortfolioStatus();
+  }, []);
 
   const totalItems = modules.length + projects.length;
   const completedCount = useMemo(() => {
@@ -27,6 +62,11 @@ export function ProgressTracker({
     return completedModules + completedProjects;
   }, [manualProgress, modules, projects, quizResults]);
   const percent = Math.round((completedCount / totalItems) * 100);
+  const courseworkComplete = modules.every(
+    (module) => quizResults[module.id]?.passed,
+  );
+  const certificateReady =
+    courseworkComplete && portfolioStatus === "approved";
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
@@ -102,15 +142,29 @@ export function ProgressTracker({
 
         <div className="rounded-lg border bg-card p-6 text-center">
           <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground">
-            Self-issued completion
+            Certificate readiness
           </p>
           <h2 className="mt-4 text-2xl font-semibold">
-            GHL Tutor Agent Training Completion
+            {certificateReady
+              ? "GHL Tutor Agent Training Completion"
+              : "Instructor approval required"}
           </h2>
           <p className="mt-4 text-sm leading-6 text-muted-foreground">
-            This certificate-style page is for self-issued training completion
-            only. It is not official HighLevel certification.
+            {certificateReady
+              ? "Your coursework is complete and your portfolio is approved. This is still self-issued training completion, not official HighLevel certification."
+              : "Pass all level quizzes and submit your final portfolio for instructor approval before certificate readiness is unlocked."}
           </p>
+          <div className="mt-4 rounded-md border bg-background p-3 text-sm">
+            Portfolio review:{" "}
+            <span className="font-medium capitalize">
+              {portfolioStatus.replace("_", " ")}
+            </span>
+          </div>
+          {portfolioFeedback ? (
+            <p className="mt-3 rounded-md border bg-background p-3 text-left text-sm leading-6 text-muted-foreground">
+              {portfolioFeedback}
+            </p>
+          ) : null}
         </div>
       </aside>
     </div>

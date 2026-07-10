@@ -219,6 +219,103 @@ function buildGlossaryReviewQuestions(
     .filter((question): question is QuizQuestion => Boolean(question));
 }
 
+function buildPracticeReviewQuestions(
+  module: Module,
+  existingQuestions: QuizQuestion[],
+  practiceReview?: PracticeReview,
+) {
+  const existingCount = existingQuestions.filter(
+    (question) => question.moduleId === module.id,
+  ).length;
+
+  if (!practiceReview || existingCount >= 10) {
+    return [];
+  }
+
+  const rubricQuestions = practiceReview.rubric.map(
+    (item, index): QuizQuestion => ({
+      id: `${module.id}-rubric-${index + 1}`,
+      moduleId: module.id,
+      question: `For Level ${module.level}, which answer best meets this standard: ${item.criterion}?`,
+      choices: [
+        item.excellent,
+        "Use the most advanced tool first, even if the client need is simple.",
+        "Skip testing and wait for the client to report issues.",
+        "Write a vague note that does not explain the business process.",
+      ],
+      answer: item.excellent,
+      explanation: `A strong answer should meet this standard: ${item.excellent}`,
+    }),
+  );
+
+  const sample = practiceReview.samples.hireReady;
+  const weakSample = practiceReview.samples.needsImprovement;
+
+  const appliedQuestions: QuizQuestion[] = [
+    {
+      id: `${module.id}-applied-proof`,
+      moduleId: module.id,
+      question: `What makes the hire-ready sample stronger than a vague answer in ${module.title}?`,
+      choices: [
+        sample.whyItWorks,
+        "It avoids naming any client problem or test step.",
+        "It claims official certification without proof.",
+        "It hides the next action so staff must guess.",
+      ],
+      answer: sample.whyItWorks,
+      explanation:
+        "Hire-ready work explains the client problem, the build decision, and how the work will be checked.",
+    },
+    {
+      id: `${module.id}-applied-testing`,
+      moduleId: module.id,
+      question: "Which testing note is closest to job-ready work?",
+      choices: [
+        sample.testingNotes,
+        "I would click around and see if it looks okay.",
+        "I would launch it with real leads first.",
+        "I would ask the client to test everything without notes.",
+      ],
+      answer: sample.testingNotes,
+      explanation:
+        "Good testing uses fake data, checks expected outcomes, and records what was verified.",
+    },
+    {
+      id: `${module.id}-applied-builder`,
+      moduleId: module.id,
+      question: "Which builder note is most ready to show an instructor or client?",
+      choices: [
+        sample.builderNotes,
+        weakSample.builderNotes,
+        "I will build whatever setting looks useful.",
+        "The tool will automatically solve the whole business problem.",
+      ],
+      answer: sample.builderNotes,
+      explanation:
+        "A strong builder note names the specific setup choices and connects them to the business goal.",
+    },
+    {
+      id: `${module.id}-applied-weakness`,
+      moduleId: module.id,
+      question: "Why does the needs-improvement sample need revision?",
+      choices: [
+        weakSample.whyItWorks,
+        "It contains too much fake-data testing evidence.",
+        "It defines the client goal too clearly.",
+        "It protects private client data too carefully.",
+      ],
+      answer: weakSample.whyItWorks,
+      explanation:
+        "Weak practice work is usually vague, untested, or disconnected from the client process.",
+    },
+  ];
+
+  return [...rubricQuestions, ...appliedQuestions].slice(
+    0,
+    10 - existingCount,
+  );
+}
+
 function sanitizeDefinition(definition: string, term: string) {
   const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const maybePlural = /^[A-Za-z]+$/.test(term) && !term.endsWith("s") ? "s?" : "";
@@ -255,16 +352,33 @@ export async function getLessonMarkdown(moduleId: string) {
 }
 
 export async function getQuizzes() {
-  const [modules, authoredQuestions, glossary] = await Promise.all([
+  const [modules, authoredQuestions, glossary, practiceReviews] =
+    await Promise.all([
     getModules(),
     readJson<QuizQuestion[]>("quizzes/foundation.json"),
     getGlossary(),
+    getPracticeReviews(),
   ]);
+  const practiceQuestions = modules.flatMap((module) =>
+    buildPracticeReviewQuestions(
+      module,
+      authoredQuestions,
+      practiceReviews.find((review) => review.moduleId === module.id),
+    ),
+  );
+  const authoredAndPracticeQuestions = [
+    ...authoredQuestions,
+    ...practiceQuestions,
+  ];
   const generatedQuestions = modules.flatMap((module) =>
-    buildGlossaryReviewQuestions(module.id, authoredQuestions, glossary),
+    buildGlossaryReviewQuestions(
+      module.id,
+      authoredAndPracticeQuestions,
+      glossary,
+    ),
   );
 
-  return [...authoredQuestions, ...generatedQuestions];
+  return [...authoredAndPracticeQuestions, ...generatedQuestions];
 }
 
 export async function getScenarios() {
@@ -290,6 +404,11 @@ export async function getPracticeGuide(moduleId: string) {
 }
 
 export async function getPracticeReview(moduleId: string) {
-  const reviews = await readJson<PracticeReview[]>("practice-reviews.json");
+  const reviews = await getPracticeReviews();
   return reviews.find((review) => review.moduleId === moduleId);
+}
+
+export async function getPracticeReviews() {
+  const reviews = await readJson<PracticeReview[]>("practice-reviews.json");
+  return reviews;
 }

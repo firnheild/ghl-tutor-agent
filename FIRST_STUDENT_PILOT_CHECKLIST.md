@@ -22,7 +22,8 @@ For each level from 0 to 9:
 6. Check your work against the rubric.
 7. Request AI review if OpenAI and Supabase are configured.
 8. Take the quiz.
-9. Record anything that felt confusing or too hard.
+9. For Level 9, submit the final portfolio for instructor review.
+10. Record anything that felt confusing or too hard.
 
 ## Acceptance Criteria
 
@@ -34,6 +35,7 @@ The course is ready for a small beta when:
 - The student knows what proof to upload or save.
 - Quizzes unlock only after practice work.
 - The final portfolio project gives the student something they can show honestly.
+- Certificate readiness unlocks only after instructor portfolio approval.
 
 ## Production Setup Pass
 
@@ -47,6 +49,7 @@ The course is ready for a small beta when:
 8. Create admin account.
 9. Test progress sync on two browsers or devices.
 10. Test AI review on one lesson.
+11. Submit a portfolio and approve it from `/admin`.
 
 ## What To Improve After Pilot
 
